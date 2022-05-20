@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICinemaProjectV2", "APICinemaProjectV2\APICinemaProjectV2.csproj", "{AC64686F-6D1B-4EEF-B71D-7DDE83AE602F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICinemaProjectV2.DAL", "APICinemaProjectV2.DAL\APICinemaProjectV2.DAL.csproj", "{19843B0D-1258-4042-848D-68DEC7B0FB9D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC64686F-6D1B-4EEF-B71D-7DDE83AE602F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC64686F-6D1B-4EEF-B71D-7DDE83AE602F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC64686F-6D1B-4EEF-B71D-7DDE83AE602F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC64686F-6D1B-4EEF-B71D-7DDE83AE602F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6C31D4E-753A-4B2A-9001-EA3AEB9C2B2A}
+	EndGlobalSection
+EndGlobal
