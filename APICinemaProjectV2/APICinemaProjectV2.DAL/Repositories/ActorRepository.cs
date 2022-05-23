@@ -66,19 +66,6 @@ namespace APICinemaProject2.DAL.Repositories
         }
         public async Task<Actor> UpdateActor(Actor actor)
         {
-            //context.Entry(actor).State = EntityState.Modified;
-
-            //try
-            //{
-            //    await context.SaveChangesAsync();
-
-            //    return actor;
-            //}
-            //catch
-            //{
-            //    return null;
-            //}
-
             Actor update = await context.Actors.FirstOrDefaultAsync(item => item.ActorID == actor.ActorID);
             if (update != null)
             {
