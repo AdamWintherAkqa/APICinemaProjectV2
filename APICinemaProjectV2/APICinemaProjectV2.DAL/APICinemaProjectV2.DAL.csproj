@@ -5,6 +5,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Database\Models\Customer.cs" />
+    <Compile Remove="Database\Models\Genre.cs" />
+    <Compile Remove="Database\Models\Hall.cs" />
+    <Compile Remove="Database\Models\Instructor.cs" />
+    <Compile Remove="Database\Models\LoyaltyProgram.cs" />
+    <Compile Remove="Database\Models\Merchandise.cs" />
+    <Compile Remove="Database\Models\Movie.cs" />
+    <Compile Remove="Database\Models\MovieTIme.cs" />
+    <Compile Remove="Database\Models\Order.cs" />
+    <Compile Remove="Database\Models\Seat.cs" />
+    <Compile Remove="Repositories\CustomerRepository.cs" />
+    <Compile Remove="Repositories\GenreRepository.cs" />
+    <Compile Remove="Repositories\HallRepository.cs" />
+    <Compile Remove="Repositories\InstructorRepository.cs" />
+    <Compile Remove="Repositories\LoyalProgramRepository.cs" />
+    <Compile Remove="Repositories\MerchandiseRepository.cs" />
+    <Compile Remove="Repositories\MovieRepository.cs" />
+    <Compile Remove="Repositories\MovieTimeRepository.cs" />
+    <Compile Remove="Repositories\OrderRepository.cs" />
+    <Compile Remove="Repositories\SeatRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
       <PrivateAssets>all</PrivateAssets>
