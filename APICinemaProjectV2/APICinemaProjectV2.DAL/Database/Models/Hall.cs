@@ -11,6 +11,7 @@ namespace APICinemaProject2.DAL.Models
     {
         [Key]
         public int HallID { get; set; } //Pk
+        public int HallNumber { get; set; }
         public int MovieID { get; set; } //FK
         public Movie Movie { get; set; }
         public int AmountOfSeats { get; set; }

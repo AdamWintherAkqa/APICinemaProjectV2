@@ -11,7 +11,7 @@ namespace APICinemaProject2.DAL.Models
     public class LoyaltyProgram
     {
         [Key]
-        public int LoyaltyID { get; set; } // PK
+        public int LoyaltyProgramID { get; set; } // PK
         [ForeignKey("Order")]
         public int OrderID { get; set; }
         public Order Order { get; set; }

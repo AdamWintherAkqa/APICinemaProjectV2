@@ -19,4 +19,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\APICinemaProjectV2.DAL\APICinemaProjectV2.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
