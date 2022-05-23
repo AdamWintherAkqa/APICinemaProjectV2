@@ -21,7 +21,7 @@ namespace APICinemaProject2.DAL.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=EGC29749\H2SQLSOMMER;Database=CinemaProject;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-0IT9HAR;Database=CinemaProject;Trusted_Connection=True;");
         }
 
 
@@ -32,10 +32,10 @@ namespace APICinemaProject2.DAL.Database
         public DbSet<LoyaltyProgram> LoyaltyPrograms { get; set; }
         public DbSet<Merchandise> Merchandises { get; set; }
         public DbSet<Movie> Movies { get; set; }
-
         public DbSet<MovieTime> MovieTimes { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Seat> Seats { get; set; }
+        public DbSet<Actor> Actors { get; set; }
 
         public DbSet<Instructor> Instructors { get; set; }
 
@@ -44,6 +44,5 @@ namespace APICinemaProject2.DAL.Database
             throw new NotImplementedException();
         }
 
-        public DbSet<Actor> Actors { get; set; }
     }
 }
