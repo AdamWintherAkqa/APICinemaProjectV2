@@ -7,24 +7,22 @@ using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CandyShopController : ControllerBase
+    public class MoviesController : ControllerBase
     {
-        private readonly ICandyShopRepository context;
+        private readonly IMovieRepository context;
 
-        public CandyShopController(ICandyShopRepository _context)
+        public MoviesController(IMovieRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/CandyShops
+        // GET: api/Movies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CandyShop>>> GetCandyShops()
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
         {
             try
             {
-                List<CandyShop> result = await context.GetAllCandyShops(); // Ok kan typecast 99% af alt kode whoo!
+                List<Movie> result = await context.GetAllMovies(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +45,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/CandyShops/5
+        // GET: api/Movies/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<CandyShop>> GetCandyShop(int id)
+        public async Task<ActionResult<Movie>> GetMovie(int id)
         {
             if (id == 0)
             {
@@ -58,14 +56,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var candyShop = context.GetCandyShopByID(id);
+                var movie = context.GetMovieByID(id);
 
-                if (candyShop == null)
+                if (movie == null)
                 {
                     return NotFound();
                 }
 
-                return await candyShop;
+                return await movie;
             }
             catch (Exception ex)
             {
@@ -73,28 +71,28 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // PUT: api/CandyShops/5
+        // PUT: api/Movies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCandyShop(int id, CandyShop candyShop)
+        public async Task<IActionResult> PutMovie(int id, Movie movie)
         {
             try
             {
-                if (id != candyShop.CandyShopID)
+                if (id != movie.MovieID)
                     return BadRequest("ID Mismatch");
 
-                var candyShopToUpdate = await context.GetCandyShopByID(id);
+                var movieToUpdate = await context.GetMovieByID(id);
 
-                if (candyShopToUpdate == null)
+                if (movieToUpdate == null)
                 {
-                    return NotFound($"CandyShop with ID = {id} not found");
+                    return NotFound($"Movie with ID = {id} not found");
                 }
 
-                var result = await context.UpdateCandyShop(candyShop);
+                var result = await context.UpdateMovie(movie);
 
                 if (result != null)
                 {
-                    return Ok(candyShop);
+                    return Ok(movie);
                 }
                 else
                 {
@@ -108,20 +106,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/CandyShops
+        // POST: api/Movies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<CandyShop>> PostCandyShop(CandyShop candyShop)
+        public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
-            if (candyShop == null)
+            if (movie == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateCandyShop(candyShop);
+                await context.CreateMovie(movie);
 
-                return candyShop;
+                return movie;
             }
             catch (Exception ex)
             {
@@ -129,9 +127,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/CandyShops/5
+        // DELETE: api/Movies/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCandyShop(int id)
+        public async Task<IActionResult> DeleteMovie(int id)
         {
             if (id == 0)
             {
@@ -139,7 +137,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteCandyShopByID(id);
+                var response = await context.DeleteMovieByID(id);
                 if (response != null)
                 {
                     return Ok(response);

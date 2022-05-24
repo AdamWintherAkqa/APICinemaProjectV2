@@ -67,19 +67,6 @@ namespace APICinemaProject2.DAL.Repositories
         }
         public async Task<Movie> UpdateMovie(Movie movie)
         {
-            //context.Entry(movie).State = EntityState.Modified;
-
-            //try
-            //{
-            //    await context.SaveChangesAsync();
-
-            //    return movie;
-            //}
-            //catch
-            //{
-            //    return null;
-            //}
-
             Movie update = await context.Movies.FirstOrDefaultAsync(item => item.MovieID == movie.MovieID);
             if (update != null)
             {

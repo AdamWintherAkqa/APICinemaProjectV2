@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APICinemaProjectV2.DAL.Migrations
 {
     [DbContext(typeof(AbContext))]
-    [Migration("20220523082803_init_03")]
-    partial class init_03
+    [Migration("20220524075912_laptop07")]
+    partial class laptop07
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,7 @@ namespace APICinemaProjectV2.DAL.Migrations
                     b.ToTable("Actors");
                 });
 
-            modelBuilder.Entity("APICinemaProject2.DAL.Models.CandyShop", b =>
+            modelBuilder.Entity("APICinemaProject2.DAL.Database.Models.CandyShop", b =>
                 {
                     b.Property<int>("CandyShopID")
                         .ValueGeneratedOnAdd()
@@ -54,6 +54,57 @@ namespace APICinemaProjectV2.DAL.Migrations
                     b.HasKey("CandyShopID");
 
                     b.ToTable("CandyShops");
+                });
+
+            modelBuilder.Entity("APICinemaProject2.DAL.Database.Models.Movie", b =>
+                {
+                    b.Property<int>("MovieID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MovieAgeLimit")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MovieName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MoviePlayTime")
+                        .HasColumnType("int");
+
+                    b.HasKey("MovieID");
+
+                    b.ToTable("Movies");
+                });
+
+            modelBuilder.Entity("ActorMovie", b =>
+                {
+                    b.Property<int>("ActorsActorID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MoviesMovieID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ActorsActorID", "MoviesMovieID");
+
+                    b.HasIndex("MoviesMovieID");
+
+                    b.ToTable("ActorMovie");
+                });
+
+            modelBuilder.Entity("ActorMovie", b =>
+                {
+                    b.HasOne("APICinemaProject2.DAL.Database.Models.Actor", null)
+                        .WithMany()
+                        .HasForeignKey("ActorsActorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("APICinemaProject2.DAL.Database.Models.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MoviesMovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace APICinemaProject2.DAL.Database.Models
 {
@@ -7,6 +8,6 @@ namespace APICinemaProject2.DAL.Database.Models
         [Key]
         public int ActorID { get; set; } //PK
         public string ActorName { get; set; }
-        //public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; }
     }
 }
