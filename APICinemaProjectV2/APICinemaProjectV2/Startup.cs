@@ -33,7 +33,8 @@ namespace APICinemaProject2
             services.AddScoped<ISeatRepository, SeatRepository>();
             services.AddScoped<ILoyaltyProgramRepository, LoyaltyProgramRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
-
+            services.AddScoped<IHallRepository, HallRepository>();
+            services.AddScoped<IMovieTimeRepository, MovieTimeRepository>();
             services.AddDbContext<AbContext>();
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>

@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using APICinemaProject2.DAL.Database.Models;
-using APICinemaProjectV2.DAL.Repositories;
+using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActorsController : ControllerBase
+    public class HallController : ControllerBase
     {
-        private readonly IActorRepository context;
+        private readonly IHallRepository context;
 
-        public ActorsController(IActorRepository _context)
+        public HallController(IHallRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Actors
+        // GET: api/Halls
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Actor>>> GetActors()
+        public async Task<ActionResult<IEnumerable<Hall>>> GetHalls()
         {
             try
             {
-                List<Actor> result = await context.GetAllActors(); // Ok kan typecast 99% af alt kode whoo!
+                List<Hall> result = await context.GetAllHalls(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +47,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Actors/5
+        // GET: api/Halls/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Actor>> GetActor(int id)
+        public async Task<ActionResult<Hall>> GetHall(int id)
         {
             if (id == 0)
             {
@@ -58,14 +58,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var actor = context.GetActorByID(id);
+                var hall = context.GetHallByID(id);
 
-                if (actor == null)
+                if (hall == null)
                 {
                     return NotFound();
                 }
 
-                return await actor;
+                return await hall;
             }
             catch (Exception ex)
             {
@@ -73,56 +73,56 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        [HttpGet("GetActorsAndMovies")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetAllActorsAndMovies()
-        {
-            try
-            {
-                List<Actor> result = await context.GetAllActorsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
+        //[HttpGet("GetHallsAndMovies")]
+        //public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
+        //{
+        //    try
+        //    {
+        //        List<Hall> result = await context.GetAllHallsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
 
-                if (result == null)
-                {
-                    return StatusCode(500);
-                }
+        //        if (result == null)
+        //        {
+        //            return StatusCode(500);
+        //        }
 
-                if (result.Count == 0)
-                {
-                    return NoContent();
-                }
+        //        if (result.Count == 0)
+        //        {
+        //            return NoContent();
+        //        }
 
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                return (ActionResult)StatusCode(500, ex);
-            }
-        }
+        //        else
+        //        {
+        //            return Ok(result);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return (ActionResult)StatusCode(500, ex);
+        //    }
+        //}
 
-        // PUT: api/Actors/5
+        // PUT: api/Halls/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutActor(int id, Actor actor)
+        public async Task<IActionResult> PutHall(int id, Hall hall)
         {
             try
             {
-                if (id != actor.ActorID)
+                if (id != hall.HallID)
                     return BadRequest("ID Mismatch");
 
-                var actorToUpdate = await context.GetActorByID(id);
+                var hallToUpdate = await context.GetHallByID(id);
 
-                if (actorToUpdate == null)
+                if (hallToUpdate == null)
                 {
-                    return NotFound($"Actor with ID = {id} not found");
+                    return NotFound($"Hall with ID = {id} not found");
                 }
 
-                var result = await context.UpdateActor(actor);
+                var result = await context.UpdateHall(hall);
 
                 if (result != null)
                 {
-                    return Ok(actor);
+                    return Ok(hall);
                 }
                 else
                 {
@@ -136,20 +136,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Actors
+        // POST: api/Halls
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Actor>> PostActor(Actor actor)
+        public async Task<ActionResult<Hall>> PostHall(Hall hall)
         {
-            if (actor == null)
+            if (hall == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateActor(actor);
+                await context.CreateHall(hall);
 
-                return actor;
+                return hall;
             }
             catch (Exception ex)
             {
@@ -157,9 +157,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Actors/5
+        // DELETE: api/Halls/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteActor(int id)
+        public async Task<IActionResult> DeleteHall(int id)
         {
             if (id == 0)
             {
@@ -167,7 +167,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteActorByID(id);
+                var response = await context.DeleteHallByID(id);
                 if (response != null)
                 {
                     return Ok(response);

@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using APICinemaProject2.DAL.Database.Models;
-using APICinemaProjectV2.DAL.Repositories;
+using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActorsController : ControllerBase
+    public class MovieTimesController : ControllerBase
     {
-        private readonly IActorRepository context;
+        private readonly IMovieTimeRepository context;
 
-        public ActorsController(IActorRepository _context)
+        public MovieTimesController(IMovieTimeRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Actors
+        // GET: api/MovieTimes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Actor>>> GetActors()
+        public async Task<ActionResult<IEnumerable<MovieTime>>> GetMovieTimes()
         {
             try
             {
-                List<Actor> result = await context.GetAllActors(); // Ok kan typecast 99% af alt kode whoo!
+                List<MovieTime> result = await context.GetAllMovieTimes(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +47,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Actors/5
+        // GET: api/MovieTimes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Actor>> GetActor(int id)
+        public async Task<ActionResult<MovieTime>> GetMovieTime(int id)
         {
             if (id == 0)
             {
@@ -58,14 +58,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var actor = context.GetActorByID(id);
+                var movieTime = context.GetMovieTimeByID(id);
 
-                if (actor == null)
+                if (movieTime == null)
                 {
                     return NotFound();
                 }
 
-                return await actor;
+                return await movieTime;
             }
             catch (Exception ex)
             {
@@ -73,56 +73,56 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        [HttpGet("GetActorsAndMovies")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetAllActorsAndMovies()
-        {
-            try
-            {
-                List<Actor> result = await context.GetAllActorsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
+        //[HttpGet("GetMovieTimesAndActors")]
+        //public async Task<ActionResult<IEnumerable<MovieTime>>> GetAllMovieTimesAndActors()
+        //{
+        //    try
+        //    {
+        //        List<MovieTime> result = await context.GetAllMovieTimesAndActors(); // Ok kan typecast 99% af alt kode whoo!
 
-                if (result == null)
-                {
-                    return StatusCode(500);
-                }
+        //        if (result == null)
+        //        {
+        //            return StatusCode(500);
+        //        }
 
-                if (result.Count == 0)
-                {
-                    return NoContent();
-                }
+        //        if (result.Count == 0)
+        //        {
+        //            return NoContent();
+        //        }
 
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                return (ActionResult)StatusCode(500, ex);
-            }
-        }
+        //        else
+        //        {
+        //            return Ok(result);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return (ActionResult)StatusCode(500, ex);
+        //    }
+        //}
 
-        // PUT: api/Actors/5
+        // PUT: api/MovieTimes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutActor(int id, Actor actor)
+        public async Task<IActionResult> PutMovieTime(int id, MovieTime movieTime)
         {
             try
             {
-                if (id != actor.ActorID)
+                if (id != movieTime.MovieTimeID)
                     return BadRequest("ID Mismatch");
 
-                var actorToUpdate = await context.GetActorByID(id);
+                var movieTimeToUpdate = await context.GetMovieTimeByID(id);
 
-                if (actorToUpdate == null)
+                if (movieTimeToUpdate == null)
                 {
-                    return NotFound($"Actor with ID = {id} not found");
+                    return NotFound($"MovieTime with ID = {id} not found");
                 }
 
-                var result = await context.UpdateActor(actor);
+                var result = await context.UpdateMovieTime(movieTime);
 
                 if (result != null)
                 {
-                    return Ok(actor);
+                    return Ok(movieTime);
                 }
                 else
                 {
@@ -136,20 +136,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Actors
+        // POST: api/MovieTimes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Actor>> PostActor(Actor actor)
+        public async Task<ActionResult<MovieTime>> PostMovieTime(MovieTime movieTime)
         {
-            if (actor == null)
+            if (movieTime == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateActor(actor);
+                await context.CreateMovieTime(movieTime);
 
-                return actor;
+                return movieTime;
             }
             catch (Exception ex)
             {
@@ -157,9 +157,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Actors/5
+        // DELETE: api/MovieTimes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteActor(int id)
+        public async Task<IActionResult> DeleteMovieTime(int id)
         {
             if (id == 0)
             {
@@ -167,7 +167,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteActorByID(id);
+                var response = await context.DeleteMovieTimeByID(id);
                 if (response != null)
                 {
                     return Ok(response);

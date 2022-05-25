@@ -4,14 +4,16 @@ using APICinemaProject2.DAL.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace APICinemaProjectV2.DAL.Migrations
 {
     [DbContext(typeof(AbContext))]
-    partial class AbContextModelSnapshot : ModelSnapshot
+    [Migration("20220525102024_movietime0")]
+    partial class movietime0
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,16 +52,10 @@ namespace APICinemaProjectV2.DAL.Migrations
                     b.Property<string>("CandyShopType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrderID")
-                        .HasColumnType("int");
-
                     b.HasKey("CandyShopID");
-
-                    b.HasIndex("OrderID");
 
                     b.ToTable("CandyShops");
                 });
-
 
             modelBuilder.Entity("APICinemaProject2.DAL.Database.Models.Hall", b =>
                 {
@@ -67,7 +63,6 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
 
                     b.Property<int>("AmountOfSeats")
                         .HasColumnType("int");
@@ -87,7 +82,6 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-
                     b.Property<int>("HallID")
                         .HasColumnType("int");
 
@@ -100,17 +94,12 @@ namespace APICinemaProjectV2.DAL.Migrations
                     b.Property<int>("MoviePlayTime")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("MovieReleaseDate")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("MovieID");
-
 
                     b.HasIndex("HallID");
 
                     b.ToTable("Movies");
                 });
-
 
             modelBuilder.Entity("APICinemaProject2.DAL.Database.Models.MovieTime", b =>
                 {
@@ -118,7 +107,6 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
 
                     b.Property<int>("MovieID")
                         .HasColumnType("int");
@@ -147,7 +135,6 @@ namespace APICinemaProjectV2.DAL.Migrations
 
                     b.ToTable("ActorMovie");
                 });
-
 
             modelBuilder.Entity("APICinemaProject2.DAL.Database.Models.Movie", b =>
                 {
@@ -184,31 +171,6 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .HasForeignKey("MoviesMovieID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("OrderSeat", b =>
-                {
-                    b.HasOne("APICinemaProject2.DAL.Models.Order", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersOrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("APICinemaProject2.DAL.Models.Seat", null)
-                        .WithMany()
-                        .HasForeignKey("SeatsSeatID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("APICinemaProject2.DAL.Models.Genre", b =>
-                {
-                    b.Navigation("Movies");
-                });
-
-            modelBuilder.Entity("APICinemaProject2.DAL.Models.Order", b =>
-                {
-                    b.Navigation("CandyShops");
                 });
 #pragma warning restore 612, 618
         }
