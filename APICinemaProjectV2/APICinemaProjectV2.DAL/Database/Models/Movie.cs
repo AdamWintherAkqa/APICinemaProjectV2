@@ -15,6 +15,8 @@ namespace APICinemaProject2.DAL.Database.Models
         public string MovieName { get; set; }
         public int MoviePlayTime { get; set; }
         public int MovieAgeLimit { get; set; }
+        public int HallID { get; set; }
+        public Hall Hall { get; set; }
         //public int InstructorID { get; set; } // FK
         //public Instructor Instructor { get; set; }
 

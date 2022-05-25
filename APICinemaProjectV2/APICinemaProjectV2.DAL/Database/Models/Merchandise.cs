@@ -16,6 +16,5 @@ namespace APICinemaProject2.DAL.Models
         public string MerchandiseColor { get; set; }
         public int MerchandisePrice { get; set; }
         public string MerchandiseSize { get; set; }
-
     }
 }

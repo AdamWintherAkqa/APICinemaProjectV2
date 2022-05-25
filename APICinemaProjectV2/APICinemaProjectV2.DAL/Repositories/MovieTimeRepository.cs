@@ -84,6 +84,7 @@ namespace APICinemaProject2.DAL.Repositories
             if (update != null)
             {
                 update.Time = movietime.Time;
+                update.MovieID = movietime.MovieID;
 
                 await context.SaveChangesAsync();
             }

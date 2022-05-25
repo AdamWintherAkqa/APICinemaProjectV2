@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APICinemaProjectV2.DAL.Migrations
 {
-    public partial class adam01 : Migration
+    public partial class movietime0 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,6 +36,20 @@ namespace APICinemaProjectV2.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Halls",
+                columns: table => new
+                {
+                    HallID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HallNumber = table.Column<int>(type: "int", nullable: false),
+                    AmountOfSeats = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Halls", x => x.HallID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Movies",
                 columns: table => new
                 {
@@ -42,11 +57,18 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MovieName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MoviePlayTime = table.Column<int>(type: "int", nullable: false),
-                    MovieAgeLimit = table.Column<int>(type: "int", nullable: false)
+                    MovieAgeLimit = table.Column<int>(type: "int", nullable: false),
+                    HallID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movies", x => x.MovieID);
+                    table.ForeignKey(
+                        name: "FK_Movies_Halls_HallID",
+                        column: x => x.HallID,
+                        principalTable: "Halls",
+                        principalColumn: "HallID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,10 +95,40 @@ namespace APICinemaProjectV2.DAL.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "MovieTimes",
+                columns: table => new
+                {
+                    MovieTimeID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MovieID = table.Column<int>(type: "int", nullable: false),
+                    Time = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovieTimes", x => x.MovieTimeID);
+                    table.ForeignKey(
+                        name: "FK_MovieTimes_Movies_MovieID",
+                        column: x => x.MovieID,
+                        principalTable: "Movies",
+                        principalColumn: "MovieID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ActorMovie_MoviesMovieID",
                 table: "ActorMovie",
                 column: "MoviesMovieID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_HallID",
+                table: "Movies",
+                column: "HallID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MovieTimes_MovieID",
+                table: "MovieTimes",
+                column: "MovieID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -88,10 +140,16 @@ namespace APICinemaProjectV2.DAL.Migrations
                 name: "CandyShops");
 
             migrationBuilder.DropTable(
+                name: "MovieTimes");
+
+            migrationBuilder.DropTable(
                 name: "Actors");
 
             migrationBuilder.DropTable(
                 name: "Movies");
+
+            migrationBuilder.DropTable(
+                name: "Halls");
         }
     }
 }

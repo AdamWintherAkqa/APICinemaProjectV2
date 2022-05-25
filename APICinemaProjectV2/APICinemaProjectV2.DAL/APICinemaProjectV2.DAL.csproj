@@ -10,7 +10,6 @@
     <Compile Remove="Repositories\InstructorRepository.cs" />
     <Compile Remove="Repositories\LoyalProgramRepository.cs" />
     <Compile Remove="Repositories\MerchandiseRepository.cs" />
-    <Compile Remove="Repositories\MovieTimeRepository.cs" />
     <Compile Remove="Repositories\OrderRepository.cs" />
     <Compile Remove="Repositories\SeatRepository.cs" />
   </ItemGroup>

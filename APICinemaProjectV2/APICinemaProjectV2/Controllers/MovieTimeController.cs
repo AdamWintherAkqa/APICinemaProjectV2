@@ -9,22 +9,22 @@ namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class HallController : ControllerBase
+    public class MovieTimesController : ControllerBase
     {
-        private readonly IHallRepository context;
+        private readonly IMovieTimeRepository context;
 
-        public HallController(IHallRepository _context)
+        public MovieTimesController(IMovieTimeRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Halls
+        // GET: api/MovieTimes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Hall>>> GetHalls()
+        public async Task<ActionResult<IEnumerable<MovieTime>>> GetMovieTimes()
         {
             try
             {
-                List<Hall> result = await context.GetAllHalls(); // Ok kan typecast 99% af alt kode whoo!
+                List<MovieTime> result = await context.GetAllMovieTimes(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +47,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Halls/5
+        // GET: api/MovieTimes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Hall>> GetHall(int id)
+        public async Task<ActionResult<MovieTime>> GetMovieTime(int id)
         {
             if (id == 0)
             {
@@ -58,14 +58,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var hall = context.GetHallByID(id);
+                var movieTime = context.GetMovieTimeByID(id);
 
-                if (hall == null)
+                if (movieTime == null)
                 {
                     return NotFound();
                 }
 
-                return await hall;
+                return await movieTime;
             }
             catch (Exception ex)
             {
@@ -73,12 +73,12 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        //[HttpGet("GetHallsAndMovies")]
-        //public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
+        //[HttpGet("GetMovieTimesAndActors")]
+        //public async Task<ActionResult<IEnumerable<MovieTime>>> GetAllMovieTimesAndActors()
         //{
         //    try
         //    {
-        //        List<Hall> result = await context.GetAllHallsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
+        //        List<MovieTime> result = await context.GetAllMovieTimesAndActors(); // Ok kan typecast 99% af alt kode whoo!
 
         //        if (result == null)
         //        {
@@ -101,28 +101,28 @@ namespace APICinemaProjectV2.Controllers
         //    }
         //}
 
-        // PUT: api/Halls/5
+        // PUT: api/MovieTimes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutHall(int id, Hall hall)
+        public async Task<IActionResult> PutMovieTime(int id, MovieTime movieTime)
         {
             try
             {
-                if (id != hall.HallID)
+                if (id != movieTime.MovieTimeID)
                     return BadRequest("ID Mismatch");
 
-                var hallToUpdate = await context.GetHallByID(id);
+                var movieTimeToUpdate = await context.GetMovieTimeByID(id);
 
-                if (hallToUpdate == null)
+                if (movieTimeToUpdate == null)
                 {
-                    return NotFound($"Hall with ID = {id} not found");
+                    return NotFound($"MovieTime with ID = {id} not found");
                 }
 
-                var result = await context.UpdateHall(hall);
+                var result = await context.UpdateMovieTime(movieTime);
 
                 if (result != null)
                 {
-                    return Ok(hall);
+                    return Ok(movieTime);
                 }
                 else
                 {
@@ -136,20 +136,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Halls
+        // POST: api/MovieTimes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Hall>> PostHall(Hall hall)
+        public async Task<ActionResult<MovieTime>> PostMovieTime(MovieTime movieTime)
         {
-            if (hall == null)
+            if (movieTime == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateHall(hall);
+                await context.CreateMovieTime(movieTime);
 
-                return hall;
+                return movieTime;
             }
             catch (Exception ex)
             {
@@ -157,9 +157,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Halls/5
+        // DELETE: api/MovieTimes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteHall(int id)
+        public async Task<IActionResult> DeleteMovieTime(int id)
         {
             if (id == 0)
             {
@@ -167,7 +167,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteHallByID(id);
+                var response = await context.DeleteMovieTimeByID(id);
                 if (response != null)
                 {
                     return Ok(response);
