@@ -30,6 +30,8 @@ namespace APICinemaProject2
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IInstructorRepository, InstructorRepository>();
             services.AddScoped<IMerchandiseRepository, MerchandiseRepository>();
+            services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddScoped<ILoyaltyProgramRepository, LoyaltyProgramRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
 
             services.AddDbContext<AbContext>();

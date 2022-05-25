@@ -4,14 +4,16 @@ using APICinemaProject2.DAL.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace APICinemaProjectV2.DAL.Migrations
 {
     [DbContext(typeof(AbContext))]
-    partial class AbContextModelSnapshot : ModelSnapshot
+    [Migration("20220525101905_25_05_2022_2")]
+    partial class _25_05_2022_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -169,28 +171,6 @@ namespace APICinemaProjectV2.DAL.Migrations
                     b.ToTable("Hall");
                 });
 
-            modelBuilder.Entity("APICinemaProject2.DAL.Models.LoyaltyProgram", b =>
-                {
-                    b.Property<int>("LoyaltyProgramID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
-
-                    b.HasKey("LoyaltyProgramID");
-
-                    b.HasIndex("CustomerID");
-
-                    b.HasIndex("OrderID");
-
-                    b.ToTable("LoyaltyPrograms");
-                });
-
             modelBuilder.Entity("APICinemaProject2.DAL.Models.Merchandise", b =>
                 {
                     b.Property<int>("MerchandiseID")
@@ -322,25 +302,6 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("Movie");
-                });
-
-            modelBuilder.Entity("APICinemaProject2.DAL.Models.LoyaltyProgram", b =>
-                {
-                    b.HasOne("APICinemaProject2.DAL.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("APICinemaProject2.DAL.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("APICinemaProject2.DAL.Models.Order", b =>

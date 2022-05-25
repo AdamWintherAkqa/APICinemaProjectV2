@@ -31,12 +31,12 @@ namespace APICinemaProject2.DAL.Database
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Genre> Genres { get; set; }
         //public DbSet<Hall> Halls { get; set; }
-        //public DbSet<LoyaltyProgram> LoyaltyPrograms { get; set; }
+        public DbSet<LoyaltyProgram> LoyaltyPrograms { get; set; }
         public DbSet<Merchandise> Merchandises { get; set; }
         public DbSet<Movie> Movies { get; set; }
         //public DbSet<MovieTime> MovieTimes { get; set; }
         public DbSet<Order> Orders { get; set; }
-        //public DbSet<Seat> Seats { get; set; }
+        public DbSet<Seat> Seats { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
 
 
