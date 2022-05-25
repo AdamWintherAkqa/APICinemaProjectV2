@@ -1,5 +1,4 @@
 ﻿using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,28 +20,24 @@ namespace APICinemaProject2.DAL.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-0IT9HAR;Database=CinemaProject;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=CPH00151\MSSQLSERVER01;Database=CinemaProject;Trusted_Connection=True;");
         }
 
 
-        public DbSet<CandyShop> CandyShops { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Genre> Genres { get; set; }
-        public DbSet<Hall> Halls { get; set; }
-        public DbSet<LoyaltyProgram> LoyaltyPrograms { get; set; }
-        public DbSet<Merchandise> Merchandises { get; set; }
-        public DbSet<Movie> Movies { get; set; }
-        public DbSet<MovieTime> MovieTimes { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Seat> Seats { get; set; }
         public DbSet<Actor> Actors { get; set; }
+        public DbSet<CandyShop> CandyShops { get; set; }
+        //public DbSet<Customer> Customers { get; set; }
+        //public DbSet<Genre> Genres { get; set; }
+        //public DbSet<Hall> Halls { get; set; }
+        //public DbSet<LoyaltyProgram> LoyaltyPrograms { get; set; }
+        //public DbSet<Merchandise> Merchandises { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        //public DbSet<MovieTime> MovieTimes { get; set; }
+        //public DbSet<Order> Orders { get; set; }
+        //public DbSet<Seat> Seats { get; set; }
+        //public DbSet<Instructor> Instructors { get; set; }
 
-        public DbSet<Instructor> Instructors { get; set; }
 
-        internal Task SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
 
     }
 }
