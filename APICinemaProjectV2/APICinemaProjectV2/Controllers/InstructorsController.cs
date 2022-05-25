@@ -9,22 +9,22 @@ namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    public class InstructorsController : ControllerBase
     {
-        private readonly IMovieRepository context;
+        private readonly IInstructorRepository context;
 
-        public MoviesController(IMovieRepository _context)
+        public InstructorsController(IInstructorRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Movies
+        // GET: api/Instructors
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+        public async Task<ActionResult<IEnumerable<Instructor>>> GetInstructors()
         {
             try
             {
-                List<Movie> result = await context.GetAllMovies(); // Ok kan typecast 99% af alt kode whoo!
+                List<Instructor> result = await context.GetAllInstructors(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +47,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Movies/5
+        // GET: api/Instructors/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> GetMovie(int id)
+        public async Task<ActionResult<Instructor>> GetInstructor(int id)
         {
             if (id == 0)
             {
@@ -58,14 +58,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var movie = context.GetMovieByID(id);
+                var instructor = context.GetInstructorByID(id);
 
-                if (movie == null)
+                if (instructor == null)
                 {
                     return NotFound();
                 }
 
-                return await movie;
+                return await instructor;
             }
             catch (Exception ex)
             {
@@ -73,28 +73,28 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // PUT: api/Movies/5
+        // PUT: api/Instructors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMovie(int id, Movie movie)
+        public async Task<IActionResult> PutInstructor(int id, Instructor instructor)
         {
             try
             {
-                if (id != movie.MovieID)
+                if (id != instructor.InstructorID)
                     return BadRequest("ID Mismatch");
 
-                var movieToUpdate = await context.GetMovieByID(id);
+                var instructorToUpdate = await context.GetInstructorByID(id);
 
-                if (movieToUpdate == null)
+                if (instructorToUpdate == null)
                 {
-                    return NotFound($"Movie with ID = {id} not found");
+                    return NotFound($"Instructor with ID = {id} not found");
                 }
 
-                var result = await context.UpdateMovie(movie);
+                var result = await context.UpdateInstructor(instructor);
 
                 if (result != null)
                 {
-                    return Ok(movie);
+                    return Ok(instructor);
                 }
                 else
                 {
@@ -108,20 +108,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Movies
+        // POST: api/Instructors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Movie>> PostMovie(Movie movie)
+        public async Task<ActionResult<Instructor>> PostInstructor(Instructor instructor)
         {
-            if (movie == null)
+            if (instructor == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateMovie(movie);
+                await context.CreateInstructor(instructor);
 
-                return movie;
+                return instructor;
             }
             catch (Exception ex)
             {
@@ -129,9 +129,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Movies/5
+        // DELETE: api/Instructors/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMovie(int id)
+        public async Task<IActionResult> DeleteInstructor(int id)
         {
             if (id == 0)
             {
@@ -139,7 +139,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteMovieByID(id);
+                var response = await context.DeleteInstructorByID(id);
                 if (response != null)
                 {
                     return Ok(response);

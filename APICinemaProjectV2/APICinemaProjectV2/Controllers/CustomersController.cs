@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using APICinemaProject2.DAL.Database.Models;
+using APICinemaProject2.DAL.Models;
 using APICinemaProjectV2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    public class CustomersController : ControllerBase
     {
-        private readonly IMovieRepository context;
+        private readonly ICustomerRepository context;
 
-        public MoviesController(IMovieRepository _context)
+        public CustomersController(ICustomerRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Movies
+        // GET: api/Customers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
             try
             {
-                List<Movie> result = await context.GetAllMovies(); // Ok kan typecast 99% af alt kode whoo!
+                List<Customer> result = await context.GetAllCustomers(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +48,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Movies/5
+        // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> GetMovie(int id)
+        public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
             if (id == 0)
             {
@@ -58,14 +59,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var movie = context.GetMovieByID(id);
+                var customer = context.GetCustomerByID(id);
 
-                if (movie == null)
+                if (customer == null)
                 {
                     return NotFound();
                 }
 
-                return await movie;
+                return await customer;
             }
             catch (Exception ex)
             {
@@ -73,28 +74,28 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // PUT: api/Movies/5
+        // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMovie(int id, Movie movie)
+        public async Task<IActionResult> PutCustomer(int id, Customer customer)
         {
             try
             {
-                if (id != movie.MovieID)
+                if (id != customer.CustomerID)
                     return BadRequest("ID Mismatch");
 
-                var movieToUpdate = await context.GetMovieByID(id);
+                var customerToUpdate = await context.GetCustomerByID(id);
 
-                if (movieToUpdate == null)
+                if (customerToUpdate == null)
                 {
-                    return NotFound($"Movie with ID = {id} not found");
+                    return NotFound($"Customer with ID = {id} not found");
                 }
 
-                var result = await context.UpdateMovie(movie);
+                var result = await context.UpdateCustomer(customer);
 
                 if (result != null)
                 {
-                    return Ok(movie);
+                    return Ok(customer);
                 }
                 else
                 {
@@ -108,20 +109,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Movies
+        // POST: api/Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Movie>> PostMovie(Movie movie)
+        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-            if (movie == null)
+            if (customer == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateMovie(movie);
+                await context.CreateCustomer(customer);
 
-                return movie;
+                return customer;
             }
             catch (Exception ex)
             {
@@ -129,9 +130,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Movies/5
+        // DELETE: api/Customers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMovie(int id)
+        public async Task<IActionResult> DeleteCustomer(int id)
         {
             if (id == 0)
             {
@@ -139,7 +140,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteMovieByID(id);
+                var response = await context.DeleteCustomerByID(id);
                 if (response != null)
                 {
                     return Ok(response);

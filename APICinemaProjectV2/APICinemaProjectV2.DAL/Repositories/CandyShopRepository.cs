@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APICinemaProject2.DAL.Repositories
+namespace APICinemaProjectV2.DAL.Repositories
 {
     public interface ICandyShopRepository
     {

@@ -4,14 +4,16 @@ using APICinemaProject2.DAL.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace APICinemaProjectV2.DAL.Migrations
 {
     [DbContext(typeof(AbContext))]
-    partial class AbContextModelSnapshot : ModelSnapshot
+    [Migration("20220525100433_25_05_2022_1")]
+    partial class _25_05_2022_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

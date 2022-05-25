@@ -13,10 +13,10 @@ namespace APICinemaProject2.DAL.Models
         [Key]
         public int OrderID { get; set; } //PK
         public DateTime Date { get; set; }
-        public int MovieID { get; set; } //FK
+        public int? MovieID { get; set; } //FK
         public Movie Movie { get; set; }
 
-        public int CustomerID { get; set; } //FK
+        public int? CustomerID { get; set; } //FK
         public Customer Customer { get; set; }
         public bool AgeCheck { get; set; }
 

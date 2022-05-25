@@ -1,4 +1,5 @@
 ﻿using APICinemaProject2.DAL.Database.Models;
+using APICinemaProject2.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,25 +18,26 @@ namespace APICinemaProject2.DAL.Database
         //CPH00151\MSSQLSERVER01 - Adam 1
         //DESKTOP-0IT9HAR - Adam 2
         //EGC29749\H2SQLSOMMER -- Nicky 1
+        //DESKTOP-R8OLBMM - Nicky 2
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=CPH00151\MSSQLSERVER01;Database=CinemaProject;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-R8OLBMM;Database=CinemaProject;Trusted_Connection=True;");
         }
 
 
         public DbSet<Actor> Actors { get; set; }
         public DbSet<CandyShop> CandyShops { get; set; }
-        //public DbSet<Customer> Customers { get; set; }
-        //public DbSet<Genre> Genres { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Genre> Genres { get; set; }
         //public DbSet<Hall> Halls { get; set; }
         //public DbSet<LoyaltyProgram> LoyaltyPrograms { get; set; }
-        //public DbSet<Merchandise> Merchandises { get; set; }
+        public DbSet<Merchandise> Merchandises { get; set; }
         public DbSet<Movie> Movies { get; set; }
         //public DbSet<MovieTime> MovieTimes { get; set; }
-        //public DbSet<Order> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
         //public DbSet<Seat> Seats { get; set; }
-        //public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
 
 
 
