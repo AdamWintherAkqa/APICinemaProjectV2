@@ -7,6 +7,8 @@ using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class MoviesController : ControllerBase
     {
         private readonly IMovieRepository context;
@@ -68,6 +70,34 @@ namespace APICinemaProjectV2.Controllers
             catch (Exception ex)
             {
                 return (ActionResult)BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("GetMoviesAndActors")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetAllMoviesAndActors()
+        {
+            try
+            {
+                List<Movie> result = await context.GetAllMoviesAndActors(); // Ok kan typecast 99% af alt kode whoo!
+
+                if (result == null)
+                {
+                    return StatusCode(500);
+                }
+
+                if (result.Count == 0)
+                {
+                    return NoContent();
+                }
+
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
             }
         }
 

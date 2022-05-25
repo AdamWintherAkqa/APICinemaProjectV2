@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APICinemaProjectV2.DAL.Migrations
 {
     [DbContext(typeof(AbContext))]
-    [Migration("20220524075912_laptop07")]
-    partial class laptop07
+    [Migration("20220525082259_adam01")]
+    partial class adam01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

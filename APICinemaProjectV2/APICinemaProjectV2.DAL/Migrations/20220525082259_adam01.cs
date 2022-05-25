@@ -2,7 +2,7 @@
 
 namespace APICinemaProjectV2.DAL.Migrations
 {
-    public partial class laptop07 : Migration
+    public partial class adam01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
