@@ -16,6 +16,7 @@ namespace APICinemaProject2.DAL.Repositories
     {
         Task<List<Hall>> GetAllHalls();
         Task<Hall> GetHallByID(int id);
+        Task<List<Hall>> GetAllHallsAndMovies();
         Task<Hall> CreateHall(Hall hall);
         Task<Hall> DeleteHallByID(int id);
         Task<Hall> UpdateHall(Hall hall);
@@ -35,6 +36,12 @@ namespace APICinemaProject2.DAL.Repositories
         public async Task<Hall> GetHallByID(int id)
         {
             return await context.Halls.FirstOrDefaultAsync((hallObj) => hallObj.HallID == id);
+        }
+        public async Task<List<Hall>> GetAllHallsAndMovies()
+        {
+            List<Hall> halls = new List<Hall>();
+            halls = await context.Halls.Include(halls => halls.Movie).ToListAsync();
+            return halls;
         }
         public async Task<Hall> CreateHall(Hall hall)
         {

@@ -26,7 +26,7 @@ namespace APICinemaProject2.DAL.Database
         public DbSet<CandyShop> CandyShops { get; set; }
         //public DbSet<Customer> Customers { get; set; }
         //public DbSet<Genre> Genres { get; set; }
-        //public DbSet<Hall> Halls { get; set; }
+        public DbSet<Hall> Halls { get; set; }
         //public DbSet<LoyaltyProgram> LoyaltyPrograms { get; set; }
         //public DbSet<Merchandise> Merchandises { get; set; }
         public DbSet<Movie> Movies { get; set; }

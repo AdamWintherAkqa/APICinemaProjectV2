@@ -24,6 +24,7 @@ namespace APICinemaProject2
             services.AddScoped<IActorRepository, ActorRepository>();
             services.AddScoped<ICandyShopRepository, CandyShopRepository>();
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IHallRepository, HallRepository>();
             services.AddDbContext<AbContext>();
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>

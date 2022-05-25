@@ -7,7 +7,6 @@
   <ItemGroup>
     <Compile Remove="Repositories\CustomerRepository.cs" />
     <Compile Remove="Repositories\GenreRepository.cs" />
-    <Compile Remove="Repositories\HallRepository.cs" />
     <Compile Remove="Repositories\InstructorRepository.cs" />
     <Compile Remove="Repositories\LoyalProgramRepository.cs" />
     <Compile Remove="Repositories\MerchandiseRepository.cs" />
