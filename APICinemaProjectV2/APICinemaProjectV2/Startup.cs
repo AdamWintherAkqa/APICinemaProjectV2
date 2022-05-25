@@ -4,8 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using APICinemaProject2.DAL.Database;
-using APICinemaProject2.DAL.Repositories;
+
 using Microsoft.OpenApi.Models;
+using APICinemaProjectV2.DAL.Repositories;
+using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProject2
 {
@@ -24,6 +26,13 @@ namespace APICinemaProject2
             services.AddScoped<IActorRepository, ActorRepository>();
             services.AddScoped<ICandyShopRepository, CandyShopRepository>();
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<IInstructorRepository, InstructorRepository>();
+            services.AddScoped<IMerchandiseRepository, MerchandiseRepository>();
+            services.AddScoped<ISeatRepository, SeatRepository>();
+            services.AddScoped<ILoyaltyProgramRepository, LoyaltyProgramRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IHallRepository, HallRepository>();
             services.AddScoped<IMovieTimeRepository, MovieTimeRepository>();
             services.AddDbContext<AbContext>();

@@ -4,27 +4,29 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using APICinemaProject2.DAL.Database.Models;
 using APICinemaProjectV2.DAL.Repositories;
+using APICinemaProject2.DAL.Repositories;
+using APICinemaProject2.DAL.Models;
 
 namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActorsController : ControllerBase
+    public class LoyaltyProgramsController : ControllerBase
     {
-        private readonly IActorRepository context;
+        private readonly ILoyaltyProgramRepository context;
 
-        public ActorsController(IActorRepository _context)
+        public LoyaltyProgramsController(ILoyaltyProgramRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Actors
+        // GET: api/LoyaltyPrograms
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Actor>>> GetActors()
+        public async Task<ActionResult<IEnumerable<LoyaltyProgram>>> GetLoyaltyPrograms()
         {
             try
             {
-                List<Actor> result = await context.GetAllActors(); // Ok kan typecast 99% af alt kode whoo!
+                List<LoyaltyProgram> result = await context.GetAllLoyaltyPrograms(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +49,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Actors/5
+        // GET: api/LoyaltyPrograms/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Actor>> GetActor(int id)
+        public async Task<ActionResult<LoyaltyProgram>> GetLoyaltyProgram(int id)
         {
             if (id == 0)
             {
@@ -58,14 +60,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var actor = context.GetActorByID(id);
+                var loyaltyprogram = context.GetLoyaltyProgramByID(id);
 
-                if (actor == null)
+                if (loyaltyprogram == null)
                 {
                     return NotFound();
                 }
 
-                return await actor;
+                return await loyaltyprogram;
             }
             catch (Exception ex)
             {
@@ -73,56 +75,28 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        [HttpGet("GetActorsAndMovies")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetAllActorsAndMovies()
-        {
-            try
-            {
-                List<Actor> result = await context.GetAllActorsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
-
-                if (result == null)
-                {
-                    return StatusCode(500);
-                }
-
-                if (result.Count == 0)
-                {
-                    return NoContent();
-                }
-
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                return (ActionResult)StatusCode(500, ex);
-            }
-        }
-
-        // PUT: api/Actors/5
+        // PUT: api/LoyaltyPrograms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutActor(int id, Actor actor)
+        public async Task<IActionResult> PutLoyaltyProgram(int id, LoyaltyProgram loyaltyprogram)
         {
             try
             {
-                if (id != actor.ActorID)
+                if (id != loyaltyprogram.LoyaltyProgramID)
                     return BadRequest("ID Mismatch");
 
-                var actorToUpdate = await context.GetActorByID(id);
+                var loyaltyprogramToUpdate = await context.GetLoyaltyProgramByID(id);
 
-                if (actorToUpdate == null)
+                if (loyaltyprogramToUpdate == null)
                 {
-                    return NotFound($"Actor with ID = {id} not found");
+                    return NotFound($"LoyaltyProgram with ID = {id} not found");
                 }
 
-                var result = await context.UpdateActor(actor);
+                var result = await context.UpdateLoyaltyProgram(loyaltyprogram);
 
                 if (result != null)
                 {
-                    return Ok(actor);
+                    return Ok(loyaltyprogram);
                 }
                 else
                 {
@@ -136,20 +110,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Actors
+        // POST: api/LoyaltyPrograms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Actor>> PostActor(Actor actor)
+        public async Task<ActionResult<LoyaltyProgram>> PostLoyaltyProgram(LoyaltyProgram loyaltyprogram)
         {
-            if (actor == null)
+            if (loyaltyprogram == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateActor(actor);
+                await context.CreateLoyaltyProgram(loyaltyprogram);
 
-                return actor;
+                return loyaltyprogram;
             }
             catch (Exception ex)
             {
@@ -157,9 +131,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Actors/5
+        // DELETE: api/LoyaltyPrograms/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteActor(int id)
+        public async Task<IActionResult> DeleteLoyaltyProgram(int id)
         {
             if (id == 0)
             {
@@ -167,7 +141,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteActorByID(id);
+                var response = await context.DeleteLoyaltyProgramByID(id);
                 if (response != null)
                 {
                     return Ok(response);
