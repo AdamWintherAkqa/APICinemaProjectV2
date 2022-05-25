@@ -9,22 +9,22 @@ namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActorsController : ControllerBase
+    public class MoviesController : ControllerBase
     {
-        private readonly IActorRepository context;
+        private readonly IMovieRepository context;
 
-        public ActorsController(IActorRepository _context)
+        public MoviesController(IMovieRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Actors
+        // GET: api/Movies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Actor>>> GetActors()
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
         {
             try
             {
-                List<Actor> result = await context.GetAllActors(); // Ok kan typecast 99% af alt kode whoo!
+                List<Movie> result = await context.GetAllMovies(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +47,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Actors/5
+        // GET: api/Movies/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Actor>> GetActor(int id)
+        public async Task<ActionResult<Movie>> GetMovie(int id)
         {
             if (id == 0)
             {
@@ -58,14 +58,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var actor = context.GetActorByID(id);
+                var movie = context.GetMovieByID(id);
 
-                if (actor == null)
+                if (movie == null)
                 {
                     return NotFound();
                 }
 
-                return await actor;
+                return await movie;
             }
             catch (Exception ex)
             {
@@ -73,12 +73,12 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        [HttpGet("GetActorsAndMovies")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetAllActorsAndMovies()
+        [HttpGet("GetMoviesAndHalls")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
         {
             try
             {
-                List<Actor> result = await context.GetAllActorsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
+                List<Movie> result = await context.GetAllMoviesAndHalls(); // Ok kan typecast 99% af alt kode whoo!
 
                 if (result == null)
                 {
@@ -101,28 +101,56 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // PUT: api/Actors/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutActor(int id, Actor actor)
+        [HttpGet("GetMoviesAndActors")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetAllMoviesAndActors()
         {
             try
             {
-                if (id != actor.ActorID)
-                    return BadRequest("ID Mismatch");
+                List<Movie> result = await context.GetAllMoviesAndActors(); // Ok kan typecast 99% af alt kode whoo!
 
-                var actorToUpdate = await context.GetActorByID(id);
-
-                if (actorToUpdate == null)
+                if (result == null)
                 {
-                    return NotFound($"Actor with ID = {id} not found");
+                    return StatusCode(500);
                 }
 
-                var result = await context.UpdateActor(actor);
+                if (result.Count == 0)
+                {
+                    return NoContent();
+                }
+
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
+            }
+        }
+
+        // PUT: api/Movies/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutMovie(int id, Movie movie)
+        {
+            try
+            {
+                if (id != movie.MovieID)
+                    return BadRequest("ID Mismatch");
+
+                var movieToUpdate = await context.GetMovieByID(id);
+
+                if (movieToUpdate == null)
+                {
+                    return NotFound($"Movie with ID = {id} not found");
+                }
+
+                var result = await context.UpdateMovie(movie);
 
                 if (result != null)
                 {
-                    return Ok(actor);
+                    return Ok(movie);
                 }
                 else
                 {
@@ -136,20 +164,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Actors
+        // POST: api/Movies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Actor>> PostActor(Actor actor)
+        public async Task<ActionResult<Movie>> PostMovie(Movie movie)
         {
-            if (actor == null)
+            if (movie == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateActor(actor);
+                await context.CreateMovie(movie);
 
-                return actor;
+                return movie;
             }
             catch (Exception ex)
             {
@@ -157,9 +185,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Actors/5
+        // DELETE: api/Movies/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteActor(int id)
+        public async Task<IActionResult> DeleteMovie(int id)
         {
             if (id == 0)
             {
@@ -167,7 +195,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteActorByID(id);
+                var response = await context.DeleteMovieByID(id);
                 if (response != null)
                 {
                     return Ok(response);

@@ -9,22 +9,22 @@ namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActorsController : ControllerBase
+    public class CandyShopsController : ControllerBase
     {
-        private readonly IActorRepository context;
+        private readonly ICandyShopRepository context;
 
-        public ActorsController(IActorRepository _context)
+        public CandyShopsController(ICandyShopRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Actors
+        // GET: api/CandyShops
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Actor>>> GetActors()
+        public async Task<ActionResult<IEnumerable<CandyShop>>> GetCandyShops()
         {
             try
             {
-                List<Actor> result = await context.GetAllActors(); // Ok kan typecast 99% af alt kode whoo!
+                List<CandyShop> result = await context.GetAllCandyShops(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +47,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Actors/5
+        // GET: api/CandyShops/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Actor>> GetActor(int id)
+        public async Task<ActionResult<CandyShop>> GetCandyShop(int id)
         {
             if (id == 0)
             {
@@ -58,14 +58,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var actor = context.GetActorByID(id);
+                var candyShop = context.GetCandyShopByID(id);
 
-                if (actor == null)
+                if (candyShop == null)
                 {
                     return NotFound();
                 }
 
-                return await actor;
+                return await candyShop;
             }
             catch (Exception ex)
             {
@@ -73,56 +73,28 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        [HttpGet("GetActorsAndMovies")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetAllActorsAndMovies()
-        {
-            try
-            {
-                List<Actor> result = await context.GetAllActorsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
-
-                if (result == null)
-                {
-                    return StatusCode(500);
-                }
-
-                if (result.Count == 0)
-                {
-                    return NoContent();
-                }
-
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                return (ActionResult)StatusCode(500, ex);
-            }
-        }
-
-        // PUT: api/Actors/5
+        // PUT: api/CandyShops/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutActor(int id, Actor actor)
+        public async Task<IActionResult> PutCandyShop(int id, CandyShop candyShop)
         {
             try
             {
-                if (id != actor.ActorID)
+                if (id != candyShop.CandyShopID)
                     return BadRequest("ID Mismatch");
 
-                var actorToUpdate = await context.GetActorByID(id);
+                var candyShopToUpdate = await context.GetCandyShopByID(id);
 
-                if (actorToUpdate == null)
+                if (candyShopToUpdate == null)
                 {
-                    return NotFound($"Actor with ID = {id} not found");
+                    return NotFound($"CandyShop with ID = {id} not found");
                 }
 
-                var result = await context.UpdateActor(actor);
+                var result = await context.UpdateCandyShop(candyShop);
 
                 if (result != null)
                 {
-                    return Ok(actor);
+                    return Ok(candyShop);
                 }
                 else
                 {
@@ -136,20 +108,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Actors
+        // POST: api/CandyShops
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Actor>> PostActor(Actor actor)
+        public async Task<ActionResult<CandyShop>> PostCandyShop(CandyShop candyShop)
         {
-            if (actor == null)
+            if (candyShop == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateActor(actor);
+                await context.CreateCandyShop(candyShop);
 
-                return actor;
+                return candyShop;
             }
             catch (Exception ex)
             {
@@ -157,9 +129,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Actors/5
+        // DELETE: api/CandyShops/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteActor(int id)
+        public async Task<IActionResult> DeleteCandyShop(int id)
         {
             if (id == 0)
             {
@@ -167,7 +139,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteActorByID(id);
+                var response = await context.DeleteCandyShopByID(id);
                 if (response != null)
                 {
                     return Ok(response);

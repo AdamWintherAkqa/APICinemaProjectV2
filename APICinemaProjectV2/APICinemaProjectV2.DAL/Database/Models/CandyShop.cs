@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using APICinemaProject2;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace APICinemaProject2.DAL.Models
+namespace APICinemaProject2.DAL.Database.Models
 {
     public class CandyShop
     {
@@ -16,6 +10,6 @@ namespace APICinemaProject2.DAL.Models
         public int CandyShopPrice { get; set; }
         public string CandyShopType { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        //public virtual ICollection<Order> Orders { get; set; }
     }
 }
