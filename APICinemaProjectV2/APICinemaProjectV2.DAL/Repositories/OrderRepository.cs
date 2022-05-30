@@ -84,6 +84,10 @@ namespace APICinemaProject2.DAL.Repositories
             if (update != null)
             {
                 update.Date = order.Date;
+                update.MovieID = order.MovieID;
+                update.CustomerID = order.MovieID;
+                update.AgeCheck = order.AgeCheck;
+            
                 //Måske have en price her? Så man kan ændre det? Eller gøres via controller
 
                 await context.SaveChangesAsync();

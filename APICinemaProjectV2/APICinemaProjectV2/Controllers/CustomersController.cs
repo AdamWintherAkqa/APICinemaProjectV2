@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using APICinemaProject2.DAL.Database.Models;
+using APICinemaProject2.DAL.Models;
 using APICinemaProjectV2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ActorsController : ControllerBase
+    public class CustomersController : ControllerBase
     {
-        private readonly IActorRepository context;
+        private readonly ICustomerRepository context;
 
-        public ActorsController(IActorRepository _context)
+        public CustomersController(ICustomerRepository _context)
         {
             context = _context;
         }
 
-        // GET: api/Actors
+        // GET: api/Customers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Actor>>> GetActors()
+        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
             try
             {
-                List<Actor> result = await context.GetAllActors(); // Ok kan typecast 99% af alt kode whoo!
+                List<Customer> result = await context.GetAllCustomers(); // Ok kan typecast 99% af alt kode whoo!
                 if (result == null)
                 {
                     return StatusCode(500);
@@ -47,9 +48,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // GET: api/Actors/5
+        // GET: api/Customers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Actor>> GetActor(int id)
+        public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
             if (id == 0)
             {
@@ -58,14 +59,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var actor = context.GetActorByID(id);
+                var customer = context.GetCustomerByID(id);
 
-                if (actor == null)
+                if (customer == null)
                 {
                     return NotFound();
                 }
 
-                return await actor;
+                return await customer;
             }
             catch (Exception ex)
             {
@@ -73,56 +74,28 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        [HttpGet("GetActorsAndMovies")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetAllActorsAndMovies()
-        {
-            try
-            {
-                List<Actor> result = await context.GetAllActorsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
-
-                if (result == null)
-                {
-                    return StatusCode(500);
-                }
-
-                if (result.Count == 0)
-                {
-                    return NoContent();
-                }
-
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                return (ActionResult)StatusCode(500, ex);
-            }
-        }
-
-        // PUT: api/Actors/5
+        // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutActor(int id, Actor actor)
+        public async Task<IActionResult> PutCustomer(int id, Customer customer)
         {
             try
             {
-                if (id != actor.ActorID)
+                if (id != customer.CustomerID)
                     return BadRequest("ID Mismatch");
 
-                var actorToUpdate = await context.GetActorByID(id);
+                var customerToUpdate = await context.GetCustomerByID(id);
 
-                if (actorToUpdate == null)
+                if (customerToUpdate == null)
                 {
-                    return NotFound($"Actor with ID = {id} not found");
+                    return NotFound($"Customer with ID = {id} not found");
                 }
 
-                var result = await context.UpdateActor(actor);
+                var result = await context.UpdateCustomer(customer);
 
                 if (result != null)
                 {
-                    return Ok(actor);
+                    return Ok(customer);
                 }
                 else
                 {
@@ -136,20 +109,20 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // POST: api/Actors
+        // POST: api/Customers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Actor>> PostActor(Actor actor)
+        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-            if (actor == null)
+            if (customer == null)
             {
                 return BadRequest();
             }
             try
             {
-                await context.CreateActor(actor);
+                await context.CreateCustomer(customer);
 
-                return actor;
+                return customer;
             }
             catch (Exception ex)
             {
@@ -157,9 +130,9 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Actors/5
+        // DELETE: api/Customers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteActor(int id)
+        public async Task<IActionResult> DeleteCustomer(int id)
         {
             if (id == 0)
             {
@@ -167,7 +140,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.DeleteActorByID(id);
+                var response = await context.DeleteCustomerByID(id);
                 if (response != null)
                 {
                     return Ok(response);
