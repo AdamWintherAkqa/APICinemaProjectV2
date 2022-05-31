@@ -6,3 +6,17 @@
   background-repeat: no-repeat;
   float: left;
 }
+
+.teaserText {
+  position: relative;
+  z-index: 1;
+}
+
+.teaserImage {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}

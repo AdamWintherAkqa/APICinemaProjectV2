@@ -1,47 +1,54 @@
-<div class="bg-light text-white">
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled">Disabled</a>
-    </li>
-  </ul>
-</div>
+<header class="site-header sticky-top py-1">
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#" aria-label="Product">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        class="d-block mx-auto"
+        role="img"
+        viewBox="0 0 24 24"
+      >
+        <title>Product</title>
+        <circle cx="12" cy="12" r="10"></circle>
+        <path
+          d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"
+        ></path>
+      </svg>
+    </a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Tour</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Product</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Features</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Enterprise</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Support</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>
+  </nav>
+</header>
 
-<div>
-  <div>
-    <img
-      class="ImagePoster"
-      src="https://static.posters.cz/image/750/plakater/star-wars-the-rise-of-skywalker-saga-i84274.jpg"
-    />
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum
-      ornare massa, tempor interdum libero porttitor faucibus. Quisque rhoncus
-      consectetur vestibulum. Aliquam sagittis, massa in condimentum laoreet,
-      purus nunc mattis dui, quis scelerisque neque elit in nibh. Praesent
-      imperdiet felis sed dolor facilisis, scelerisque malesuada ipsum gravida.
-      Vestibulum justo augue, luctus vitae pulvinar sed, fermentum a nulla.
-    </p>
+<main>
+  <div
+    class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+  >
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <img
+        class="teaserImage"
+        src="https://c4.wallpaperflare.com/wallpaper/950/144/881/star-wars-stormtrooper-wallpaper-preview.jpg"
+      />
+      <div class="teaserText">
+        <h1 class="display-4 fw-normal">Star Wars 55</h1>
+        <p class="lead fw-normal">Coming soon to theaters</p>
+        <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+      </div>
+    </div>
+    <div class="product-device shadow-smd-none d-md-block"></div>
+    <div
+      class="product-device product-device-2 shadow-sm d-none d-md-block"
+    ></div>
   </div>
-  <div>
-    <img
-      class="ImagePoster"
-      src="https://www.komar.de/en/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/0/2/026-dvd2_star_wars_poster_classic_1_web.jpg"
-    />
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum
-      ornare massa, tempor interdum libero porttitor faucibus. Quisque rhoncus
-      consectetur vestibulum. Aliquam sagittis, massa in condimentum laoreet,
-      purus nunc mattis dui, quis scelerisque neque elit in nibh. Praesent
-      imperdiet felis sed dolor facilisis, scelerisque malesuada ipsum gravida.
-      Vestibulum justo augue, luctus vitae pulvinar sed, fermentum a nulla.
-    </p>
-  </div>
-</div>
+</main>
