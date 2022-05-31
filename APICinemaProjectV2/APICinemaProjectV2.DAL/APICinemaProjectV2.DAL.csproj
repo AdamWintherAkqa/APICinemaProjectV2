@@ -6,15 +6,7 @@
 
   <ItemGroup>
     <Compile Remove="Database\Models\OrdersController.cs" />
-    <Compile Remove="Repositories\HallRepository.cs" />
-    <Compile Remove="Repositories\MovieTimeRepository.cs" />
-    <Compile Remove="Repositories\CustomerRepository.cs" />
-    <Compile Remove="Repositories\GenreRepository.cs" />
-    <Compile Remove="Repositories\InstructorRepository.cs" />
     <Compile Remove="Repositories\LoyalProgramRepository.cs" />
-    <Compile Remove="Repositories\MerchandiseRepository.cs" />
-    <Compile Remove="Repositories\OrderRepository.cs" />
-    <Compile Remove="Repositories\SeatRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

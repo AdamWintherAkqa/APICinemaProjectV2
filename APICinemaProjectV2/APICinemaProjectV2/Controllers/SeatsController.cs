@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
 using APICinemaProjectV2.DAL.Repositories;
 using APICinemaProject2.DAL.Repositories;
 
@@ -156,6 +155,20 @@ namespace APICinemaProjectV2.Controllers
             {
                 return (ActionResult)BadRequest(ex.Message);
             }
+        }
+        public List<String> ConvertDates()
+        {
+            List<DateTime> dates = new List<DateTime>();
+            List<String> datesToStrings = new List<String>();
+            dates.Add(DateTime.Now);
+            dates.Add(DateTime.Now);
+            dates.Add(DateTime.Now);
+            foreach (DateTime date in dates)
+            {
+                datesToStrings.Add(date.ToString());
+            }
+
+            return datesToStrings;
         }
     }
 }

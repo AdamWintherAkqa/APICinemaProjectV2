@@ -1,5 +1,4 @@
 ﻿using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,7 +21,7 @@ namespace APICinemaProject2.DAL.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-R8OLBMM;Database=CinemaProject;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-0IT9HAR;Database=CinemaProject;Trusted_Connection=True;");
         }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<CandyShop> CandyShops { get; set; }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APICinemaProject2.DAL.Models
+namespace APICinemaProject2.DAL.Database.Models
 {
     public class Customer
     {

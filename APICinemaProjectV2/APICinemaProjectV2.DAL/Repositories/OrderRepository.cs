@@ -1,6 +1,5 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
 using System;
@@ -84,8 +83,8 @@ namespace APICinemaProject2.DAL.Repositories
             if (update != null)
             {
                 update.Date = order.Date;
-                update.MovieID = order.MovieID;
-                update.CustomerID = order.MovieID;
+                update.MovieTimeID = order.MovieTimeID;
+                update.CustomerID = order.CustomerID;
                 update.AgeCheck = order.AgeCheck;
             
                 //Måske have en price her? Så man kan ændre det? Eller gøres via controller

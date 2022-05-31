@@ -1,8 +1,6 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
 using Microsoft.EntityFrameworkCore;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;

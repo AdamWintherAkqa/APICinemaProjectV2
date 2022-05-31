@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace APICinemaProject2.DAL.Models
+namespace APICinemaProject2.DAL.Database.Models
 {
     public class Seat
     {
