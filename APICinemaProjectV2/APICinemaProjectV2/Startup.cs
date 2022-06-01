@@ -1,13 +1,12 @@
+using APICinemaProject2.DAL.Database;
+using APICinemaProject2.DAL.Repositories;
+using APICinemaProjectV2.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using APICinemaProject2.DAL.Database;
-
 using Microsoft.OpenApi.Models;
-using APICinemaProjectV2.DAL.Repositories;
-using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProject2
 {

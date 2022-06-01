@@ -1,11 +1,8 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
 using Microsoft.EntityFrameworkCore;
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -18,6 +15,7 @@ namespace APICinemaProject2.DAL.Repositories
         Task<Seat> CreateSeat(Seat seat);
         Task<Seat> DeleteSeatByID(int id);
         Task<Seat> UpdateSeat(Seat seat);
+        Task<List<Seat>> GetEntireSeats();
     }
     public class SeatRepository : ISeatRepository
     {
@@ -34,6 +32,11 @@ namespace APICinemaProject2.DAL.Repositories
         public async Task<Seat> GetSeatByID(int id)
         {
             return await context.Seats.FirstOrDefaultAsync((seatObj) => seatObj.SeatID == id);
+        }
+        public async Task<List<Seat>> GetEntireSeats()
+        {
+            return await context.Seats
+                .Include(seat => seat.Orders).Include(seat => seat.Hall).ToListAsync();
         }
         public async Task<Seat> CreateSeat(Seat seat)
         {

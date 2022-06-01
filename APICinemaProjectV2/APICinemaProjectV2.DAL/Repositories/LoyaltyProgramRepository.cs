@@ -1,11 +1,8 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
 using Microsoft.EntityFrameworkCore;
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -18,6 +15,7 @@ namespace APICinemaProject2.DAL.Repositories
         Task<LoyaltyProgram> CreateLoyaltyProgram(LoyaltyProgram loyaltyprogram);
         Task<LoyaltyProgram> DeleteLoyaltyProgramByID(int id);
         Task<LoyaltyProgram> UpdateLoyaltyProgram(LoyaltyProgram loyaltyprogram);
+        Task<LoyaltyProgram> GetEntireLoyaltyProgramByID(int id);
     }
     public class LoyaltyProgramRepository : ILoyaltyProgramRepository
     {
@@ -41,6 +39,10 @@ namespace APICinemaProject2.DAL.Repositories
             await context.SaveChangesAsync();
 
             return loyalprogram;
+        }
+        public async Task<LoyaltyProgram> GetEntireLoyaltyProgramByID(int id)
+        {
+            return await context.LoyaltyPrograms.Include(loyalprogram => loyalprogram.Customer).Include(loyalprogram => loyalprogram.Order).FirstOrDefaultAsync((loyalprogramObj) => loyalprogramObj.LoyaltyProgramID == id);
         }
         public async Task<LoyaltyProgram> DeleteLoyaltyProgramByID(int id)
         {
