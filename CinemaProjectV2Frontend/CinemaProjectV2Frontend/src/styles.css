@@ -13,16 +13,17 @@
 }
 
 .teaserImage {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  width: 100%;
-  position: absolute;
-  z-index: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .bg-image {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.smallImage {
+  height: 250px;
+  width: auto;
 }
