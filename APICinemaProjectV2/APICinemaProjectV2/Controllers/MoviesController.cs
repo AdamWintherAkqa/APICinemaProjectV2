@@ -101,6 +101,62 @@ namespace APICinemaProjectV2.Controllers
         //    }
         //}
 
+        [HttpGet("GetMoviesFrontPage")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMoviesFrontPage()
+        {
+            try
+            {
+                List<Movie> result = await context.GetMoviesFrontPage();
+
+                if (result == null)
+                {
+                    return StatusCode(500);
+                }
+
+                if (result.Count == 0)
+                {
+                    return NoContent();
+                }
+
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet("GetEntireMovie/{id}")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetEntireMovie(int id)
+        {
+            try
+            {
+                var result = await context.GetEntireMovie(id);
+
+                if (result == null)
+                {
+                    return StatusCode(500);
+                }
+
+                //if (result.Count == 0)
+                //{
+                //    return NoContent();
+                //}
+
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
+            }
+        }
+
         [HttpGet("GetMoviesAndActors")]
         public async Task<ActionResult<IEnumerable<Movie>>> GetAllMoviesAndActors()
         {

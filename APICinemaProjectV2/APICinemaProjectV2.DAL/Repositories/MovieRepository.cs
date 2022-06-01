@@ -20,6 +20,8 @@ namespace APICinemaProjectV2.DAL.Repositories
         Task<Movie> CreateMovie(Movie movie);
         Task<Movie> DeleteMovieByID(int id);
         Task<Movie> UpdateMovie(Movie movie);
+        Task<List<Movie>> GetMoviesFrontPage();
+        Task<Movie> GetEntireMovie(int id);
     }
     public class MovieRepository : IMovieRepository
     {
@@ -50,6 +52,22 @@ namespace APICinemaProjectV2.DAL.Repositories
         //    movies = await context.Movies.Include(movies => movies.Hall).ToListAsync();
         //    return movies;
         //}
+
+        public async Task<List<Movie>> GetMoviesFrontPage()
+        {
+            List<Movie> movies = new List<Movie>();
+            movies = await context.Movies.Include(movies => movies.Genre).ToListAsync();
+            
+            return movies;
+        }
+        public async Task<Movie> GetEntireMovie(int id)
+        {
+            //context.Movies.FirstOrDefaultAsync((movieObj) => movieObj.MovieID == id);
+            var movies = await context.Movies.Include(movie => movie.Actors).Include(movie => movie.Genre).Include(movie => movie.Instructor).FirstOrDefaultAsync((movieObj) => movieObj.MovieID == id);
+
+            return movies;
+        }
+
         public async Task<Movie> CreateMovie(Movie movie)
         {
             context.Movies.Add(movie);
