@@ -23,6 +23,16 @@ namespace APICinemaProject2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("cors",
+                builder =>
+                {
+                    builder.AllowAnyOrigin() // kan skrive port i stedet for
+                           .AllowAnyHeader()
+                           .AllowAnyMethod(); // kun get eller put mm.
+                });
+            });            
             services.AddScoped<IActorRepository, ActorRepository>();
             services.AddScoped<ICandyShopRepository, CandyShopRepository>();
             services.AddScoped<IMovieRepository, MovieRepository>();
@@ -56,7 +66,7 @@ namespace APICinemaProject2
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
             app.UseCors("cors");
 
             app.UseAuthorization();

@@ -1,3 +1,5 @@
+import IActor from './IActor';
+
 /*public int MovieID { get; set; } // PK
 public string MovieName { get; set; }
 public int MoviePlayTime { get; set; }
@@ -21,5 +23,5 @@ export default interface IMovie {
   MovieIsChosen: boolean;
   MovieImageURL: string;
   //Genre: IGenre[];
-  //Actors: IActor[];
+  Actors: IActor[];
 }

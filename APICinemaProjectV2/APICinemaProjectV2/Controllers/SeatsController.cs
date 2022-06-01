@@ -156,19 +156,5 @@ namespace APICinemaProjectV2.Controllers
                 return (ActionResult)BadRequest(ex.Message);
             }
         }
-        public List<String> ConvertDates()
-        {
-            List<DateTime> dates = new List<DateTime>();
-            List<String> datesToStrings = new List<String>();
-            dates.Add(DateTime.Now);
-            dates.Add(DateTime.Now);
-            dates.Add(DateTime.Now);
-            foreach (DateTime date in dates)
-            {
-                datesToStrings.Add(date.ToString());
-            }
-
-            return datesToStrings;
-        }
     }
 }

@@ -16,7 +16,7 @@ namespace APICinemaProjectV2.DAL.Repositories
         Task<List<Movie>> GetAllMovies();
         Task<Movie> GetMovieByID(int id);
         Task<List<Movie>> GetAllMoviesAndActors();
-        Task<List<Movie>> GetAllMoviesAndHalls();
+        //Task<List<Movie>> GetAllMoviesAndHalls();
         Task<Movie> CreateMovie(Movie movie);
         Task<Movie> DeleteMovieByID(int id);
         Task<Movie> UpdateMovie(Movie movie);
@@ -44,12 +44,12 @@ namespace APICinemaProjectV2.DAL.Repositories
             movies = await context.Movies.Include(movie => movie.Actors).ToListAsync();
             return movies;
         }
-        public async Task<List<Movie>> GetAllMoviesAndHalls()
-        {
-            List<Movie> movies = new List<Movie>();
-            movies = await context.Movies.Include(movies => movies.Hall).ToListAsync();
-            return movies;
-        }
+        //public async Task<List<Movie>> GetAllMoviesAndHalls()
+        //{
+        //    List<Movie> movies = new List<Movie>();
+        //    movies = await context.Movies.Include(movies => movies.Hall).ToListAsync();
+        //    return movies;
+        //}
         public async Task<Movie> CreateMovie(Movie movie)
         {
             context.Movies.Add(movie);
@@ -87,7 +87,6 @@ namespace APICinemaProjectV2.DAL.Repositories
                 update.MovieName = movie.MovieName;
                 update.MoviePlayTime = movie.MoviePlayTime;
                 update.MovieAgeLimit = movie.MovieAgeLimit;
-                update.HallID = movie.HallID;
                 update.Actors = movie.Actors;
 
                 await context.SaveChangesAsync();

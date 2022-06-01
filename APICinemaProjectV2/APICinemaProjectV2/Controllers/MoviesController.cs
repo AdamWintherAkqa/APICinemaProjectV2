@@ -73,33 +73,33 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        [HttpGet("GetMoviesAndHalls")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
-        {
-            try
-            {
-                List<Movie> result = await context.GetAllMoviesAndHalls(); // Ok kan typecast 99% af alt kode whoo!
+        //[HttpGet("GetMoviesAndHalls")]
+        //public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
+        //{
+        //    try
+        //    {
+        //        List<Movie> result = await context.GetAllMoviesAndHalls(); // Ok kan typecast 99% af alt kode whoo!
 
-                if (result == null)
-                {
-                    return StatusCode(500);
-                }
+        //        if (result == null)
+        //        {
+        //            return StatusCode(500);
+        //        }
 
-                if (result.Count == 0)
-                {
-                    return NoContent();
-                }
+        //        if (result.Count == 0)
+        //        {
+        //            return NoContent();
+        //        }
 
-                else
-                {
-                    return Ok(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                return (ActionResult)StatusCode(500, ex);
-            }
-        }
+        //        else
+        //        {
+        //            return Ok(result);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return (ActionResult)StatusCode(500, ex);
+        //    }
+        //}
 
         [HttpGet("GetMoviesAndActors")]
         public async Task<ActionResult<IEnumerable<Movie>>> GetAllMoviesAndActors()
