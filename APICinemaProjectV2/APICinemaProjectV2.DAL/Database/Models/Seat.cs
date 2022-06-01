@@ -1,5 +1,4 @@
-﻿using APICinemaProject2.DAL.Database.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace APICinemaProject2.DAL.Database.Models

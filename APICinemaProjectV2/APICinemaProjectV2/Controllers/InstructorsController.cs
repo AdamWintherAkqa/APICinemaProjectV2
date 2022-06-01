@@ -1,9 +1,9 @@
-﻿using System;
+﻿using APICinemaProject2.DAL.Database.Models;
+using APICinemaProjectV2.DAL.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using APICinemaProject2.DAL.Database.Models;
-using APICinemaProjectV2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {

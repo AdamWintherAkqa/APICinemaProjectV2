@@ -1,10 +1,8 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace APICinemaProjectV2.DAL.Repositories
@@ -16,6 +14,7 @@ namespace APICinemaProjectV2.DAL.Repositories
         Task<CandyShop> DeleteCandyShopByID(int id);
         Task<CandyShop> CreateCandyShop(CandyShop candyShop);
         Task<CandyShop> UpdateCandyShop(CandyShop candyShop);
+        Task<CandyShop> GetCandyShopAndOrderByID(int id);
 
     }
     public class CandyShopRepository : ICandyShopRepository
@@ -42,6 +41,11 @@ namespace APICinemaProjectV2.DAL.Repositories
             await context.SaveChangesAsync();
 
             return candyShop;
+        }
+        
+        public async Task<CandyShop> GetCandyShopAndOrderByID(int id)
+        {
+            return await context.CandyShops.Include(candyShop => candyShop.Orders).FirstOrDefaultAsync((candyShopObj) => candyShopObj.CandyShopID == id);
         }
         public async Task<CandyShop> DeleteCandyShopByID(int id)
         {

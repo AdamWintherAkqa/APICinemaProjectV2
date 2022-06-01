@@ -1,10 +1,8 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -17,6 +15,7 @@ namespace APICinemaProjectV2.DAL.Repositories
         Task<Genre> CreateGenre(Genre genre);
         Task<Genre> DeleteGenreByID(int id);
         Task<Genre> UpdateGenre(Genre genre);
+        Task<Genre> GetGenreAndMovieByID(int id);
     }
     public class GenreRepository : IGenreRepository
     {
@@ -33,6 +32,11 @@ namespace APICinemaProjectV2.DAL.Repositories
         public async Task<Genre> GetGenreByID(int id)
         {
             return await context.Genres.FirstOrDefaultAsync((genreObj) => genreObj.GenreID == id);
+        }
+
+        public async Task<Genre> GetGenreAndMovieByID(int id)
+        {
+            return await context.Genres.Include(genre => genre.Movies).FirstOrDefaultAsync((genreObj) => genreObj.GenreID == id);
         }
         public async Task<Genre> CreateGenre(Genre genre)
         {
