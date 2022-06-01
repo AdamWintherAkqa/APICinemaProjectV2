@@ -21,7 +21,7 @@ namespace APICinemaProject2.DAL.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=CPH00151\MSSQLSERVER01;Database=CinemaProject;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=EGC29749\H2SQLSOMMER;Database=CinemaProject;Trusted_Connection=True;");
         }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<CandyShop> CandyShops { get; set; }
