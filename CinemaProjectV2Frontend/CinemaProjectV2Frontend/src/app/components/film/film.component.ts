@@ -16,7 +16,7 @@ export class FilmComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.getAllMovies().subscribe((data) => {
+    this.movieService.getEntireMovies().subscribe((data) => {
       console.log(data);
       this.movieList = data;
     });
