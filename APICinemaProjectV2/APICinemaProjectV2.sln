@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICinemaProjectV2", "APICinemaProjectV2\APICinemaProjectV2.csproj", "{AC64686F-6D1B-4EEF-B71D-7DDE83AE602F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APICinemaProjectV2", "APICinemaProjectV2\APICinemaProjectV2.csproj", "{AC64686F-6D1B-4EEF-B71D-7DDE83AE602F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICinemaProjectV2.DAL", "APICinemaProjectV2.DAL\APICinemaProjectV2.DAL.csproj", "{19843B0D-1258-4042-848D-68DEC7B0FB9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APICinemaProjectV2.DAL", "APICinemaProjectV2.DAL\APICinemaProjectV2.DAL.csproj", "{19843B0D-1258-4042-848D-68DEC7B0FB9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICinemaProjectV2Tests", "APICinemaProjectV2Tests\APICinemaProjectV2Tests.csproj", "{07D8167C-0149-4059-BFE6-384A2A9E4581}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D8167C-0149-4059-BFE6-384A2A9E4581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D8167C-0149-4059-BFE6-384A2A9E4581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D8167C-0149-4059-BFE6-384A2A9E4581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D8167C-0149-4059-BFE6-384A2A9E4581}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
