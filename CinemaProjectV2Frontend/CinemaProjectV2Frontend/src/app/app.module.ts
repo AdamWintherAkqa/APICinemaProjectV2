@@ -7,30 +7,21 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { FilmComponent } from './components/film/film.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookingComponent } from './components/booking/booking.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomepageComponent,
-    FilmComponent
-  ],
+  declarations: [AppComponent, HomepageComponent, FilmComponent, BookingComponent],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
 
   providers: [],
 
-  bootstrap: [
-    AppComponent
-  ],
+  bootstrap: [AppComponent],
 })
-
-
-
-
 export class AppModule {}
