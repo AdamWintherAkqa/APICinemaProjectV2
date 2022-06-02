@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APICinemaProjectV2", "APICi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APICinemaProjectV2.DAL", "APICinemaProjectV2.DAL\APICinemaProjectV2.DAL.csproj", "{19843B0D-1258-4042-848D-68DEC7B0FB9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICinemaProjectV2Tests", "APICinemaProjectV2Tests\APICinemaProjectV2Tests.csproj", "{07D8167C-0149-4059-BFE6-384A2A9E4581}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19843B0D-1258-4042-848D-68DEC7B0FB9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07D8167C-0149-4059-BFE6-384A2A9E4581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07D8167C-0149-4059-BFE6-384A2A9E4581}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07D8167C-0149-4059-BFE6-384A2A9E4581}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07D8167C-0149-4059-BFE6-384A2A9E4581}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

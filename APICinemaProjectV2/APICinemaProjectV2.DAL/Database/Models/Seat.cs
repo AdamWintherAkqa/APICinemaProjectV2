@@ -7,7 +7,7 @@ namespace APICinemaProject2.DAL.Database.Models
     {
         [Key]
         public int SeatID { get; set; } // PK
-        public int? HallID { get; set; } // FK
+        public int HallID { get; set; } // FK
         public Hall Hall { get; set; }
         public int SeatNumber { get; set; }
         public string SeatRowLetter { get; set; }

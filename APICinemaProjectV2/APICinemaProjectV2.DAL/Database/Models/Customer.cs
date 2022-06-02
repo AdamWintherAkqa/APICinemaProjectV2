@@ -11,6 +11,5 @@ namespace APICinemaProject2.DAL.Database.Models
         public string CustomerEmail { get; set; }
         public bool CustomerGender { get; set; }
         public string CustomerPassword { get; set; }
-
     }
 }

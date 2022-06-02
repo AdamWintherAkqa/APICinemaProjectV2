@@ -6,9 +6,8 @@ namespace APICinemaProject2.DAL.Database.Models
     {
         [Key]
         public int LoyaltyProgramID { get; set; } // PK
-        public int OrderID { get; set; }
-        public Order Order { get; set; }
-        public int CustomerID { get; set; }
+        public int? LoyaltyPoints { get; set; }
+        public int? CustomerID { get; set; }
         public Customer Customer { get; set; }
 
     }
