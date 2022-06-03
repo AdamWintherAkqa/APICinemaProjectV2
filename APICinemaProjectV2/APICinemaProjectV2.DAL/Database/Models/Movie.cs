@@ -14,6 +14,7 @@ namespace APICinemaProject2.DAL.Database.Models
         public int MovieAgeLimit { get; set; }
         public bool MovieIsChosen { get; set; }
         public string MovieImageURL { get; set; }
+        //public string MovieDescription { get; set; }
         public int? InstructorID { get; set; } // FK
         public Instructor Instructor { get; set; }
         public virtual ICollection<Genre> Genre { get; set; }

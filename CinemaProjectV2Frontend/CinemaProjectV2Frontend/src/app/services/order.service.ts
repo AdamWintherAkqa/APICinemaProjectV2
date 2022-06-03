@@ -11,7 +11,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class OrderService {
-  baseUrl = 'https://localhost:44324/api/Movies';
+  baseUrl = 'https://localhost:44324/api/Order';
   constructor(private http: HttpClient) {} //DI
 
   getAllOrders(): Observable<IOrder[]> {

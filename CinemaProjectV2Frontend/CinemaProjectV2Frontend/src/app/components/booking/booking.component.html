@@ -1,11 +1,27 @@
 <main>
   <div *ngFor="let movie of movieList" class="movieRow">
-    <div class="movieImage">
-      <img src="{{ movie.MovieImageURL }}" alt="{{ movie.MovieName }}" />
-    </div>
     <div class="movieInfo">
-      <div class="movieName">{{ movie.MovieName }}</div>
-      <div class="movieDescription">{{ movie.InstructorID }}</div>
+      <div class="movieImage">
+        <img
+          src="{{ movie.movieImageURL }}"
+          alt="{{ movie.movieName }}"
+          class="subPicture1"
+        />
+      </div>
+      <div class="movieText">
+        <div class="movieName">
+          <h2>{{ movie.movieName }}</h2>
+        </div>
+        <div class="movieDescription">{{ movie.instructorID }}</div>
+      </div>
+    </div>
+    <div class="movieTimes">
+      <h2>Times</h2>
+      <!-- <div *ngFor="let movieTime of movieTimeList">
+        <div *ngIf="movie == movieTime.movie">
+          <p>{{ movieTime.movieTimeDate }}</p>
+        </div>
+      </div> -->
     </div>
   </div>
 </main>

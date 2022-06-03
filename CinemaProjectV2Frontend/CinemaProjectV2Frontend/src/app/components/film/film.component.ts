@@ -42,7 +42,7 @@ export class FilmComponent implements OnInit {
     this.movieService.deleteMovie(id).subscribe((data: any) => {
       // console.log(data);
     });
-    this.movieList = this.movieList.filter((movie) => movie.MovieID != id);
+    this.movieList = this.movieList.filter((movie) => movie.movieID != id);
     console.log(this.movieList);
   }
 

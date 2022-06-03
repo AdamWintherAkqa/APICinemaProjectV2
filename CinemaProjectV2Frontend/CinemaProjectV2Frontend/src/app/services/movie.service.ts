@@ -35,7 +35,7 @@ export class MovieService {
   }
   updateMovie(movie: IMovie): Observable<IMovie> {
     return this.http.put<IMovie>(
-      `${this.baseUrl}/${movie.MovieID}`,
+      `${this.baseUrl}/${movie.movieID}`,
       movie,
       httpOptions
     );

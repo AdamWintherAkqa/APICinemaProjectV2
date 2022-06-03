@@ -13,15 +13,15 @@ public virtual ICollection<Genre> Genre { get; set; }
 public virtual ICollection<Actor> Actors { get; set; }
 */
 export default interface IMovie {
-  MovieID: number;
-  MovieName: string;
-  MoviePlayTime: number;
-  MovieReleaseDate: Date;
-  MovieAgeLimit: number;
-  InstructorID: number;
+  movieID: number;
+  movieName: string;
+  moviePlayTime: number;
+  movieReleaseDate: Date;
+  movieAgeLimit: number;
+  instructorID: number;
   //Instructor: IInstructor;
-  MovieIsChosen: boolean;
-  MovieImageURL: string;
+  movieIsChosen: boolean;
+  movieImageURL: string;
   //Genre: IGenre[];
-  Actors: IActor[];
+  actors: IActor[];
 }
