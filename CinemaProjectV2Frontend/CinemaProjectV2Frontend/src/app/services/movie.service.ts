@@ -24,6 +24,7 @@ export class MovieService {
   getMoviesAndActors(): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetMoviesAndActors`);
   }
+
   getMoviesFrontPage(): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetMoviesFrontPage`);
   }
