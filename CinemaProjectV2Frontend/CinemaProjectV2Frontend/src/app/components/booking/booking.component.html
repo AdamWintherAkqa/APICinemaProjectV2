@@ -1,1 +1,11 @@
-<p>booking works!</p>
+<main>
+  <div *ngFor="let movie of movieList" class="movieRow">
+    <div class="movieImage">
+      <img src="{{ movie.MovieImageURL }}" alt="{{ movie.MovieName }}" />
+    </div>
+    <div class="movieInfo">
+      <div class="movieName">{{ movie.MovieName }}</div>
+      <div class="movieDescription">{{ movie.InstructorID }}</div>
+    </div>
+  </div>
+</main>

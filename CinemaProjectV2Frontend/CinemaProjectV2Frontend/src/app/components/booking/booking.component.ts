@@ -10,11 +10,14 @@ import { OrderService } from '../../services/order.service';
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
-  constructor(private orderService: OrderService) {}
+  constructor(private movieService: MovieService) {}
+  movieList: IMovie[] = [];
 
   ngOnInit(): void {
-    this.orderService.getAllOrders().subscribe((data) => {
-      console.log(data);
+    this.movieService.getMoviesFrontPage().subscribe((data) => {
+      this.movieList = data;
+      console.log(this.movieList);
     });
+    console.log(this.movieList);
   }
 }
