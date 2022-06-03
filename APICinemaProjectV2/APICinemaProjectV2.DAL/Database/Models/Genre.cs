@@ -8,7 +8,6 @@ namespace APICinemaProject2.DAL.Database.Models
         [Key]
         public int GenreID { get; set; }
         public string GenreName { get; set; }
-
         public virtual ICollection<Movie> Movies { get; set; }
     }
 }

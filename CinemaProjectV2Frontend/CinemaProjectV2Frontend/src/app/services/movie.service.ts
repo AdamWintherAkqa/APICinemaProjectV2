@@ -24,7 +24,11 @@ export class MovieService {
   getMoviesAndActors(): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetMoviesAndActors`);
   }
-   getEntireMovies(): Observable<IMovie[]> {
+
+  getMoviesFrontPage(): Observable<IMovie[]> {
+    return this.http.get<IMovie[]>(`${this.baseUrl}/GetMoviesFrontPage`);
+  }
+  getEntireMovies(): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetEntireMovies`);
   }
   createMovie(movie: IMovie): Observable<IMovie> {
@@ -32,7 +36,7 @@ export class MovieService {
   }
   updateMovie(movie: IMovie): Observable<IMovie> {
     return this.http.put<IMovie>(
-      `${this.baseUrl}/${movie.MovieID}`,
+      `${this.baseUrl}/${movie.movieID}`,
       movie,
       httpOptions
     );

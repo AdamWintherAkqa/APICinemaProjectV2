@@ -110,7 +110,7 @@ namespace APICinemaProjectV2.DAL.Migrations
                     b.Property<int>("HallNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieID")
+                    b.Property<int?>("MovieID")
                         .HasColumnType("int");
 
                     b.HasKey("HallID");
@@ -142,17 +142,15 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int?>("CustomerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderID")
+                    b.Property<int?>("LoyaltyPoints")
                         .HasColumnType("int");
 
                     b.HasKey("LoyaltyProgramID");
 
                     b.HasIndex("CustomerID");
-
-                    b.HasIndex("OrderID");
 
                     b.ToTable("LoyaltyPrograms");
                 });
@@ -197,7 +195,7 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("InstructorID")
+                    b.Property<int?>("InstructorID")
                         .HasColumnType("int");
 
                     b.Property<int>("MovieAgeLimit")
@@ -235,7 +233,7 @@ namespace APICinemaProjectV2.DAL.Migrations
                     b.Property<int>("HallID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MovieID")
+                    b.Property<int>("MovieID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Time")
@@ -266,7 +264,7 @@ namespace APICinemaProjectV2.DAL.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MovieTimeID")
+                    b.Property<int?>("MovieTimeID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");
@@ -285,7 +283,7 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("HallID")
+                    b.Property<int>("HallID")
                         .HasColumnType("int");
 
                     b.Property<int>("SeatNumber")
@@ -380,9 +378,7 @@ namespace APICinemaProjectV2.DAL.Migrations
                 {
                     b.HasOne("APICinemaProject2.DAL.Database.Models.Movie", "Movie")
                         .WithMany()
-                        .HasForeignKey("MovieID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MovieID");
 
                     b.Navigation("Movie");
                 });
@@ -391,28 +387,16 @@ namespace APICinemaProjectV2.DAL.Migrations
                 {
                     b.HasOne("APICinemaProject2.DAL.Database.Models.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("APICinemaProject2.DAL.Database.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerID");
 
                     b.Navigation("Customer");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("APICinemaProject2.DAL.Database.Models.Movie", b =>
                 {
                     b.HasOne("APICinemaProject2.DAL.Database.Models.Instructor", "Instructor")
                         .WithMany()
-                        .HasForeignKey("InstructorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InstructorID");
 
                     b.Navigation("Instructor");
                 });
@@ -427,7 +411,9 @@ namespace APICinemaProjectV2.DAL.Migrations
 
                     b.HasOne("APICinemaProject2.DAL.Database.Models.Movie", "Movie")
                         .WithMany()
-                        .HasForeignKey("MovieID");
+                        .HasForeignKey("MovieID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Hall");
 
@@ -442,9 +428,7 @@ namespace APICinemaProjectV2.DAL.Migrations
 
                     b.HasOne("APICinemaProject2.DAL.Database.Models.MovieTime", "MovieTime")
                         .WithMany()
-                        .HasForeignKey("MovieTimeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MovieTimeID");
 
                     b.Navigation("Customer");
 
@@ -455,7 +439,9 @@ namespace APICinemaProjectV2.DAL.Migrations
                 {
                     b.HasOne("APICinemaProject2.DAL.Database.Models.Hall", "Hall")
                         .WithMany()
-                        .HasForeignKey("HallID");
+                        .HasForeignKey("HallID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Hall");
                 });

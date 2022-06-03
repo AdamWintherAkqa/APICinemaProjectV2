@@ -42,7 +42,7 @@ namespace APICinemaProject2.DAL.Repositories
         }
         public async Task<LoyaltyProgram> GetEntireLoyaltyProgramByID(int id)
         {
-            return await context.LoyaltyPrograms.Include(loyalprogram => loyalprogram.Customer).Include(loyalprogram => loyalprogram.Order).FirstOrDefaultAsync((loyalprogramObj) => loyalprogramObj.LoyaltyProgramID == id);
+            return await context.LoyaltyPrograms.Include(loyalprogram => loyalprogram.Customer).FirstOrDefaultAsync((loyalprogramObj) => loyalprogramObj.LoyaltyProgramID == id);
         }
         public async Task<LoyaltyProgram> DeleteLoyaltyProgramByID(int id)
         {

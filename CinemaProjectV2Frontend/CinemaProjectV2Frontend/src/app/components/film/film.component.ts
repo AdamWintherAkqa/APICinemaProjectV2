@@ -38,6 +38,7 @@
 //     this.movieList = [...this.movieList, this.movieForm.value];
 //   }
 
+
 //   deleteMovie(id: number) {
 //     this.movieService.deleteMovie(id).subscribe((data: any) => {
 //       console.log(data);
@@ -49,6 +50,7 @@
 //   {
 //  Her skal vi få samtlige informationer omkring en film.
 //   }
+
 
 
 

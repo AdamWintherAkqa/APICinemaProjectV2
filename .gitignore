@@ -488,3 +488,4 @@ testem.log
 Thumbs.db
 
 .APICinemaProjectV2/APICinemaProjectV2.DAL/Migrations/
+APICinemaProjectV2/APICinemaProjectV2.DAL/Database/AbContext.cs
