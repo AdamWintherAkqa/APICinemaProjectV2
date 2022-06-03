@@ -1,12 +1,8 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
 using Microsoft.EntityFrameworkCore;
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -16,6 +12,7 @@ namespace APICinemaProjectV2.DAL.Repositories
     {
         Task<List<Merchandise>> GetAllMerchandises();
         Task<Merchandise> GetMerchandiseByID(int id);
+        Task<Merchandise> GetMerchandiseAndOrderByID(int id);
         Task<Merchandise> CreateMerchandise(Merchandise merchandise);
         Task<Merchandise> DeleteMerchandiseByID(int id);
         Task<Merchandise> UpdateMerchandise(Merchandise merchandise);
@@ -35,6 +32,10 @@ namespace APICinemaProjectV2.DAL.Repositories
         public async Task<Merchandise> GetMerchandiseByID(int id)
         {
             return await context.Merchandises.FirstOrDefaultAsync((merchandiseObj) => merchandiseObj.MerchandiseID == id);
+        }
+        public async Task<Merchandise> GetMerchandiseAndOrderByID(int id)
+        {
+            return await context.Merchandises.Include(merchandise => merchandise.Order).FirstOrDefaultAsync((merchandiseObj) => merchandiseObj.MerchandiseID == id);
         }
         public async Task<Merchandise> CreateMerchandise(Merchandise merchandise)
         {

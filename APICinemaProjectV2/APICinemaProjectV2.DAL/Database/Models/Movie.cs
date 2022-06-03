@@ -1,10 +1,6 @@
-﻿using APICinemaProject2.DAL.Database.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace APICinemaProject2.DAL.Database.Models
 {
@@ -16,12 +12,12 @@ namespace APICinemaProject2.DAL.Database.Models
         public int MoviePlayTime { get; set; }
         public DateTime MovieReleaseDate { get; set; }
         public int MovieAgeLimit { get; set; }
-        public int HallID { get; set; }
-        public Hall Hall { get; set; }
-        //public int InstructorID { get; set; } // FK
-        //public Instructor Instructor { get; set; }
-
-        //public virtual ICollection<Genre> Genre { get; set; }
+        public bool MovieIsChosen { get; set; }
+        public string MovieImageURL { get; set; }
+        //public string MovieDescription { get; set; }
+        public int? InstructorID { get; set; } // FK
+        public Instructor Instructor { get; set; }
+        public virtual ICollection<Genre> Genre { get; set; }
         public virtual ICollection<Actor> Actors { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace APICinemaProject2.DAL.Database.Models
 {
@@ -9,7 +10,6 @@ namespace APICinemaProject2.DAL.Database.Models
         public string CandyShopName { get; set; }
         public int CandyShopPrice { get; set; }
         public string CandyShopType { get; set; }
-
-        //public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

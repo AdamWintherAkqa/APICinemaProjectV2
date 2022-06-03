@@ -1,9 +1,9 @@
-﻿using System;
+﻿using APICinemaProject2.DAL.Database.Models;
+using APICinemaProject2.DAL.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
@@ -73,33 +73,33 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        //[HttpGet("GetHallsAndMovies")]
-        //public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
-        //{
-        //    try
-        //    {
-        //        List<Hall> result = await context.GetAllHallsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
+        [HttpGet("GetHallsAndMovies")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
+        {
+            try
+            {
+                List<Hall> result = await context.GetAllHallsAndMovies(); // Ok kan typecast 99% af alt kode whoo!
 
-        //        if (result == null)
-        //        {
-        //            return StatusCode(500);
-        //        }
+                if (result == null)
+                {
+                    return StatusCode(500);
+                }
 
-        //        if (result.Count == 0)
-        //        {
-        //            return NoContent();
-        //        }
+                if (result.Count == 0)
+                {
+                    return NoContent();
+                }
 
-        //        else
-        //        {
-        //            return Ok(result);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return (ActionResult)StatusCode(500, ex);
-        //    }
-        //}
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
+            }
+        }
 
         // PUT: api/Halls/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
