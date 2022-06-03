@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { FilmComponent } from './components/film/film.component';
+// import { FilmComponent } from './components/film/film.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './components/admin/admin.component';
 import { CreateMovieComponent } from './components/create-movie/create-movie.component';
@@ -15,10 +15,9 @@ import { CreateMovieComponent } from './components/create-movie/create-movie.com
   declarations: [
     AppComponent,
     HomepageComponent,
-    FilmComponent,
+    // FilmComponent,
     AdminComponent,
     CreateMovieComponent,
-
   ],
 
   imports: [
