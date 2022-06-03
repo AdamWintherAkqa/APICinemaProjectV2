@@ -185,6 +185,8 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
+        //Vores put kan currently kun tilføje fx actors, og ikke fjerne nogle der allerede er tilføjet. Den skal ændres i fremtiden...
+
         // PUT: api/Movies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
