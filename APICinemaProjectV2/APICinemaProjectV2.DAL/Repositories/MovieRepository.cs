@@ -103,6 +103,10 @@ namespace APICinemaProjectV2.DAL.Repositories
                 update.MoviePlayTime = movie.MoviePlayTime;
                 update.MovieAgeLimit = movie.MovieAgeLimit;
                 update.Actors = movie.Actors;
+                update.InstructorID = movie.InstructorID;
+                update.MovieImageURL = movie.MovieImageURL;
+                update.MovieIsChosen = movie.MovieIsChosen;
+                
 
                 await context.SaveChangesAsync();
             }
