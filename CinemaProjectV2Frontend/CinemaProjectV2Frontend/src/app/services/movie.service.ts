@@ -24,7 +24,7 @@ export class MovieService {
   getMoviesAndActors(): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetMoviesAndActors`);
   }
-  getEntireMovies(): Observable<IMovie[]> {
+   getEntireMovies(): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetEntireMovies`);
   }
   createMovie(movie: IMovie): Observable<IMovie> {

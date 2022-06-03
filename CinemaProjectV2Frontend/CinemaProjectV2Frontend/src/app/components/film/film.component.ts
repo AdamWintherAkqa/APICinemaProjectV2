@@ -45,6 +45,13 @@ export class FilmComponent implements OnInit {
     this.movieList = this.movieList.filter((movie) => movie.MovieID != id);
     console.log(this.movieList);
   }
+  getEntireMovie()
+  {
+ //Her skal vi få samtlige informationer omkring en film.
+  }
+
+
+
 
   movieForm = new FormGroup({
   MovieName: new FormControl(''),
@@ -54,6 +61,7 @@ export class FilmComponent implements OnInit {
   InstructorID: new FormControl(''),
   MovieIsChosen: new FormControl(''),
   MovieImageURL: new FormControl(''),
+  getEntireMovie: new FormControl(''),
   Genre: new FormControl(''),
   Actors: new FormControl('')
 
