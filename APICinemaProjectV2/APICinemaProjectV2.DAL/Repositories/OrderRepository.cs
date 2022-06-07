@@ -1,12 +1,8 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
 using Microsoft.EntityFrameworkCore;
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -16,6 +12,7 @@ namespace APICinemaProject2.DAL.Repositories
     {
         Task<List<Order>> GetAllOrders();
         Task<Order> GetOrderByID(int id);
+        Task<Order> GetEntireOrderByID(int id);
         Task<Order> CreateOrder(Order order);
         Task<Order> DeleteOrderByID(int id);
         Task<Order> UpdateOrder(Order order);
@@ -35,6 +32,16 @@ namespace APICinemaProject2.DAL.Repositories
         public async Task<Order> GetOrderByID(int id)
         {
             return await context.Orders.FirstOrDefaultAsync((orderObj) => orderObj.OrderID == id);
+        }
+        public async Task<Order>GetEntireOrderByID(int id)
+        {
+            return await context.Orders
+                .Include(order => order.Customer)
+                .Include(order => order.MovieTime)
+                .Include(order => order.Seats)
+                .Include(order => order.CandyShops)
+                .Include(order => order.Merchandise)
+                .FirstOrDefaultAsync((orderObj) => orderObj.OrderID == id);
         }
         public async Task<Order> CreateOrder(Order order)
         {
@@ -84,8 +91,8 @@ namespace APICinemaProject2.DAL.Repositories
             if (update != null)
             {
                 update.Date = order.Date;
-                update.MovieID = order.MovieID;
-                update.CustomerID = order.MovieID;
+                update.MovieTimeID = order.MovieTimeID;
+                update.CustomerID = order.CustomerID;
                 update.AgeCheck = order.AgeCheck;
             
                 //Måske have en price her? Så man kan ændre det? Eller gøres via controller

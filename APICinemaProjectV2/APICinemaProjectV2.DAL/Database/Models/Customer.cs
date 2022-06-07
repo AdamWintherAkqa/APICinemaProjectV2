@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace APICinemaProject2.DAL.Models
+namespace APICinemaProject2.DAL.Database.Models
 {
     public class Customer
     {
@@ -16,6 +11,5 @@ namespace APICinemaProject2.DAL.Models
         public string CustomerEmail { get; set; }
         public bool CustomerGender { get; set; }
         public string CustomerPassword { get; set; }
-
     }
 }

@@ -1,11 +1,9 @@
-﻿using System;
+﻿using APICinemaProject2.DAL.Database.Models;
+using APICinemaProject2.DAL.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using APICinemaProject2.DAL.Database.Models;
-using APICinemaProjectV2.DAL.Repositories;
-using APICinemaProject2.DAL.Models;
-using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
@@ -61,6 +59,31 @@ namespace APICinemaProjectV2.Controllers
             try
             {
                 var order = context.GetOrderByID(id);
+
+                if (order == null)
+                {
+                    return NotFound();
+                }
+
+                return await order;
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("GetEntireOrderByID/{id}")]
+        public async Task<ActionResult<Order>> GetEntireOrderByID(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var order = context.GetEntireOrderByID(id);
 
                 if (order == null)
                 {

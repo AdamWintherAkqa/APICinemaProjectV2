@@ -1,12 +1,8 @@
 ﻿using APICinemaProject2.DAL.Database;
 using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
 using Microsoft.EntityFrameworkCore;
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 
@@ -16,6 +12,7 @@ namespace APICinemaProject2.DAL.Repositories
     {
         Task<List<MovieTime>> GetAllMovieTimes();
         Task<MovieTime> GetMovieTimeByID(int id);
+        Task<List<MovieTime>> GetEntireMovieTimes();
         Task<MovieTime> CreateMovieTime(MovieTime movietime);
         Task<MovieTime> DeleteMovieTimeByID(int id);
         Task<MovieTime> UpdateMovieTime(MovieTime movietime);
@@ -35,6 +32,12 @@ namespace APICinemaProject2.DAL.Repositories
         public async Task<MovieTime> GetMovieTimeByID(int id)
         {
             return await context.MovieTimes.FirstOrDefaultAsync((movietimeObj) => movietimeObj.MovieTimeID == id);
+        }
+        public async Task<List<MovieTime>> GetEntireMovieTimes()
+        {
+            var movies = await context.MovieTimes.Include(movie => movie.Movie).Include(movie => movie.Hall).ToListAsync();
+
+            return movies;
         }
         public async Task<MovieTime> CreateMovieTime(MovieTime movietime)
         {

@@ -1,13 +1,12 @@
+using APICinemaProject2.DAL.Database;
+using APICinemaProject2.DAL.Repositories;
+using APICinemaProjectV2.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using APICinemaProject2.DAL.Database;
-
 using Microsoft.OpenApi.Models;
-using APICinemaProjectV2.DAL.Repositories;
-using APICinemaProject2.DAL.Repositories;
 
 namespace APICinemaProject2
 {
@@ -23,6 +22,16 @@ namespace APICinemaProject2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("cors",
+                builder =>
+                {
+                    builder.AllowAnyOrigin() // kan skrive port i stedet for
+                           .AllowAnyHeader()
+                           .AllowAnyMethod(); // kun get eller put mm.
+                });
+            });            
             services.AddScoped<IActorRepository, ActorRepository>();
             services.AddScoped<ICandyShopRepository, CandyShopRepository>();
             services.AddScoped<IMovieRepository, MovieRepository>();
@@ -56,7 +65,7 @@ namespace APICinemaProject2
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
             app.UseCors("cors");
 
             app.UseAuthorization();

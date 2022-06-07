@@ -1,10 +1,9 @@
-﻿using System;
+﻿using APICinemaProject2.DAL.Database.Models;
+using APICinemaProjectV2.DAL.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using APICinemaProject2.DAL.Database.Models;
-using APICinemaProject2.DAL.Models;
-using APICinemaProjectV2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
@@ -71,6 +70,34 @@ namespace APICinemaProjectV2.Controllers
             catch (Exception ex)
             {
                 return (ActionResult)BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("GetGenreAndMovieByID/{id}")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetGenreAndMovieByID(int id)
+        {
+            try
+            {
+                var result = await context.GetGenreAndMovieByID(id);
+
+                if (result == null)
+                {
+                    return StatusCode(500);
+                }
+
+                //if (result.Count == 0)
+                //{
+                //    return NoContent();
+                //}
+
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
             }
         }
 

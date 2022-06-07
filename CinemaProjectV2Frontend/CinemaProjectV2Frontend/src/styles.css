@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+.ImagePoster {
+  width: 500px;
+  height: 750px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+.teaserText {
+  position: relative;
+  z-index: 1;
+}
+
+.teaserImage {
+  display: flex;
+  justify-content: center;
+
+}
+
+.bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.smallImage {
+  height: 150px;
+  width: auto;
+}
+.TopNavBar
+{
+  height: 100px;
+  color: dark black;
+}
+
+.subPicture1Position{
+  margin-left: 50px;
+  position: absolute;
+
+}
+.subPicture2Position
+{
+  margin-top: 400px;
+  margin-left: 1300px;
+}
+.py-2 {
+  font-size: 20px;
+  color: white;
+
+
+}
+

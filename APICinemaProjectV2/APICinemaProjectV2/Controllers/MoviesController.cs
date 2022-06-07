@@ -1,9 +1,9 @@
-﻿using System;
+﻿using APICinemaProject2.DAL.Database.Models;
+using APICinemaProjectV2.DAL.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using APICinemaProject2.DAL.Database.Models;
-using APICinemaProjectV2.DAL.Repositories;
 
 namespace APICinemaProjectV2.Controllers
 {
@@ -73,12 +73,40 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        [HttpGet("GetMoviesAndHalls")]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
+        //[HttpGet("GetMoviesAndHalls")]
+        //public async Task<ActionResult<IEnumerable<Movie>>> GetAllHallsAndMovies()
+        //{
+        //    try
+        //    {
+        //        List<Movie> result = await context.GetAllMoviesAndHalls(); // Ok kan typecast 99% af alt kode whoo!
+
+        //        if (result == null)
+        //        {
+        //            return StatusCode(500);
+        //        }
+
+        //        if (result.Count == 0)
+        //        {
+        //            return NoContent();
+        //        }
+
+        //        else
+        //        {
+        //            return Ok(result);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return (ActionResult)StatusCode(500, ex);
+        //    }
+        //}
+
+        [HttpGet("GetMoviesFrontPage")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMoviesFrontPage()
         {
             try
             {
-                List<Movie> result = await context.GetAllMoviesAndHalls(); // Ok kan typecast 99% af alt kode whoo!
+                List<Movie> result = await context.GetMoviesFrontPage();
 
                 if (result == null)
                 {
@@ -89,6 +117,34 @@ namespace APICinemaProjectV2.Controllers
                 {
                     return NoContent();
                 }
+
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet("GetEntireMovie/{id}")]
+        public async Task<ActionResult<IEnumerable<Movie>>> GetEntireMovie(int id)
+        {
+            try
+            {
+                var result = await context.GetEntireMovie(id);
+
+                if (result == null)
+                {
+                    return StatusCode(500);
+                }
+
+                //if (result.Count == 0)
+                //{
+                //    return NoContent();
+                //}
 
                 else
                 {
@@ -128,6 +184,10 @@ namespace APICinemaProjectV2.Controllers
                 return (ActionResult)StatusCode(500, ex);
             }
         }
+
+        //Vores put kan currently kun tilføje fx actors, og ikke fjerne nogle der allerede er tilføjet. Den skal ændres i fremtiden...
+        //Vi kan enten ændre denne, så vi fjerner alle actors på movie, og tilføjer kun dem som vi kommer med i json
+        //ellers kan vi have en anden controller, så vi bevarer denne, og tilføjer en som gør det ovenstående
 
         // PUT: api/Movies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

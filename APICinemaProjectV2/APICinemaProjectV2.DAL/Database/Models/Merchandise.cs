@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace APICinemaProject2.DAL.Models
+namespace APICinemaProject2.DAL.Database.Models
 {
     public class Merchandise
     {
@@ -16,5 +12,10 @@ namespace APICinemaProject2.DAL.Models
         public string MerchandiseColor { get; set; }
         public int MerchandisePrice { get; set; }
         public string MerchandiseSize { get; set; }
+        public int MerchandiseStock { get; set; }
+        public string MerchandiseDescription { get; set; }
+
+        public virtual ICollection<Order> Order { get; set; }
+
     }
 }
