@@ -18,16 +18,36 @@ export class BookingComponent implements OnInit {
   ) {}
   movieList: IMovie[] = [];
   movieTimeList: IMovieTime[] = [];
+  timeList: IMovieTime[] = [];
 
   ngOnInit(): void {
     this.movieService.getMoviesFrontPage().subscribe((data) => {
       this.movieList = data;
+      console.log(this.movieTimeList);
       //console.log(this.movieList);
     });
 
-    this.movieTimeService.getAllMovieTimes().subscribe((data) => {
+    this.movieTimeService.getEntireMovieTimes().subscribe((data) => {
       this.movieTimeList = data;
-      console.log(this.movieTimeList);
+      // console.log(this.movieTimeList);
     });
+    /*     for (let movie in this.movieList) {
+      let movieTime;
+      movieTime = this.movieTimeList.filter(
+        (x) => x.movie.movieID == movie.movieID
+      );
+    } */
+  }
+
+  findMovieTime(movieID: number) {
+    console.log(this.movieTimeList);
+    this.timeList = this.movieTimeList.filter(
+      (x) => x.movie.movieID == movieID
+    );
+    console.log('timelist', this.timeList);
+  }
+
+  log(val: any) {
+    console.log(val);
   }
 }

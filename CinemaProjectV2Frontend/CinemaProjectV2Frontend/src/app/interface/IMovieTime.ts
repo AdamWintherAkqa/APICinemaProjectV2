@@ -2,7 +2,7 @@ import IMovie from './IMovie';
 
 export default interface IMovieTime {
   movieTimeID: number;
-  movieTimeDate: Date;
+  time: Date;
   hallID: number;
   movie: IMovie;
 }
