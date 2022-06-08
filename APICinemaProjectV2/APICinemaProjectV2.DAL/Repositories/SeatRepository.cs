@@ -16,6 +16,7 @@ namespace APICinemaProject2.DAL.Repositories
         Task<Seat> DeleteSeatByID(int id);
         Task<Seat> UpdateSeat(Seat seat);
         Task<List<Seat>> GetEntireSeats();
+        Task<List<Seat>> GetSeatsWhereHallID(int id);
     }
     public class SeatRepository : ISeatRepository
     {
@@ -37,6 +38,11 @@ namespace APICinemaProject2.DAL.Repositories
         {
             return await context.Seats
                 .Include(seat => seat.Orders).Include(seat => seat.Hall).ToListAsync();
+        }
+        public async Task<List<Seat>> GetSeatsWhereHallID(int id)
+        {
+            return await context.Seats
+                .Where(seat => seat.HallID == id).ToListAsync();
         }
         public async Task<Seat> CreateSeat(Seat seat)
         {

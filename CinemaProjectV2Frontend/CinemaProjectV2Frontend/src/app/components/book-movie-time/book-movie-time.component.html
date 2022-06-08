@@ -1,1 +1,9 @@
-<p>book-movie-time works!</p>
+<main>
+  <div *ngIf="choosenMovieTime; else error"></div>
+  <ng-template #error>
+    <p>
+      Undskyld! Denne side virker ikke hvis siden bliver genindlæst. Venlist
+      vælg din film igen
+    </p>
+  </ng-template>
+</main>

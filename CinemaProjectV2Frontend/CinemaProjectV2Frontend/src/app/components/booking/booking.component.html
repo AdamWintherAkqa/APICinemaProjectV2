@@ -20,7 +20,7 @@
       <div>
         {{ findMovieTime(movie.movieID) }}
         <div class="listedMovieTimes" *ngFor="let movieTime of timeList">
-          <a routerLink="" (click)="passMovieTime(movieTime)">
+          <a routerLink="bookmovietime" (click)="passMovieTime(movieTime)">
             {{ movieTime.time }}
           </a>
         </div>
