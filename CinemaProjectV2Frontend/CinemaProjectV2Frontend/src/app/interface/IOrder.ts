@@ -1,3 +1,4 @@
+import ICandyShop from './ICandyShop';
 import ISeat from './ISeat';
 
 export default interface IOrder {
@@ -6,7 +7,7 @@ export default interface IOrder {
   movieTimeID: number;
   customerID: number;
   ageCheck: boolean;
-  Seats: ISeat[];
-  //CandyShops: ICandyShop[];
+  seats: ISeat[];
+  candyShops: ICandyShop[];
   //Merchandise: IMerchandise[];
 }

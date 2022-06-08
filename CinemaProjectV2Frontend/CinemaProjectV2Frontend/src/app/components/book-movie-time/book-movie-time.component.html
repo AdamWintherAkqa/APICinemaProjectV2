@@ -1,5 +1,12 @@
 <main>
-  <div *ngIf="choosenMovieTime; else error"></div>
+  <div *ngIf="choosenMovieTime; else error">
+    <div class="seatListDiv" *ngFor="let seat of seatsList">
+      <div (click)="addSeatToChosen(seat)">
+        {{ seat.seatNumber }} {{ seat.seatRowLetter }}
+      </div>
+    </div>
+  </div>
+
   <ng-template #error>
     <p>
       Undskyld! Denne side virker ikke hvis siden bliver genindlæst. Venlist

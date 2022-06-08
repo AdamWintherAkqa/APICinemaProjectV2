@@ -15,7 +15,6 @@
 .teaserImage {
   display: flex;
   justify-content: center;
-
 }
 
 .bg-image {
@@ -28,26 +27,20 @@
   height: 150px;
   width: auto;
 }
-.TopNavBar
-{
+.TopNavBar {
   height: 100px;
   color: dark black;
 }
 
-.subPicture1Position{
+.subPicture1Position {
   margin-left: 50px;
   position: absolute;
-
 }
-.subPicture2Position
-{
+.subPicture2Position {
   margin-top: 400px;
   margin-left: 1300px;
 }
 .py-2 {
   font-size: 20px;
   color: white;
-
-
 }
-
