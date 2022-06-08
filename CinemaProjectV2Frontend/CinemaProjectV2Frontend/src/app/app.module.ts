@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './components/admin/admin.component';
 import { CreateMovieComponent } from './components/create-movie/create-movie.component';
 import { BookingComponent } from './components/booking/booking.component';
+import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-time.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BookingComponent } from './components/booking/booking.component';
     BookingComponent,
     AdminComponent,
     CreateMovieComponent,
+    BookMovieTimeComponent,
   ],
 
   imports: [

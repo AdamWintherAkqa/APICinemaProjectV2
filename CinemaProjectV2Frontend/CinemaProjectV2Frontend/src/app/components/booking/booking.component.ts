@@ -5,6 +5,7 @@ import IMovie from 'src/app/interface/IMovie';
 import IOrder from 'src/app/interface/IOrder';
 import { OrderService } from '../../services/order.service';
 import IMovieTime from 'src/app/interface/IMovieTime';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-booking',
@@ -14,8 +15,10 @@ import IMovieTime from 'src/app/interface/IMovieTime';
 export class BookingComponent implements OnInit {
   constructor(
     private movieService: MovieService,
-    private movieTimeService: MovieTimeService
+    private movieTimeService: MovieTimeService,
+    private dataService: DataService
   ) {}
+
   movieList: IMovie[] = [];
   movieTimeList: IMovieTime[] = [];
   timeList: IMovieTime[] = [];
@@ -45,6 +48,11 @@ export class BookingComponent implements OnInit {
       (x) => x.movie.movieID == movieID
     );
     console.log('timelist', this.timeList);
+  }
+
+  passMovieTime(movieTime: IMovieTime) {
+    this.dataService.choosenMovieTime = movieTime;
+    console.log('choosen movietime: ', this.dataService.choosenMovieTime);
   }
 
   log(val: any) {
