@@ -20,6 +20,7 @@ export class BookMovieTimeComponent implements OnInit {
   choosenMovieTime: IMovieTime = this.dataService.choosenMovieTime;
   seatsList: ISeat[] = [];
   chosenSeats: ISeat[] = [];
+  status: boolean = false;
 
   ngOnInit(): void {
     this.seatsService
@@ -33,6 +34,7 @@ export class BookMovieTimeComponent implements OnInit {
   addSeatToChosen(seat: ISeat) {
     this.chosenSeats.push(seat);
     console.log('Chosen seats:', this.chosenSeats);
+    this.status = !this.status;
   }
 
   addToCart() {
