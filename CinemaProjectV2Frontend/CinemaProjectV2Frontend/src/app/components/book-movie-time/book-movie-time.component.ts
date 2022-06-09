@@ -32,9 +32,15 @@ export class BookMovieTimeComponent implements OnInit {
   }
 
   addSeatToChosen(seat: ISeat) {
-    this.chosenSeats.push(seat);
-    console.log('Chosen seats:', this.chosenSeats);
+    if (this.chosenSeats.includes(seat)) {
+      this.chosenSeats = this.chosenSeats.filter((x) => x != seat);
+    } else {
+      this.chosenSeats.push(seat);
+    }
     this.status = !this.status;
+    // this.chosenSeats.push(seat);
+    console.log('Chosen seats:', this.chosenSeats);
+    this.addToCart();
   }
 
   addToCart() {

@@ -5,11 +5,13 @@
         class="seatListDiv"
         (click)="addSeatToChosen(seat)"
         [ngClass]="status ? 'success' : 'danger'"
+        *ngIf="chosenSeats.indexOf(seat) == -1"
       >
         {{ seat.seatNumber }} {{ seat.seatRowLetter }}
       </div>
     </div>
   </div>
+  <div class="cartArea"></div>
 
   <ng-template #error>
     <p>
