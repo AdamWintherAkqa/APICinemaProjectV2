@@ -10,6 +10,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { CreateMovieComponent } from './components/create-movie/create-movie.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-time.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-
     AdminComponent,
     CreateMovieComponent,
     BookMovieTimeComponent,
+    CartComponent,
   ],
 
   imports: [

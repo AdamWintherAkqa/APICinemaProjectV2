@@ -44,3 +44,12 @@
   font-size: 20px;
   color: white;
 }
+
+.cartArea {
+  float: right;
+  width: 25%;
+}
+
+.green {
+  background-color: green;
+}

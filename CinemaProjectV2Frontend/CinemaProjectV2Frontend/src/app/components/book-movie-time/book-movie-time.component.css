@@ -1,5 +1,6 @@
 .seatListDiv {
   display: inline-block;
+  text-align: center;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -8,7 +9,15 @@
   padding: 20px;
   margin: 20px;
   border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
   cursor: pointer;
+}
+
+.seatsList {
+  float: left;
+  width: 70%;
 }
 
 /* .success {

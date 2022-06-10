@@ -98,6 +98,34 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
+        [HttpGet("GetOrdersWhereMovieTimeID/{id}")]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrdersWhereMovieTimeID(int id)
+        {
+            try
+            {
+                List<Order> result = await context.GetOrdersWhereMovieTimeID(id);
+
+                if (result == null)
+                {
+                    return StatusCode(500);
+                }
+
+                if (result.Count == 0)
+                {
+                    return NoContent();
+                }
+
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
+            }
+        }
+
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

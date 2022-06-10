@@ -9,9 +9,19 @@ import ICandyShop from '../interface/ICandyShop';
 })
 export class CartserviceService {
   constructor() {}
-  order: IOrder;
+  order: IOrder = {
+    orderID: 0,
+    ageCheck: false,
+    orderDate: new Date(),
+    movieTimeID: 0,
+    seats: [],
+    candyShops: [],
+    //merchandise: [],
+    customerID: 0,
+  };
 
   addMovieTimeToOrder(movieTimeID: number) {
+    console.log(movieTimeID);
     this.order.movieTimeID = movieTimeID;
   }
   addSeatsToOrder(seat: ISeat[]) {
@@ -27,6 +37,9 @@ export class CartserviceService {
   } */
   addCustomerToOrder(customerID: number) {
     this.order.customerID = customerID;
+  }
+  removeSeatsFromOrder(seat: ISeat) {
+    this.order.seats = this.order.seats.filter((x) => x != seat);
   }
 
   getOrder() {

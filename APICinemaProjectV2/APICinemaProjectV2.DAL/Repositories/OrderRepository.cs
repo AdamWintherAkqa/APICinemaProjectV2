@@ -16,6 +16,7 @@ namespace APICinemaProject2.DAL.Repositories
         Task<Order> CreateOrder(Order order);
         Task<Order> DeleteOrderByID(int id);
         Task<Order> UpdateOrder(Order order);
+        Task<List<Order>> GetOrdersWhereMovieTimeID(int id);
     }
     public class OrderRepository : IOrderRepository
     {
@@ -42,6 +43,10 @@ namespace APICinemaProject2.DAL.Repositories
                 .Include(order => order.CandyShops)
                 .Include(order => order.Merchandise)
                 .FirstOrDefaultAsync((orderObj) => orderObj.OrderID == id);
+        }
+        public async Task<List<Order>>GetOrdersWhereMovieTimeID(int id)
+        {
+            return await context.Orders.Where(order => order.MovieTimeID == id).Include(order => order.Seats).ToListAsync();
         }
         public async Task<Order> CreateOrder(Order order)
         {
