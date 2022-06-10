@@ -53,3 +53,11 @@
 .green {
   background-color: green;
 }
+
+.w70p {
+  width: 70%;
+}
+
+.movieInfo {
+  max-width: 90%;
+}

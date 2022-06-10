@@ -1,1 +1,32 @@
-<p>cart works!</p>
+<main>
+  <div class="cartItems">
+    <h1>Indkøbskurv</h1>
+    <div>
+      <div class="movieInfo w70p">
+        <div class="movieImage">
+          <img
+            src="{{ movie.movieImageURL }}"
+            alt="{{ movie.movieName }}"
+            class="subPicture1"
+          />
+        </div>
+        <div class="movieText">
+          <div class="movieName">
+            <h2>{{ movie.movieName }}</h2>
+          </div>
+          <div class="movieDescription"></div>
+        </div>
+      </div>
+      <div *ngIf></div>
+      <div class="seatList w25p">
+        <div *ngFor="let seat of seatsList">
+          <div class="seatListDiv" ½>
+            <div *ngIf="s.indexOf(seat) == -1" class="danger">
+              {{ seat.seatNumber }} {{ seat.seatRowLetter }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

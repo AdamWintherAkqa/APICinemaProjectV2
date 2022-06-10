@@ -31,7 +31,7 @@ namespace APICinemaProject2.DAL.Repositories
         }
         public async Task<MovieTime> GetMovieTimeByID(int id)
         {
-            return await context.MovieTimes.FirstOrDefaultAsync((movietimeObj) => movietimeObj.MovieTimeID == id);
+            return await context.MovieTimes.Include(movieTime => movieTime.Movie).FirstOrDefaultAsync((movietimeObj) => movietimeObj.MovieTimeID == id);
         }
         public async Task<List<MovieTime>> GetEntireMovieTimes()
         {

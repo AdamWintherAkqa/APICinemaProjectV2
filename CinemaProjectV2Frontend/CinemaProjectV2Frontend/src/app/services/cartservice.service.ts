@@ -41,8 +41,16 @@ export class CartserviceService {
   removeSeatsFromOrder(seat: ISeat) {
     this.order.seats = this.order.seats.filter((x) => x != seat);
   }
+  removeCandyShopFromOrder(candyShop: ICandyShop) {
+    this.order.candyShops = this.order.candyShops.filter((x) => x != candyShop);
+  }
+  /* removeMerchandiseFromOrder(merchandise: IMerchandise) {
+    this.order.merchandise = this.order.merchandise.filter(
+      (x) => x != merchandise
+    );
+  } */
 
-  getOrder() {
+  getCart() {
     return this.order;
   }
 }

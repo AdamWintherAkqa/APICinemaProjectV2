@@ -22,6 +22,7 @@ export class BookingComponent implements OnInit {
   movieList: IMovie[] = [];
   movieTimeList: IMovieTime[] = [];
   timeList: IMovieTime[] = [];
+  isEditEnable: boolean = false;
 
   ngOnInit(): void {
     this.movieService.getMoviesFrontPage().subscribe((data) => {

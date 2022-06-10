@@ -6,6 +6,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { CreateMovieComponent } from './components/create-movie/create-movie.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-time.component';
+import { CartComponent } from './components/cart/cart.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'create-movie', component: CreateMovieComponent },
   { path: 'booking/bookmovietime', component: BookMovieTimeComponent },
+  { path: 'cart', component: CartComponent },
 ];
 
 @NgModule({
