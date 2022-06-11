@@ -28,20 +28,22 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
-    console.log('cart: ', this.cart);
+    if (this.cart.movieTimeID != 0) {
+      console.log('cart: ', this.cart);
 
-    this.movieTimeService
-      .getMovieTimeByID(this.cart.movieTimeID)
-      .subscribe((data) => {
-        this.movieTime = data;
-        console.log('movietime: ', this.movieTime);
+      this.movieTimeService
+        .getMovieTimeByID(this.cart.movieTimeID)
+        .subscribe((data) => {
+          this.movieTime = data;
+          console.log('movietime: ', this.movieTime);
 
-        this.movieService
-          .getMovieByID(this.movieTime.movie.movieID)
-          .subscribe((data) => {
-            this.movie = data;
-            console.log('movie: ', this.movie);
-          });
-      });
+          this.movieService
+            .getMovieByID(this.movieTime.movie.movieID)
+            .subscribe((data) => {
+              this.movie = data;
+              console.log('movie: ', this.movie);
+            });
+        });
+    }
   }
 }

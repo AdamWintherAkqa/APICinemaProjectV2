@@ -1,30 +1,38 @@
 <main>
   <div class="cartItems">
     <h1>Indkøbskurv</h1>
-    <div>
-      <div class="movieInfo w70p">
-        <div class="movieImage">
-          <img
-            src="{{ movie.movieImageURL }}"
-            alt="{{ movie.movieName }}"
-            class="subPicture1"
-          />
-        </div>
-        <div class="movieText">
-          <div class="movieName">
-            <h2>{{ movie.movieName }}</h2>
+    <div *ngIf="cart.movieTimeID != 0">
+      <div>
+        <div class="movieInfo w70p">
+          <div class="movieImage">
+            <img
+              src="{{ movie.movieImageURL }}"
+              alt="{{ movie.movieName }}"
+              class="subPicture1"
+              width="100"
+            />
           </div>
-          <div class="movieDescription"></div>
+          <div class="movieText">
+            <div class="movieName">
+              <h2>{{ movie.movieName }}</h2>
+            </div>
+            <div class="movieDescription"></div>
+          </div>
         </div>
-      </div>
-      <div *ngIf></div>
-      <div class="seatList w25p">
-        <div *ngFor="let seat of seatsList">
-          <div class="seatListDiv" ½>
-            <div *ngIf="s.indexOf(seat) == -1" class="danger">
+        <div *ngIf></div>
+        <div class="seatList w25p">
+          <h3>Sæder i kurv:</h3>
+
+          <div *ngFor="let seat of cart.seats">
+            <div class="seatListDiv">
               {{ seat.seatNumber }} {{ seat.seatRowLetter }}
             </div>
           </div>
+        </div>
+      </div>
+      <div class="cartArea">
+        <div class="cartButtons">
+          <button class="green">Gå til betaling</button>
         </div>
       </div>
     </div>

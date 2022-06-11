@@ -44,11 +44,13 @@ export class BookMovieTimeComponent implements OnInit {
   }
 
   checkReservedSeats() {
-    this.reservedSeatsOrder.forEach((order) => {
-      order.seats.forEach((seat) => {
-        this.reservedSeats.push(seat);
+    if (this.reservedSeatsOrder != null) {
+      this.reservedSeatsOrder.forEach((order) => {
+        order.seats.forEach((seat) => {
+          this.reservedSeats.push(seat);
+        });
       });
-    });
+    }
   }
 
   addSeatToChosen(seat: ISeat) {
