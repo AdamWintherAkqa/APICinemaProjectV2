@@ -9,6 +9,7 @@ import { MovieTimeService } from 'src/app/services/movie-time.service';
 import IMovieTime from 'src/app/interface/IMovieTime';
 import { MovieService } from 'src/app/services/movie.service';
 import IMovie from 'src/app/interface/IMovie';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -45,5 +46,17 @@ export class CartComponent implements OnInit {
             });
         });
     }
+  }
+
+  checkoutForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+    gender: new FormControl(false),
+    password: new FormControl(''),
+    vip: new FormControl(false),
+  });
+
+  postOrder() {
+    console.log(this.checkoutForm.value);
   }
 }

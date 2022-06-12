@@ -31,8 +31,51 @@
         </div>
       </div>
       <div class="cartArea">
-        <div class="cartButtons">
-          <button class="green">Gå til betaling</button>
+        <div class="cartForm">
+          <form [formGroup]="checkoutForm">
+            <label for="name">Fulde navn</label>
+            <input
+              name="name"
+              type="text"
+              formControlName="name"
+              class="formInput"
+            />
+            <label for="email">E-Mail</label>
+            <input
+              name="email"
+              type="text"
+              formControlName="email"
+              class="formInput"
+            />
+            <label for="gender">Køn (Check for mand)</label>
+            <input
+              name="gender"
+              type="checkbox"
+              formControlName="gender"
+              class="formInput"
+            />
+            <label for="password">Adgangskode</label>
+            <input
+              name="password"
+              type="password"
+              formControlName="password"
+              class="formInput"
+            />
+            <label for="vip">VIP</label>
+            <input
+              name="vip"
+              type="checkbox"
+              formControlName="vip"
+              class="formInput"
+            />
+            <label for="terms">Terms of Service:</label>
+            <input type="checkbox" required />
+            <input
+              type="submit"
+              (click)="postOrder()"
+              value="Tilføj til kurv"
+            />
+          </form>
         </div>
       </div>
     </div>
