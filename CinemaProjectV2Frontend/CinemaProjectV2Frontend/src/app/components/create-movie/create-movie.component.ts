@@ -4,12 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import IMovie from 'src/app/interface/IMovie';
 import { MovieService } from 'src/app/services/movie.service';
-import { InstructorService } from 'src/app/services/instructor.service';
-import IInstructor from 'src/app/interface/IInstructor';
-import IGenre from 'src/app/interface/IGenre';
-import { GenreService } from 'src/app/services/genre.service';
-import IActor from 'src/app/interface/IActor'
-import { ActorService } from 'src/app/services/actor.service';
+
+
 
 @Component({
   selector: 'app-create-movie',
@@ -18,9 +14,6 @@ import { ActorService } from 'src/app/services/actor.service';
 })
 export class CreateMovieComponent implements OnInit {
   movieList: IMovie[] = [];
-  instructorList: IInstructor[] = [];
-  genreList: IGenre[] = [];
-  actorList:IActor[];
 
   checked = false;
 
@@ -32,10 +25,9 @@ export class CreateMovieComponent implements OnInit {
     this.createForm.value.isAlive = this.checked;
     console.log(this.createForm.value);
     this.movieService.createMovie(this.createForm.value).subscribe();
+
     this.movieList = [...this.movieList, this.createForm.value];
   }
-
-
 
   createForm = new FormGroup({
     movieName: new FormControl(''),
@@ -47,15 +39,8 @@ export class CreateMovieComponent implements OnInit {
     movieImageURL: new FormControl(''),
     genre: new FormControl(''),
     actors: new FormControl(''),
-    instructors: new FormControl(''),
     movieDescription: new FormControl('')
 
+
 })
-
-logForm(): void {
-console.log(this.createForm.value)
-
-}
-
-
 }

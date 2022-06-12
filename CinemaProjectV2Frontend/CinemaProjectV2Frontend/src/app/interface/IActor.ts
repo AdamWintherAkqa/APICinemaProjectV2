@@ -1,4 +1,4 @@
-import IMovie from "./IMovie";
+import IMovie from './IMovie';
 
 export default interface IActor {
   actorID: number;
