@@ -10,7 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APICinemaProjectV2.DAL.Migrations
 {
     [DbContext(typeof(AbContext))]
+<<<<<<< Updated upstream:APICinemaProjectV2/APICinemaProjectV2.DAL/Migrations/20220609083045_01.Designer.cs
     [Migration("20220609083045_01")]
+=======
+    [Migration("20220608121322_01")]
+>>>>>>> Stashed changes:APICinemaProjectV2/APICinemaProjectV2.DAL/Migrations/20220608121322_01.Designer.cs
     partial class _01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
