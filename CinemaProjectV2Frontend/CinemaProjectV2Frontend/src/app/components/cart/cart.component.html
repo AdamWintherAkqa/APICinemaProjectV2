@@ -32,6 +32,7 @@
         </div>
       </div>
       <div class="cartArea">
+        <h2>Opret som bruger:</h2>
         <div class="cartForm">
           <form [formGroup]="checkoutForm">
             <div>
@@ -96,14 +97,11 @@
               <input type="checkbox" required />
             </div>
             <div>
-              <input
-                type="submit"
-                (click)="postOrder()"
-                value="Tilføj til kurv"
-              />
+              <input type="submit" (click)="postOrder()" value="Opret bruger" />
             </div>
           </form>
         </div>
+        <a routerLink="checkout">Betal:</a>
       </div>
     </div>
   </div>
