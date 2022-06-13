@@ -5,7 +5,13 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CreateMovieComponent } from './components/create-movie/create-movie.component';
 import { BookingComponent } from './components/booking/booking.component';
+<<<<<<< Updated upstream
 import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-time.component';
+=======
+import { GenreComponent } from './components/genre/genre.component';
+import { CreateInstructorComponent } from './components/create-instructor/create-instructor.component';
+import { ActorComponent } from './components/actor/actor.component';
+>>>>>>> Stashed changes
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -13,7 +19,15 @@ const routes: Routes = [
   { path: 'booking', component: BookingComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'create-movie', component: CreateMovieComponent },
+<<<<<<< Updated upstream
   { path: 'booking/bookmovietime', component: BookMovieTimeComponent },
+=======
+  { path: 'create-genre', component: GenreComponent},
+  { path: 'create-instructor', component: CreateInstructorComponent},
+  { path:'create-actor', component: ActorComponent}
+
+
+>>>>>>> Stashed changes
 ];
 
 @NgModule({

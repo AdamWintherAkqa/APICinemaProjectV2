@@ -23,5 +23,5 @@ export default interface IMovie {
   movieIsChosen: boolean;
   movieImageURL: string;
   //Genre: IGenre[];
-  actors: IActor[];
+  actor: IActor[];
 }
