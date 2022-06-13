@@ -7,6 +7,7 @@ import { CreateMovieComponent } from './components/create-movie/create-movie.com
 import { BookingComponent } from './components/booking/booking.component';
 import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-time.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'create-movie', component: CreateMovieComponent },
   { path: 'booking/bookmovietime', component: BookMovieTimeComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

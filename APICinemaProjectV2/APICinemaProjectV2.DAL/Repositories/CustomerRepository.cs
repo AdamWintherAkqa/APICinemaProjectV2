@@ -12,6 +12,7 @@ namespace APICinemaProjectV2.DAL.Repositories
     {
         Task<List<Customer>> GetAllCustomers();
         Task<Customer> GetCustomerByID(int id);
+        Task<Customer> GetCustomerByEmail(string email);
         Task<Customer> CreateCustomer(Customer customer);
         Task<Customer> DeleteCustomerByID(int id);
         Task<Customer> UpdateCustomer(Customer customer);
@@ -31,6 +32,11 @@ namespace APICinemaProjectV2.DAL.Repositories
         public async Task<Customer> GetCustomerByID(int id)
         {
             return await context.Customers.FirstOrDefaultAsync((customerObj) => customerObj.CustomerID == id);
+        }
+
+        public async Task<Customer> GetCustomerByEmail(string email)
+        {
+            return await context.Customers.FirstOrDefaultAsync((customerObj) => customerObj.CustomerEmail == email);
         }
         public async Task<Customer> CreateCustomer(Customer customer)
         {

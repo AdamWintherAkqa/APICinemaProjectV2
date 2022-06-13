@@ -9,7 +9,9 @@ import { MovieTimeService } from 'src/app/services/movie-time.service';
 import IMovieTime from 'src/app/interface/IMovieTime';
 import { MovieService } from 'src/app/services/movie.service';
 import IMovie from 'src/app/interface/IMovie';
+import ICustomer from 'src/app/interface/ICustomer';
 import { FormGroup, FormControl } from '@angular/forms';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,11 +23,13 @@ export class CartComponent implements OnInit {
     private cartService: CartserviceService,
     private dataService: DataService,
     private movieService: MovieService,
-    private movieTimeService: MovieTimeService
+    private movieTimeService: MovieTimeService,
+    private customerService: CustomerService
   ) {}
   cart: IOrder;
   movieTime: IMovieTime;
   movie: IMovie;
+  postCustomer: ICustomer;
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
@@ -56,9 +60,13 @@ export class CartComponent implements OnInit {
     vip: new FormControl(false),
   });
 
-  postOrder() {
-    console.log(this.checkoutForm.value);
+  createCustomer() {
+    this.postCustomer = this.checkoutForm.value;
+    console.log('ICustomer: ', this.postCustomer);
+    this.customerService.createCustomer(this.postCustomer).subscribe();
   }
+
+  postOrder() {}
 
   removeSeat(seat: ISeat) {
     this.cartService.removeSeatsFromOrder(seat);
