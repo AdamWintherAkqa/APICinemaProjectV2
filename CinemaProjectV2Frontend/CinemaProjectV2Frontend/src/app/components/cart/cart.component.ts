@@ -53,16 +53,21 @@ export class CartComponent implements OnInit {
   }
 
   checkoutForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    gender: new FormControl(false),
-    password: new FormControl(''),
-    vip: new FormControl(false),
+    customerName: new FormControl(''),
+    customerEmail: new FormControl(''),
+    customerGender: new FormControl(''),
+    customerPassword: new FormControl(''),
+    customerIsVIP: new FormControl(''),
   });
 
+  //not working
   createCustomer() {
+    if (this.checkoutForm == null) {
+      return console.log('checkoutForm is null');
+    }
     this.postCustomer = this.checkoutForm.value;
     console.log('ICustomer: ', this.postCustomer);
+    console.log('checkoutform: ', this.checkoutForm.value);
     this.customerService.createCustomer(this.postCustomer).subscribe();
   }
 

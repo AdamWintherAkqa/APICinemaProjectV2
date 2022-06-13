@@ -20,6 +20,7 @@ export class CustomerService {
     );
   }
   createCustomer(customer: ICustomer): Observable<ICustomer> {
+    console.log('customer: ', customer);
     return this.http.post<ICustomer>(this.baseUrl, customer, httpOptions);
   }
   updateCustomer(customer: ICustomer): Observable<ICustomer> {
@@ -31,5 +32,13 @@ export class CustomerService {
   }
   deleteCustomer(id: number): Observable<ICustomer> {
     return this.http.delete<ICustomer>(`${this.baseUrl}/${id}`, httpOptions);
+  }
+  getCustomerByEmailAndPassword(
+    email: string,
+    password: string
+  ): Observable<ICustomer> {
+    return this.http.get<ICustomer>(
+      `${this.baseUrl}/GetCustomerByEmailAndPassword/${email}/${password}`
+    );
   }
 }

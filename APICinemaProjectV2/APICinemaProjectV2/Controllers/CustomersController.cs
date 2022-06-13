@@ -98,6 +98,31 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
+        [HttpGet("GetCustomerByEmailAndPassword/{email}/{password}")]
+        public async Task<ActionResult<Customer>> GetCustomerByEmailAndPassword(string email, string password)
+        {
+            if (email == null || password == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var customer = context.GetCustomerByEmailAndPassword(email, password);
+
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+
+                return await customer;
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)BadRequest(ex.Message);
+            }
+        }
+
         // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]

@@ -50,6 +50,13 @@ export class CartserviceService {
     );
   } */
 
+  clearCart() {
+    this.order.movieTimeID = 0;
+    this.order.seats = [];
+    this.order.candyShops = [];
+    //this.order.merchandise = [];
+  }
+
   getCart() {
     return this.order;
   }

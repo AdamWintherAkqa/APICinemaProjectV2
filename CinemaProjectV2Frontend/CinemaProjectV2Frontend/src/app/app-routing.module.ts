@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'create-movie', component: CreateMovieComponent },
   { path: 'booking/bookmovietime', component: BookMovieTimeComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'checkout', component: CheckoutComponent },
+  { path: 'cart/checkout', component: CheckoutComponent },
   { path: '**', redirectTo: '' },
 ];
 
