@@ -59,4 +59,9 @@ export class CartComponent implements OnInit {
   postOrder() {
     console.log(this.checkoutForm.value);
   }
+
+  removeSeat(seat: ISeat) {
+    this.cartService.removeSeatsFromOrder(seat);
+    this.cart = this.cartService.getCart();
+  }
 }

@@ -1,1 +1,24 @@
+.cartList {
+  float: left;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+}
 
+.cartArea {
+  float: right;
+  width: 25%;
+}
+
+.cartParent {
+  width: 100%;
+}
+
+.cartForm {
+  display: inline;
+}
+
+.formInput {
+  display: inline;
+}

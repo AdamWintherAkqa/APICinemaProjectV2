@@ -1,8 +1,8 @@
 <main>
   <div class="cartItems">
     <h1>Indkøbskurv</h1>
-    <div *ngIf="cart.movieTimeID != 0">
-      <div>
+    <div class="cartParent" *ngIf="cart.movieTimeID != 0">
+      <div class="cartList">
         <div class="movieInfo w70p">
           <div class="movieImage">
             <img
@@ -26,6 +26,7 @@
           <div *ngFor="let seat of cart.seats">
             <div class="seatListDiv">
               {{ seat.seatNumber }} {{ seat.seatRowLetter }}
+              <button class="removeButton" (click)="removeSeat(seat)">X</button>
             </div>
           </div>
         </div>
@@ -33,48 +34,74 @@
       <div class="cartArea">
         <div class="cartForm">
           <form [formGroup]="checkoutForm">
-            <label for="name">Fulde navn</label>
-            <input
-              name="name"
-              type="text"
-              formControlName="name"
-              class="formInput"
-            />
-            <label for="email">E-Mail</label>
-            <input
-              name="email"
-              type="text"
-              formControlName="email"
-              class="formInput"
-            />
-            <label for="gender">Køn (Check for mand)</label>
-            <input
-              name="gender"
-              type="checkbox"
-              formControlName="gender"
-              class="formInput"
-            />
-            <label for="password">Adgangskode</label>
-            <input
-              name="password"
-              type="password"
-              formControlName="password"
-              class="formInput"
-            />
-            <label for="vip">VIP</label>
-            <input
-              name="vip"
-              type="checkbox"
-              formControlName="vip"
-              class="formInput"
-            />
-            <label for="terms">Terms of Service:</label>
-            <input type="checkbox" required />
-            <input
-              type="submit"
-              (click)="postOrder()"
-              value="Tilføj til kurv"
-            />
+            <div>
+              <label for="name">Fulde navn</label>
+            </div>
+            <div>
+              <input
+                name="name"
+                type="text"
+                formControlName="name"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="email">E-Mail</label>
+            </div>
+            <div>
+              <input
+                name="email"
+                type="text"
+                formControlName="email"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="gender">Køn (Check for mand)</label>
+            </div>
+            <div>
+              <input
+                name="gender"
+                type="checkbox"
+                formControlName="gender"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="password">Adgangskode</label>
+            </div>
+            <div>
+              <input
+                name="password"
+                type="password"
+                formControlName="password"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="vip">VIP</label>
+            </div>
+            <div>
+              <input
+                name="vip"
+                type="checkbox"
+                formControlName="vip"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="terms">Terms of Service:</label>
+            </div>
+            <div>
+              <input type="checkbox" required />
+            </div>
+            <div>
+              <input
+                type="submit"
+                (click)="postOrder()"
+                value="Tilføj til kurv"
+              />
+            </div>
           </form>
         </div>
       </div>
