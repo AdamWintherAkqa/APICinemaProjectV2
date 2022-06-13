@@ -50,6 +50,10 @@ export class CartserviceService {
     );
   } */
 
+  setOrderDate() {
+    this.order.orderDate = new Date();
+  }
+
   clearCart() {
     this.order.movieTimeID = 0;
     this.order.seats = [];

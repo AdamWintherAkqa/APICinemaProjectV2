@@ -17,6 +17,7 @@ namespace APICinemaProject2.DAL.Repositories
         Task<Order> DeleteOrderByID(int id);
         Task<Order> UpdateOrder(Order order);
         Task<List<Order>> GetOrdersWhereMovieTimeID(int id);
+        Task<Order> PostAndPutOrder(Order order);
     }
     public class OrderRepository : IOrderRepository
     {
@@ -55,6 +56,17 @@ namespace APICinemaProject2.DAL.Repositories
 
             return order;
         }
+
+        //public async Task<Order> PostAndPutORder(Order order)
+        //{
+        //    Order orderToPost;
+
+        //    orderToPost.AgeCheck = order.AgeCheck;
+        //    orderToPost.Date = order.Date;
+        //    context.Orders.Add(orderToPost);
+
+        //}
+
         public async Task<Order> DeleteOrderByID(int id)
         {
             try
@@ -92,20 +104,91 @@ namespace APICinemaProject2.DAL.Repositories
             //    return null;
             //}
 
-            Order update = await context.Orders.FirstOrDefaultAsync(item => item.OrderID == order.OrderID);
-            if (update != null)
+            //Order update = await context.Orders.FirstOrDefaultAsync(item => item.OrderID == order.OrderID);
+            //if (update != null)
+            //{
+            //    update.Date = order.Date;
+            //    update.MovieTimeID = order.MovieTimeID;
+            //    update.CustomerID = order.CustomerID;
+            //    update.AgeCheck = order.AgeCheck;
+            //    update.Seats = order.Seats;
+            //    update.Merchandise = order.Merchandise;
+            //    update.CandyShops = order.CandyShops;
+
+
+            //    //Måske have en price her? Så man kan ændre det? Eller gøres via controller
+
+            //    await context.SaveChangesAsync();
+            //}
+            //return update;
+
+            await context.SaveChangesAsync();
+            return order;
+
+        }
+
+        public async Task<Order> PostAndPutOrder(Order order)
+        {
+            Order orderToPost = new()
             {
-                update.Date = order.Date;
-                update.MovieTimeID = order.MovieTimeID;
-                update.CustomerID = order.CustomerID;
-                update.AgeCheck = order.AgeCheck;
-            
-                //Måske have en price her? Så man kan ændre det? Eller gøres via controller
+                AgeCheck = order.AgeCheck,
+                Date = order.Date
+            };
 
-                await context.SaveChangesAsync();
+            List<Seat> seats = new List<Seat>();
+
+            foreach (var seat in order.Seats)
+            {
+                Seat seatToPost = new Seat()
+                {
+                    HallID = seat.HallID,
+                    SeatNumber = seat.SeatNumber,
+                    SeatRowLetter = seat.SeatRowLetter
+                };
+                seats.Add(seatToPost);
             }
-            return update;
 
+            //Seat seat = new Seat()
+            //{
+            //    HallID = order.Seats
+            //    SeatNumber = 10,
+            //    SeatRowLetter = "A",
+            //};
+
+            
+            var postedOrder = context.Orders.Add(orderToPost);
+            await context.SaveChangesAsync();
+
+            Order orderToUpdate = context.Orders
+                .Include(order => order.Customer)
+                .Include(order => order.MovieTime)
+                .Include(order => order.Seats)
+                .Include(order => order.CandyShops)
+                .Include(order => order.Merchandise)
+                .FirstOrDefault((orderObj) => orderObj.OrderID == orderToPost.OrderID);
+
+            if (orderToUpdate != null)
+            {
+                orderToUpdate.Seats = seats;
+                //orderToUpdate.Merchandise = order.Merchandise;
+                //orderToUpdate.CustomerID = order.CustomerID;
+                //orderToUpdate.CandyShops = order.CandyShops;
+
+                var result = await context.SaveChangesAsync();
+
+                if (result != 0)
+                {
+                    return orderToUpdate;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

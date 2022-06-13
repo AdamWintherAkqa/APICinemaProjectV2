@@ -21,7 +21,6 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
-    console.log('cart: ', this.cart);
   }
 
   postOrderForm = new FormGroup({
@@ -32,7 +31,16 @@ export class CheckoutComponent implements OnInit {
   loginUser() {
     const email = this.postOrderForm.value.email;
     const password = this.postOrderForm.value.password;
-  }
 
-  postOrder() {}
+    this.customerService
+      .getCustomerByEmailAndPassword(email, password)
+      .subscribe((data) => {
+        console.log('data: ', data);
+        console.log('cart: ', this.cart);
+        this.cartService.addCustomerToOrder(data.customerID);
+        this.orderService.postAndPutOrder(this.cart).subscribe((data) => {
+          console.log('data: ', data);
+        });
+      });
+  }
 }

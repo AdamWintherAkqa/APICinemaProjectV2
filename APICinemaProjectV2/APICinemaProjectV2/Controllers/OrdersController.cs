@@ -182,31 +182,81 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // DELETE: api/Orders/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteOrder(int id)
+        [HttpPost("PostAndPutOrder")]
+        public async Task<ActionResult<Order>> PostAndPutOrder(Order order)
         {
-            if (id == 0)
+            if (order == null)
             {
                 return BadRequest();
             }
             try
             {
-                var response = await context.DeleteOrderByID(id);
-                if (response != null)
-                {
-                    return Ok(response);
-                }
-                else
-                {
-                    return NotFound(response);
-                }
+                await context.PostAndPutOrder(order);
+                
+                //Order orderToPost = new()
+                //{
+                //    AgeCheck = order.AgeCheck,
+                //    Date = order.Date
+                //};
 
+
+                //var postedOrder = await context.CreateOrder(orderToPost);
+
+                //var orderToUpdate = await context.GetOrderByID(postedOrder.OrderID);
+
+                //if (orderToUpdate != null)
+                //{
+                //    orderToUpdate.Seats = order.Seats;
+                //    orderToUpdate.Merchandise = order.Merchandise;
+                //    orderToUpdate.CustomerID = order.CustomerID;
+                //    orderToUpdate.CandyShops = order.CandyShops;
+
+                //    var result = await context.UpdateOrder(orderToUpdate);
+
+                //    if (result != null)
+                //    {
+                //        return Ok(order);
+                //    }
+                //    else
+                //    {
+                //        return BadRequest("Null i Repo");
+                //    }
+                //}
+
+
+                return order;
             }
             catch (Exception ex)
             {
                 return (ActionResult)BadRequest(ex.Message);
             }
         }
+
+    // DELETE: api/Orders/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteOrder(int id)
+    {
+        if (id == 0)
+        {
+            return BadRequest();
+        }
+        try
+        {
+            var response = await context.DeleteOrderByID(id);
+            if (response != null)
+            {
+                return Ok(response);
+            }
+            else
+            {
+                return NotFound(response);
+            }
+
+        }
+        catch (Exception ex)
+        {
+            return (ActionResult)BadRequest(ex.Message);
+        }
     }
+}
 }
