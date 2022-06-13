@@ -44,7 +44,7 @@ height: 300px;
 }
 .AddGenreButton{
 float: left;
-margin-left: 570px;
+margin-left: 500px;
 position: absolute;
 margin-top: 5px;
 height: 20px;
@@ -52,7 +52,7 @@ width: 30px;
 }
 .AddInstructorButton{
   float: left;
-  margin-left: 570px;
+  margin-left: 500px;
   position: absolute;
   margin-top: 5px;
   height: 20px;
@@ -60,7 +60,7 @@ width: 30px;
   }
 .AddActorButton{
     float: left;
-    margin-left: 570px;
+    margin-left: 500px;
     position: absolute;
     margin-top: 5px;
     height: 20px;

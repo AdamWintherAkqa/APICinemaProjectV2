@@ -27,12 +27,26 @@
 
 
   }
-  .btn-danger{
+  .deleteButton{
     height: 10px;
-    width: 5px;
+    width: 15px;
     float: left;
+    background-color: red;
+
+
   }
 
+  .btn-primary{
+    width: 150px;
+    height: 50px;
+    color: black;
+
+
+
+
+
+
+  }
 
 
 

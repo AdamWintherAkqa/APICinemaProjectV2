@@ -36,6 +36,11 @@ export class GenreComponent implements OnInit {
     this.genreList = [];
     this.genreService.getAllGenres().subscribe((data) => { this.genreList = data; });
   }
+  isEditEnable: boolean = false;
+  updateGenre() {
+  this.isEditEnable = !this.isEditEnable;
+  }
+
 
   createGenre(): void {
     this.genreForm.value.isAlive = this.checked;

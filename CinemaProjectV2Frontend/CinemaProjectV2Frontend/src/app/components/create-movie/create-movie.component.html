@@ -10,7 +10,6 @@
         <input type="datetime" formControlName="movieReleaseDate" class="form-control" id="releaseDate" placeholder="Udgivelsesdato" onfocus="(this.type='Udgivelsesdato')"value="" required="">
         <input type="text" formControlName="movieAgeLimit" class="form-control" id="ageLimit" placeholder="Aldersgrænse" value="" required="">
         <input type="text" formControlName="movieImageURL" class="form-control" id="movieURL" placeholder="Film URL http://indsætfilmher.dk" value="" required="">
-        <input type="text" formControlName="instructorID" class="form-control" id="instructorID" placeholder="instruktørID" value="" required="">
         <div class="movieDescription1">
           <input type="text" formControlName="movieDescription" class="form-control" id="movieDescription" placeholder="Indtast film beskrivelse her" value="" required="">
         </div>
@@ -25,6 +24,8 @@
           </a>
 
 
+
+
           <select class="form-control" formControlName="genre" id="dropDownMenu1" required="">
             <option value="">Genre</option>
             <option>Gyser</option>
@@ -33,6 +34,7 @@
             <option>Test4</option>
           </select>
         </div>
+
 
 
         <a href="create-instructor">
@@ -62,17 +64,18 @@
 
         </svg>
       </a>
-        <!-- <div class="col-md-5 dropDownMenu"> -->
+      <div class="col-md-5 dropDownMenu">
 
-           <!-- <select class="form-control" formControlNameid="dropDownMenu2" formControlName = "actors" required="">
-            <option value=""><b>Skuespillere</b></option>
-            <option>Johnny Depp</option>
-            <option>Amber Heard</option>
-            <option>Lawyer 1</option>
-            <option>Lawyer 2</option>
-          </select>
+        <select class="form-control" formControlName="actors" id="dropDownMenu1" required="">
 
-        </div> -->
+           <option value="">Skuespiller </option>
+           <option>Martin Skopudser</option>
+           <option>Test2</option>
+           <option>Test3</option>
+           <option>Test4</option>
+         </select>
+       </div>
+
 
   <select class="form-control" id="dropDownMenu3" formControlName="movieIsChosen" required="">
     <option value=""><b>Skal film vises på forsiden</b></option>
@@ -94,15 +97,15 @@
   </form> -->
 
 </div>
-<select class="form-control" formControlNameid="dropDownMenu2" formControlName = "actors" required="">
+<!-- <select class="form-control" formControlNameid="dropDownMenu2" formControlName = "actors" required="">
   <select id='actorList' name='actor' [(ngModel)]="actorList">
     <option *ngFor="let actor of actorList" [value]="actor.actorName">
-      {{actor.actorName}}
+      {{actor.actorName}} -->
 
 
-</option>
-  </select>
-</select>
+
+
+
 
     </form>
 

@@ -34,7 +34,6 @@ import { InstructorComponent } from './components/create-instructor/create-instr
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
   ],
 
   providers: [],

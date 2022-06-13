@@ -28,6 +28,7 @@ export class GenreService {
   getGenreAndMovieByID(id: number): Observable<IGenre> {
     return this.http.get<IGenre>(`${this.baseUrl}/GetGenreAndMovieByID/${id}`);
   }
+
   createGenre(genre: IGenre): Observable<IGenre> {
     return this.http.post<IGenre>(this.baseUrl, genre, httpOptions);
   }
@@ -37,8 +38,15 @@ export class GenreService {
       httpOptions
     )
   }
+  updateGenre(genre: IGenre): Observable<IGenre> {
+    return this.http.put<IGenre>(
+      `${this.baseUrl}/${genre.genreID}`,
+      genre,
+      httpOptions
+    );
 
 
+}
 }
 
 

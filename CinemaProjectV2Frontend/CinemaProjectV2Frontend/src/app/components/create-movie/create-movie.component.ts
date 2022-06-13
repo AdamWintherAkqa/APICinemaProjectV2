@@ -10,6 +10,7 @@ import IGenre from 'src/app/interface/IGenre';
 import { GenreService } from 'src/app/services/genre.service';
 import IActor from 'src/app/interface/IActor'
 import { ActorService } from 'src/app/services/actor.service';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @Component({
@@ -22,25 +23,15 @@ export class CreateMovieComponent implements OnInit {
   instructorList: IInstructor[] = [];
   genreList: IGenre[] = [];
   actorList:IActor[];
-
-
   checked = false;
 
   constructor(private movieService : MovieService) { }
 
   ngOnInit(): void {
+    this.getAllMovies();
+
+
   }
-  createMovie(): void {
-    this.createForm.value.isAlive = this.checked;
-    console.log(this.createForm.value);
-    this.movieService.createMovie(this.createForm.value).subscribe();
-    this.movieList = [...this.movieList, this.createForm.value];
-  }
-
-
-
-
-
   createForm = new FormGroup({
     movieName: new FormControl(''),
     moviePlayTime: new FormControl(''),
@@ -54,13 +45,27 @@ export class CreateMovieComponent implements OnInit {
     actors: new FormControl(''),
     instructors: new FormControl('')
 
-
 })
+
+getAllMovies(): void {
+  this.movieList = [];
+  this.movieService.getAllMovies().subscribe((data) => { this.movieList = data; });
+
+}
+
+createMovie(): void {
+  this.createForm.value.isAlive = this.checked;
+  console.log(this.createForm.value);
+  this.movieService.createMovie(this.createForm.value).subscribe();
+
+  this.movieList = [...this.movieList, this.createForm.value];
+  this.getAllMovies();
+}
 
 logForm(): void {
 console.log(this.createForm.value)
-
 }
 
 
 }
+

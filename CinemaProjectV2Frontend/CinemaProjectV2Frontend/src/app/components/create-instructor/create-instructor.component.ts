@@ -22,16 +22,13 @@ export class InstructorComponent implements OnInit {
 
   ngOnInit(): void {
    this.getInstructors();
-
-
     }
 
-
-
-
-    instructorForm = new FormGroup({
-    instructorName: new FormControl('')
+  instructorForm = new FormGroup({
+  instructorName: new FormControl('')
   })
+
+
   getInstructors(): void {
     this.instructorList = [];
     this.instructorService.getAllInstructors().subscribe((data) => { this.instructorList = data; });
