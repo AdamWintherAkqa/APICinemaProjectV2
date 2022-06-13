@@ -11,6 +11,7 @@ import { GenreService } from 'src/app/services/genre.service';
 import IActor from 'src/app/interface/IActor'
 import { ActorService } from 'src/app/services/actor.service';
 
+
 @Component({
   selector: 'app-create-movie',
   templateUrl: './create-movie.component.html',
@@ -46,12 +47,13 @@ export class CreateMovieComponent implements OnInit {
     movieReleaseDate: new FormControl(''),
     movieAgeLimit: new FormControl(''),
     instructorID: new FormControl(''),
+    movieDescription: new FormControl(''),
     movieIsChosen: new FormControl(''),
     movieImageURL: new FormControl(''),
     genre: new FormControl(''),
     actors: new FormControl(''),
-    instructors: new FormControl(''),
-    movieDescription: new FormControl('')
+    instructors: new FormControl('')
+
 
 })
 

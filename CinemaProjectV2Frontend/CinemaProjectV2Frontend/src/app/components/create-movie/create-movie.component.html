@@ -10,6 +10,7 @@
         <input type="datetime" formControlName="movieReleaseDate" class="form-control" id="releaseDate" placeholder="Udgivelsesdato" onfocus="(this.type='Udgivelsesdato')"value="" required="">
         <input type="text" formControlName="movieAgeLimit" class="form-control" id="ageLimit" placeholder="Aldersgrænse" value="" required="">
         <input type="text" formControlName="movieImageURL" class="form-control" id="movieURL" placeholder="Film URL http://indsætfilmher.dk" value="" required="">
+        <input type="text" formControlName="instructorID" class="form-control" id="instructorID" placeholder="instruktørID" value="" required="">
         <div class="movieDescription1">
           <input type="text" formControlName="movieDescription" class="form-control" id="movieDescription" placeholder="Indtast film beskrivelse her" value="" required="">
         </div>
@@ -73,16 +74,6 @@
 
         </div> -->
 
-
-
-
-
-
-
-
-
-
-
   <select class="form-control" id="dropDownMenu3" formControlName="movieIsChosen" required="">
     <option value=""><b>Skal film vises på forsiden</b></option>
     <option>Billede 1</option>
@@ -109,6 +100,9 @@
       {{actor.actorName}}
 
 
+</option>
+  </select>
+</select>
 
     </form>
 
