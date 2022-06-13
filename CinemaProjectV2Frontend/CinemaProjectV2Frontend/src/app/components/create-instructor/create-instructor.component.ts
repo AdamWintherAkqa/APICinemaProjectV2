@@ -1,86 +1,71 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { GenreService } from 'src/app/services/genre.service';
+import { Component, OnInit } from '@angular/core';
+import { InstructorService } from 'src/app/services/instructor.service';
 import { FormGroup, NgForm } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import IInstructor from 'src/app/interface/IInstructor';
-import { Observable } from 'rxjs';
-import { InstructorService } from 'src/app/services/instructor.service';
-import { __values } from 'tslib';
 import { HttpClient } from '@angular/common/http';
-
-
-
+import { Observable } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-create-instructor',
+  selector: 'app-instructor',
   templateUrl: './create-instructor.component.html',
   styleUrls: ['./create-instructor.component.css']
 })
-export class CreateInstructorComponent implements OnInit {
-
-  instructorName:string = '';
-  instructorID:number;
-
+export class InstructorComponent implements OnInit {
 
   constructor(private instructorService : InstructorService) { }
 
   instructorList: IInstructor[];
   checked = false;
 
+
   ngOnInit(): void {
+   this.getInstructors();
 
-    this.instructorService.getAllInstructors().subscribe((data) => {this.instructorList = data})
+
+    }
+
+
+
+
+    instructorForm = new FormGroup({
+    instructorName: new FormControl('')
+  })
+  getInstructors(): void {
+    this.instructorList = [];
+    this.instructorService.getAllInstructors().subscribe((data) => { this.instructorList = data; });
   }
-  instructorForm = new FormGroup({
-  instructorName: new FormControl('')
 
-
-  }
-
-
-  )
   createInstructor(): void {
+    this.instructorForm.value.isAlive = this.checked;
     console.log(this.instructorForm.value);
     this.instructorService.createInstructor(this.instructorForm.value).subscribe();
-    this.instructorList = [...this.instructorList, this.instructorForm.value];
-  }
 
+    this.instructorList = [...this.instructorList, this.instructorForm.value];
+    this.getInstructors();
+  }
 
   deleteInstructor(instructor: IInstructor)
   {
     this.instructorService.deleteInstructor(instructor)
-    .subscribe(response =>
+      .subscribe(response =>
         {
-          this.instructorList = this.instructorList.filter(item => item.instructorID !== instructor.instructorID);
+        this.instructorList = this.instructorList.filter(item => item.instructorID !== instructor.instructorID);
+        }
 
+        );
 
-        });
 
 
   }
 
+
+
+
+
+
 }
-
-
-
-
-
-  // updateInstructor(instructor:IInstructor){
-  // let endPoints = "http://localhost:4200/create-instructor"
-  // this.instructorService.updateInstructor(instructor).subscribe(data => {
-  // console.log(data);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

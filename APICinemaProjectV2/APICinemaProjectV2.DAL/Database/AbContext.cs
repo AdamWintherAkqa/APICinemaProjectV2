@@ -17,11 +17,8 @@ namespace APICinemaProject2.DAL.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-<<<<<<< Updated upstream
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-0IT9HAR;Database=CinemaProject;Trusted_Connection=True;");
-=======
+
             optionsBuilder.UseSqlServer(@"Server=DESKTOP-R8OLBMM;Database=CinemaProject;Trusted_Connection=True;");
->>>>>>> Stashed changes
 
         }
         public DbSet<Actor> Actors { get; set; }

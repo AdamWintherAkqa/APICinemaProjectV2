@@ -1,4 +1,3 @@
-
 <h2 class="existingInstructors">Eksisterende instruktører:</h2>
 <h3 class="listsOfInstructors">
 <div *ngFor="let instructor of instructorList">
@@ -21,5 +20,4 @@
 <form [formGroup]="instructorForm">
 <input type="text" formControlName="instructorName" class="form-control" id="instructorName" placeholder="Tilføj en instruktør" value="" required="">
 <button class="w-45 btn btn-primary btn-lg addInstructorButton" type="submit"(click)="createInstructor()">Tilføj</button>
-
 </form>

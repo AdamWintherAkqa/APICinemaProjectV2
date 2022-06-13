@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControlName, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import IMovie from 'src/app/interface/IMovie';
@@ -22,6 +22,7 @@ export class CreateMovieComponent implements OnInit {
   genreList: IGenre[] = [];
   actorList:IActor[];
 
+
   checked = false;
 
   constructor(private movieService : MovieService) { }
@@ -34,6 +35,8 @@ export class CreateMovieComponent implements OnInit {
     this.movieService.createMovie(this.createForm.value).subscribe();
     this.movieList = [...this.movieList, this.createForm.value];
   }
+
+
 
 
 

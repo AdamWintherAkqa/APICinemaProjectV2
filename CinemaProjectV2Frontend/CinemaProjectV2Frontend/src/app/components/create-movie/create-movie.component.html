@@ -1,30 +1,27 @@
+<form [formGroup]="createForm">
+
 <div class="col-md-7 col-lg-8">
   <h4 class="mb-3">Tilføj film</h4>
-  <form [formGroup]="createForm">
+
     <div class="row g-3">
       <div class="col-sm-6">
-
-
         <input type="text" formControlName="movieName" class="form-control" id="filmNavn" placeholder="Navn" value="" required="">
         <input type="text" formControlName="moviePlayTime" class="form-control" id="movieLength" placeholder="Spilletid" value="" required="">
         <input type="datetime" formControlName="movieReleaseDate" class="form-control" id="releaseDate" placeholder="Udgivelsesdato" onfocus="(this.type='Udgivelsesdato')"value="" required="">
         <input type="text" formControlName="movieAgeLimit" class="form-control" id="ageLimit" placeholder="Aldersgrænse" value="" required="">
         <input type="text" formControlName="movieImageURL" class="form-control" id="movieURL" placeholder="Film URL http://indsætfilmher.dk" value="" required="">
-
         <div class="movieDescription1">
           <input type="text" formControlName="movieDescription" class="form-control" id="movieDescription" placeholder="Indtast film beskrivelse her" value="" required="">
         </div>
-
         <!-- <tr *ngFor="let genre of genreList"></tr> -->
         <div class="col-md-5 dropDownMenu">
-
           <a href="create-genre">
-          <svg xmlns="http://www.w3.org/2000/svg" input type="submit" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus AddGenreButton" viewBox="0 0 16 16">
+          <svg xmlns="http://www.w3.org/2000/svg" input type="submit"width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus AddGenreButton" viewBox="0 0 16 16">
             <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
             <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
             <title>Tilføj, slet eller rediger en genre</title>
           </svg>
-        </a>
+          </a>
 
 
           <select class="form-control" formControlName="genre" id="dropDownMenu1" required="">
@@ -43,7 +40,7 @@
           <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
           <title>Tilføj, slet eller rediger en instruktør</title>
         </svg>
-      </a>
+        </a>
         <div class="col-md-5 dropDownMenu">
 
          <select class="form-control" formControlName="instructors" id="dropDownMenu1" required="">
@@ -54,9 +51,6 @@
             <option>Test3</option>
             <option>Test4</option>
           </select>
-
-
-
         </div>
 
         <a href="create-actor">
@@ -69,7 +63,7 @@
       </a>
         <!-- <div class="col-md-5 dropDownMenu"> -->
 
-          <!-- <select class="form-control" formControlNameid="dropDownMenu2" formControlName = "actors" required="">
+           <!-- <select class="form-control" formControlNameid="dropDownMenu2" formControlName = "actors" required="">
             <option value=""><b>Skuespillere</b></option>
             <option>Johnny Depp</option>
             <option>Amber Heard</option>
@@ -89,7 +83,7 @@
 
 
 
-  <select class="form-control" id="dropDownMenu3" required="">
+  <select class="form-control" id="dropDownMenu3" formControlName="movieIsChosen" required="">
     <option value=""><b>Skal film vises på forsiden</b></option>
     <option>Billede 1</option>
     <option>Billede 2</option>
@@ -97,31 +91,25 @@
 
   </select>
 
+  <button class="w-45 btn btn-primary btn-lg addMovieButton" type="submit"(click)="createMovie()">Tilføj</button>
+
 </div>
 
-  <!-- <div class="checkbox">
-    <input type="checkbox" class="form-check-input checkBoxShipping" id="checkBoxShipping1">
-    <label class="form-check-label textShipping" for="checkBoxShipping">Film valgt til billede 2.</label>
-  </div> -->
 
-  <button class="w-50 btn btn-primary btn-lg addMovieButton" type="submit"(click)="logForm()">Afslut</button>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-  </form>
+  <!-- <form [formGroup]="createForm">
+    <button class="w-45 btn btn-primary btn-lg addMovieButton" type="submit"(click)="createMovie()">Tilføj</button>
+  </form> -->
 
 </div>
 <select class="form-control" formControlNameid="dropDownMenu2" formControlName = "actors" required="">
   <select id='actorList' name='actor' [(ngModel)]="actorList">
     <option *ngFor="let actor of actorList" [value]="actor.actorName">
       {{actor.actorName}}
+
+
+
+    </form>
+
+

@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import IGenre from 'src/app/interface/IGenre';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-genre',
@@ -54,7 +55,7 @@ export class GenreComponent implements OnInit {
         }
 
         );
-        
+
 
 
   }
