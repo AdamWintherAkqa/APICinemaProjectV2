@@ -29,7 +29,10 @@ namespace APICinemaProject2.DAL.Repositories
 
         public async Task<List<Order>> GetAllOrders()
         {
-            return await context.Orders.ToListAsync();
+            return await context.Orders
+                .Include(order => order.Customer)
+                .Include(order => order.Seats)
+                .ToListAsync();
         }
         public async Task<Order> GetOrderByID(int id)
         {
@@ -56,16 +59,6 @@ namespace APICinemaProject2.DAL.Repositories
 
             return order;
         }
-
-        //public async Task<Order> PostAndPutORder(Order order)
-        //{
-        //    Order orderToPost;
-
-        //    orderToPost.AgeCheck = order.AgeCheck;
-        //    orderToPost.Date = order.Date;
-        //    context.Orders.Add(orderToPost);
-
-        //}
 
         public async Task<Order> DeleteOrderByID(int id)
         {
@@ -104,27 +97,23 @@ namespace APICinemaProject2.DAL.Repositories
             //    return null;
             //}
 
-            //Order update = await context.Orders.FirstOrDefaultAsync(item => item.OrderID == order.OrderID);
-            //if (update != null)
-            //{
-            //    update.Date = order.Date;
-            //    update.MovieTimeID = order.MovieTimeID;
-            //    update.CustomerID = order.CustomerID;
-            //    update.AgeCheck = order.AgeCheck;
-            //    update.Seats = order.Seats;
-            //    update.Merchandise = order.Merchandise;
-            //    update.CandyShops = order.CandyShops;
+            Order update = await context.Orders.FirstOrDefaultAsync(item => item.OrderID == order.OrderID);
+            if (update != null)
+            {
+                update.Date = order.Date;
+                update.MovieTimeID = order.MovieTimeID;
+                update.CustomerID = order.CustomerID;
+                update.AgeCheck = order.AgeCheck;
+                update.Seats = order.Seats;
+                update.Merchandise = order.Merchandise;
+                update.CandyShops = order.CandyShops;
 
 
-            //    //Måske have en price her? Så man kan ændre det? Eller gøres via controller
+                //Måske have en price her? Så man kan ændre det? Eller gøres via controller
 
-            //    await context.SaveChangesAsync();
-            //}
-            //return update;
-
-            await context.SaveChangesAsync();
-            return order;
-
+                await context.SaveChangesAsync();
+            }
+            return update;
         }
 
         public async Task<Order> PostAndPutOrder(Order order)
@@ -136,16 +125,47 @@ namespace APICinemaProject2.DAL.Repositories
             };
 
             List<Seat> seats = new List<Seat>();
+            List<CandyShop> candyShops = new List<CandyShop>();
+            List<Merchandise> merchandises = new List<Merchandise>();
 
             foreach (var seat in order.Seats)
             {
                 Seat seatToPost = new Seat()
                 {
+                    SeatID = seat.SeatID,
                     HallID = seat.HallID,
                     SeatNumber = seat.SeatNumber,
                     SeatRowLetter = seat.SeatRowLetter
                 };
                 seats.Add(seatToPost);
+            }
+
+            foreach (var candy in order.CandyShops)
+            {
+                CandyShop candyToPost = new CandyShop()
+                {
+                    CandyShopID = candy.CandyShopID,
+                    CandyShopName = candy.CandyShopName,
+                    CandyShopPrice = candy.CandyShopPrice,
+                    CandyShopType = candy.CandyShopType
+                };
+                candyShops.Add(candyToPost);
+            }
+
+            foreach (var merch in merchandises)
+            {
+                Merchandise merchandiseToPost = new Merchandise()
+                {
+                    MerchandiseID = merch.MerchandiseID,
+                    MerchandiseName = merch.MerchandiseName,
+                    MerchandisePrice = merch.MerchandisePrice,
+                    MerchandiseType = merch.MerchandiseType,
+                    MerchandiseColor = merch.MerchandiseColor,
+                    MerchandiseDescription = merch.MerchandiseDescription,
+                    MerchandiseSize = merch.MerchandiseSize,
+                    MerchandiseStock = merch.MerchandiseStock
+                };
+                merchandises.Add(merchandiseToPost);
             }
 
             //Seat seat = new Seat()
@@ -170,9 +190,9 @@ namespace APICinemaProject2.DAL.Repositories
             if (orderToUpdate != null)
             {
                 orderToUpdate.Seats = seats;
-                //orderToUpdate.Merchandise = order.Merchandise;
-                //orderToUpdate.CustomerID = order.CustomerID;
-                //orderToUpdate.CandyShops = order.CandyShops;
+                orderToUpdate.Merchandise = order.Merchandise;
+                orderToUpdate.CustomerID = order.CustomerID;
+                orderToUpdate.CandyShops = order.CandyShops;
 
                 var result = await context.SaveChangesAsync();
 

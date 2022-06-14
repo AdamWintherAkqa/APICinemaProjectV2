@@ -12,6 +12,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-time.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CandyShopComponent } from './components/candy-shop/candy-shop.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     BookMovieTimeComponent,
     CartComponent,
     CheckoutComponent,
+    CandyShopComponent,
   ],
 
   imports: [

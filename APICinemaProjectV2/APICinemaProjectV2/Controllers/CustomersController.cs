@@ -169,6 +169,17 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
+                List<Customer> customers = await context.GetAllCustomers();
+
+                foreach (var cust in customers)
+                {
+                    if (customer.CustomerEmail == cust.CustomerEmail)
+                    {
+                        return BadRequest("Duplicate Email");
+                    }
+                }
+
+
                 await context.CreateCustomer(customer);
 
                 return customer;
