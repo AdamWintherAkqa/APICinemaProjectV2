@@ -56,16 +56,16 @@
 
 
 //   movieForm = new FormGroup({
-//   MovieName: new FormControl(''),
-//   MoviePlayTime: new FormControl(''),
-//   MovieReleaseDate: new FormControl(''),
-//   MovieAgeLimit: new FormControl(''),
-//   InstructorID: new FormControl(''),
-//   MovieIsChosen: new FormControl(''),
-//   MovieImageURL: new FormControl(''),
+//   movieName: new FormControl(''),
+//   moviePlayTime: new FormControl(''),
+//   movieReleaseDate: new FormControl(''),
+//   movieAgeLimit: new FormControl(''),
+//   instructorID: new FormControl(''),
+//   movieIsChosen: new FormControl(''),
+//   movieImageURL: new FormControl(''),
 //   getEntireMovie: new FormControl(''),
-//   Genre: new FormControl(''),
-//   Actors: new FormControl('')
+//   genre: new FormControl(''),
+//   actors: new FormControl('')
 
 
 

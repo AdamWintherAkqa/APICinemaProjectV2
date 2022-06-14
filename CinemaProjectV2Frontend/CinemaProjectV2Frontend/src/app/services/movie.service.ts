@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class MovieService {
   //Husk at tjekke swaggers url
-  baseUrl = 'https://localhost:44324/api/Movies';
+  baseUrl = 'https://localhost:5001/api/Movies';
   constructor(private http: HttpClient) {} //DI
 
   getAllMovies(): Observable<IMovie[]> {

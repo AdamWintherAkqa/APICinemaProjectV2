@@ -28,19 +28,19 @@
 
   }
   .deleteButton{
-    height: 10px;
-    width: 15px;
+    height: 50px;
+    width: 150px;
     float: left;
     background-color: red;
 
 
   }
 
-  .btn-primary{
+  .addEditButton{
     width: 150px;
     height: 50px;
     color: black;
-
+    
 
 
 

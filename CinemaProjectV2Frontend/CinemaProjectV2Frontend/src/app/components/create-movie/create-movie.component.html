@@ -5,11 +5,14 @@
 
     <div class="row g-3">
       <div class="col-sm-6">
-        <input type="text" formControlName="movieName" class="form-control" id="filmNavn" placeholder="Navn" value="" required="">
-        <input type="text" formControlName="moviePlayTime" class="form-control" id="movieLength" placeholder="Spilletid" value="" required="">
-        <input type="datetime" formControlName="movieReleaseDate" class="form-control" id="releaseDate" placeholder="Udgivelsesdato" onfocus="(this.type='Udgivelsesdato')"value="" required="">
-        <input type="text" formControlName="movieAgeLimit" class="form-control" id="ageLimit" placeholder="Aldersgrænse" value="" required="">
-        <input type="text" formControlName="movieImageURL" class="form-control" id="movieURL" placeholder="Film URL http://indsætfilmher.dk" value="" required="">
+
+        <input type="text" formControlName="movieName" class="form-control" id="filmNavn" placeholder="Navn" value="">
+        <input type="text" formControlName="moviePlayTime" class="form-control" id="movieLength" placeholder="Spilletid" value="">
+        <input type="datetime-local" formControlName="movieReleaseDate" class="form-control" id="datetime" placeholder="">
+        <input type="text" formControlName="movieAgeLimit" class="form-control" id="ageLimit" placeholder="Aldersgrænse">
+        <input type="text" formControlName="movieImageURL" class="form-control" id="movieURL" placeholder="Film URL http://indsætfilmher.dk" value="">
+
+
         <div class="movieDescription1">
           <input type="text" formControlName="movieDescription" class="form-control" id="movieDescription" placeholder="Indtast film beskrivelse her" value="" required="">
         </div>
@@ -23,17 +26,15 @@
           </svg>
           </a>
 
-
-
-
-          <select class="form-control" formControlName="genre" id="dropDownMenu1" required="">
+<!--
+          <div class="col-md-5 dropDownMenu">
+          <select name = genre class="form-control" id="dropDownMenu3"  formControlName="genre">
+            <option *ngFor="let genre of genreList" [value]="genre.genreID"> {{ genre.genreName }}</option>
             <option value="">Genre</option>
-            <option>Gyser</option>
-            <option>Thriller</option>
-            <option>Komedie</option>
-            <option>Test4</option>
           </select>
-        </div>
+          </div> -->
+
+
 
 
 
@@ -44,17 +45,15 @@
           <title>Tilføj, slet eller rediger en instruktør</title>
         </svg>
         </a>
+
         <div class="col-md-5 dropDownMenu">
-
-         <select class="form-control" formControlName="instructors" id="dropDownMenu1" required="">
-
-            <option value="">Instruktør</option>
-            <option>Martin Skopudser</option>
-            <option>Test2</option>
-            <option>Test3</option>
-            <option>Test4</option>
-          </select>
+        <select name = instructor class="form-control" formControlName="instructorID" id = "dropDownMenu3">
+          <option *ngFor="let instructor of instructorList"  [value]="instructor.instructorID"> {{ instructor.instructorName }}</option>
+          <option value="">Instruktør</option>
+        </select>
         </div>
+
+
 
         <a href="create-actor">
         <svg xmlns="http://www.w3.org/2000/svg" input type="submit" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus AddActorButton" viewBox="0 0 16 16">
@@ -64,23 +63,21 @@
 
         </svg>
       </a>
-      <div class="col-md-5 dropDownMenu">
 
-        <select class="form-control" formControlName="actors" id="dropDownMenu1" required="">
-
-           <option value="">Skuespiller </option>
-           <option>Martin Skopudser</option>
-           <option>Test2</option>
-           <option>Test3</option>
-           <option>Test4</option>
-         </select>
-       </div>
+      <!-- <div class="col-md-5 dropDownMenu">
+        <select name = actor class="form-control" formControlName="actors" id="dropDownMenu3">
+          <option *ngFor="let actor of actorList"  [value]="actor.actorID"> {{ actor.actorName }}</option>
+          <option value="">Skuespiller</option>
+        </select>
+        </div> -->
 
 
-  <select class="form-control" id="dropDownMenu3" formControlName="movieIsChosen" required="">
+
+
+    <select class="form-control" id="dropDownMenu3" formControlName="movieIsChosen" required="">
     <option value=""><b>Skal film vises på forsiden</b></option>
-    <option>Billede 1</option>
-    <option>Billede 2</option>
+    <option value="true">Billede 1</option>
+    <option value="false">Billede 2</option>
 
 
   </select>
@@ -88,25 +85,9 @@
   <button class="w-45 btn btn-primary btn-lg addMovieButton" type="submit"(click)="createMovie()">Tilføj</button>
 
 </div>
-
-
   </div>
-
-  <!-- <form [formGroup]="createForm">
-    <button class="w-45 btn btn-primary btn-lg addMovieButton" type="submit"(click)="createMovie()">Tilføj</button>
-  </form> -->
-
 </div>
-<!-- <select class="form-control" formControlNameid="dropDownMenu2" formControlName = "actors" required="">
-  <select id='actorList' name='actor' [(ngModel)]="actorList">
-    <option *ngFor="let actor of actorList" [value]="actor.actorName">
-      {{actor.actorName}} -->
-
-
-
-
-
-
+</div>
     </form>
 
 

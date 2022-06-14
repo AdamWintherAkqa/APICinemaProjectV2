@@ -15,7 +15,7 @@ const httpOptions = {
 })
 
 export class ActorService {
-  baseUrl = 'https://localhost:44324/api/Actors';
+  baseUrl = 'https://localhost:5001/api/Actors';
   constructor(private http: HttpClient) {} //DI
 
   getAllActors(): Observable<IActor[]> {

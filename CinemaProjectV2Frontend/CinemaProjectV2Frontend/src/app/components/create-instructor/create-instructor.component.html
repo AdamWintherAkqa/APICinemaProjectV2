@@ -1,8 +1,11 @@
 <h2 class="existingInstructors">Eksisterende instruktører:</h2>
 <h3 class="listsOfInstructors">
-<div *ngFor="let instructor of instructorList">
-  <ul>{{instructor.instructorName}}</ul>
-  <button (click)="deleteInstructor(instructor)" class="btn btn-danger deleteButton"></button>
+<div *ngFor="let instructorName of instructorList">
+
+
+
+  <ul>{{instructorName.instructorName}}</ul>
+  <button (click)="deleteInstructor(instructorName)" class="btn btn-danger deleteButton"></button>
 
 </div>
 
