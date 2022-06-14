@@ -26,31 +26,48 @@ export class BookMovieTimeComponent implements OnInit {
   reservedSeats: ISeat[] = [];
   chosenSeats: ISeat[] = [];
   status: boolean = false;
+  filteredSeats: ISeat[] = [];
 
   ngOnInit(): void {
     this.seatsService
       .getSeatsWhereHallID(this.choosenMovieTime.hallID)
       .subscribe((data) => {
         this.seatsList = data;
+        this.orderService
+          .getOrdersWhereMovieTimeID(this.choosenMovieTime.movieTimeID)
+          .subscribe((data) => {
+            this.reservedSeatsOrder = data;
+            this.checkReservedSeats();
+            console.log('reserved seats: ', this.reservedSeats);
+          });
         console.log('seatsList: ', this.seatsList);
-      });
-    this.orderService
-      .getOrdersWhereMovieTimeID(this.choosenMovieTime.movieTimeID)
-      .subscribe((data) => {
-        this.reservedSeatsOrder = data;
-        this.checkReservedSeats();
-        console.log('reserved seats: ', this.reservedSeats);
       });
   }
 
   checkReservedSeats() {
     if (this.reservedSeatsOrder != null) {
-      this.reservedSeatsOrder.forEach((order) => {
-        order.seats.forEach((seat) => {
-          this.reservedSeats.push(seat);
-        });
-      });
+      this.pushReservedSeats();
+      this.filterSeatsList();
     }
+  }
+
+  filterSeatsList() {
+    console.log('seatsList before: ', this.seatsList);
+    this.reservedSeats.forEach((seat) => {
+      this.seatsList = this.seatsList.filter((x) => x.seatID != seat.seatID);
+      console.log('seatsList after: ', this.seatsList);
+    });
+    this.filteredSeats = this.seatsList;
+    console.log('filtered seats: ', this.filteredSeats);
+  }
+
+  pushReservedSeats() {
+    this.reservedSeatsOrder.forEach((order) => {
+      order.seats.forEach((seat) => {
+        this.reservedSeats.push(seat);
+      });
+    });
+    console.log('reserved seats: ', this.reservedSeats);
   }
 
   addSeatToChosen(seat: ISeat) {
