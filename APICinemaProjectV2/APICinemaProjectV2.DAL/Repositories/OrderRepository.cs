@@ -193,6 +193,7 @@ namespace APICinemaProject2.DAL.Repositories
                 orderToUpdate.Merchandise = order.Merchandise;
                 orderToUpdate.CustomerID = order.CustomerID;
                 orderToUpdate.CandyShops = order.CandyShops;
+                orderToUpdate.MovieTimeID = order.MovieTimeID;
 
                 var result = await context.SaveChangesAsync();
 
