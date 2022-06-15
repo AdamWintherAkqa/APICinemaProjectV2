@@ -10,6 +10,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CandyShopComponent } from './components/candy-shop/candy-shop.component';
 import { CreateCandyShopComponent } from './components/create-candy-shop/create-candy-shop.component';
+import { EditCandyShopComponent } from './components/edit-candy-shop/edit-candy-shop.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'cart/checkout', component: CheckoutComponent },
   { path: 'candyshop', component: CandyShopComponent },
   { path: 'createcandyshop', component: CreateCandyShopComponent },
+  { path: 'createcandyshop/editcandyshop', component: EditCandyShopComponent },
   { path: '**', redirectTo: '' },
 ];
 

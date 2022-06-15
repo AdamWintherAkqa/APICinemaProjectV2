@@ -14,6 +14,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CandyShopComponent } from './components/candy-shop/candy-shop.component';
 import { CreateCandyShopComponent } from './components/create-candy-shop/create-candy-shop.component';
+import { EditCandyShopComponent } from './components/edit-candy-shop/edit-candy-shop.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CreateCandyShopComponent } from './components/create-candy-shop/create-
     CheckoutComponent,
     CandyShopComponent,
     CreateCandyShopComponent,
+    EditCandyShopComponent,
   ],
 
   imports: [

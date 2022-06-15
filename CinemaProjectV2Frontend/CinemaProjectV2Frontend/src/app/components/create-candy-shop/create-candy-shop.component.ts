@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import ICandyShop from 'src/app/interface/ICandyShop';
 import { CandyShopService } from 'src/app/services/candy-shop.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-create-candy-shop',
@@ -10,7 +11,10 @@ import { CandyShopService } from 'src/app/services/candy-shop.service';
 })
 export class CreateCandyShopComponent implements OnInit {
   candyShopList: ICandyShop[] = [];
-  constructor(private candyShopService: CandyShopService) {}
+  constructor(
+    private candyShopService: CandyShopService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit(): void {
     this.getAllCandyShops();
@@ -46,5 +50,9 @@ export class CreateCandyShopComponent implements OnInit {
         console.log('data: ', data);
         this.getAllCandyShops();
       });
+  }
+
+  passCandyShop(candyShop: ICandyShop) {
+    this.dataService.choosenCandyShop = candyShop;
   }
 }

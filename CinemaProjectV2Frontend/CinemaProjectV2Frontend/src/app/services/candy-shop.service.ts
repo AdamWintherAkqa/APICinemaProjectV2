@@ -22,7 +22,10 @@ export class CandyShopService {
     );
   }
   putCandyShop(candyShop: ICandyShop): Observable<ICandyShop> {
-    return this.http.put<ICandyShop>(`${this.baseUrl}`, candyShop);
+    return this.http.put<ICandyShop>(
+      `${this.baseUrl}/${candyShop.candyShopID}`,
+      candyShop
+    );
   }
   postCandyShop(candyShop: ICandyShop): Observable<ICandyShop> {
     return this.http.post<ICandyShop>(`${this.baseUrl}`, candyShop);
