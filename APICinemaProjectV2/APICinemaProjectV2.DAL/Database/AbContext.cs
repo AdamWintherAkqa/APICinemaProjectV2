@@ -14,6 +14,8 @@ namespace APICinemaProject2.DAL.Database
         //EGC29749\H2SQLSOMMER -- Nicky 1
         //DESKTOP-R8OLBMM - Nicky 2
 
+        //Skal udkommenteres for at repo unit tests skal virke
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
