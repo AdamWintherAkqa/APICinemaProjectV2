@@ -9,6 +9,7 @@ import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CandyShopComponent } from './components/candy-shop/candy-shop.component';
+import { CreateCandyShopComponent } from './components/create-candy-shop/create-candy-shop.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'cart/checkout', component: CheckoutComponent },
   { path: 'candyshop', component: CandyShopComponent },
+  { path: 'createcandyshop', component: CreateCandyShopComponent },
   { path: '**', redirectTo: '' },
 ];
 
