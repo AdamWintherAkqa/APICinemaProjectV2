@@ -12,6 +12,7 @@ import IMovie from 'src/app/interface/IMovie';
 import ICustomer from 'src/app/interface/ICustomer';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CustomerService } from 'src/app/services/customer.service';
+import ICandyShop from 'src/app/interface/ICandyShop';
 
 @Component({
   selector: 'app-cart',
@@ -71,10 +72,13 @@ export class CartComponent implements OnInit {
     this.customerService.createCustomer(this.postCustomer).subscribe();
   }
 
-  postOrder() {}
-
   removeSeat(seat: ISeat) {
     this.cartService.removeSeatsFromOrder(seat);
+    this.cart = this.cartService.getCart();
+  }
+
+  removeCandy(candy: ICandyShop) {
+    this.cartService.removeCandyShopFromOrder(candy);
     this.cart = this.cartService.getCart();
   }
 }

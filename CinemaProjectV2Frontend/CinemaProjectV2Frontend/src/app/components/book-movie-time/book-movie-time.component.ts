@@ -27,8 +27,10 @@ export class BookMovieTimeComponent implements OnInit {
   chosenSeats: ISeat[] = [];
   status: boolean = false;
   filteredSeats: ISeat[] = [];
+  cart: IOrder;
 
   ngOnInit(): void {
+    this.cart = this.cartService.getCart();
     this.seatsService
       .getSeatsWhereHallID(this.choosenMovieTime.hallID)
       .subscribe((data) => {

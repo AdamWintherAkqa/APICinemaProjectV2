@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APICinemaProjectV2.DAL.Migrations
 {
     [DbContext(typeof(AbContext))]
-    [Migration("20220609083045_01")]
+    [Migration("20220615114414_01")]
     partial class _01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,9 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CandyShopImageURL")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CandyShopName")
                         .HasColumnType("nvarchar(max)");

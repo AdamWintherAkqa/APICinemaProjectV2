@@ -1,0 +1,21 @@
+.candyDiv {
+  display: inline-block;
+  text-align: center;
+  width: 150px;
+  height: 100%;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+  cursor: pointer;
+}
+
+.ShopList {
+  margin: 25px;
+}
+
+.candyItem {
+  padding: 25px;
+}

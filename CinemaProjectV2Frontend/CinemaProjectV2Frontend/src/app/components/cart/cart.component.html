@@ -1,8 +1,8 @@
 <main>
   <div class="cartItems">
     <h1>Indkøbskurv</h1>
-    <div class="cartParent" *ngIf="cart.movieTimeID != 0">
-      <div class="cartList">
+    <div class="cartParent">
+      <div *ngIf="cart.movieTimeID != 0" class="cartList">
         <div class="movieInfo w70p">
           <div class="movieImage">
             <img
@@ -19,15 +19,29 @@
             <div class="movieDescription"></div>
           </div>
         </div>
-        <div *ngIf></div>
         <div class="seatList w25p">
-          <h3>Sæder i kurv:</h3>
+          <h2>Sæder i kurv:</h2>
 
           <div *ngFor="let seat of cart.seats">
             <div class="seatListDiv">
               {{ seat.seatNumber }} {{ seat.seatRowLetter }}
-              <button class="removeButton" (click)="removeSeat(seat)">X</button>
+              <button class="btn btn-danger" (click)="removeSeat(seat)">
+                X
+              </button>
             </div>
+          </div>
+        </div>
+        <div *ngIf="cart.candyShops.length > 0">
+          <h2>Slik i kurv:</h2>
+
+          <div *ngFor="let candy of cart.candyShops">
+            <img src="{{ candy.candyShopImageURL }}" width="100" />
+            <h3>{{ candy.candyShopName }}</h3>
+            <p>{{ candy.candyShopPrice }}</p>
+            <button class="btn btn-danger" (click)="removeCandy(candy)">
+              X
+            </button>
+            <hr />
           </div>
         </div>
       </div>

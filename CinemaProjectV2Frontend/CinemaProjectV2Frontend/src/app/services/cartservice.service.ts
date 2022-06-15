@@ -27,8 +27,8 @@ export class CartserviceService {
   addSeatsToOrder(seat: ISeat[]) {
     seat.forEach((seat) => this.order.seats.push(seat));
   }
-  addCandyShopToOrder(candyShop: ICandyShop[]) {
-    candyShop.forEach((candyShop) => this.order.candyShops.push(candyShop));
+  addCandyShopToOrder(candyShop: ICandyShop) {
+    this.order.candyShops.push(candyShop);
   }
   /* addMerchandiseToOrder(merchandise: IMerchandise[]) {
     merchandise.forEach((merchandise) =>

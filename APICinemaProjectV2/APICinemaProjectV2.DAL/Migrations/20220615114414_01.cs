@@ -27,6 +27,7 @@ namespace APICinemaProjectV2.DAL.Migrations
                     CandyShopID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CandyShopName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CandyShopImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CandyShopPrice = table.Column<int>(type: "int", nullable: false),
                     CandyShopType = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
