@@ -13,6 +13,7 @@ import { BookMovieTimeComponent } from './components/book-movie-time/book-movie-
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CandyShopComponent } from './components/candy-shop/candy-shop.component';
+import { CreateCandyShopComponent } from './components/create-candy-shop/create-candy-shop.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { CandyShopComponent } from './components/candy-shop/candy-shop.component
     CartComponent,
     CheckoutComponent,
     CandyShopComponent,
+    CreateCandyShopComponent,
   ],
 
   imports: [
