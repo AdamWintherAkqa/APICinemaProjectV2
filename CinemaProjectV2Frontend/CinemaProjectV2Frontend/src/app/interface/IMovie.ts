@@ -19,13 +19,12 @@ export default interface IMovie {
   movieName: string;
   moviePlayTime: number;
   movieReleaseDate: Date;
-  movieDescription: string;
+  // movieDescription: string;
   movieAgeLimit: number;
   instructorID: number;
-  instructor: IInstructor,
+  instructor?: IInstructor;
   movieIsChosen: boolean;
   movieImageURL: string;
   genre: IGenre;
-  actors: IActor[];
-
+  actors: IActor;
 }

@@ -18,7 +18,7 @@ namespace APICinemaProject2.DAL.Database
         {
 
 
-            optionsBuilder.UseSqlServer(@"Server=EGC29749\H2SQLSOMMER;Database=CinemaProject;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-R8OLBMM;Database=CinemaProject;Trusted_Connection=True;");
 
         }
         public DbSet<Actor> Actors { get; set; }

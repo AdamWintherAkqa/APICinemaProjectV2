@@ -271,5 +271,32 @@ namespace APICinemaProjectV2.Controllers
                 return (ActionResult)BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("PostAndPutMovie")]
+
+        public async Task<IActionResult> PostAndPutMovie(Movie movie)
+        {
+            if (movie == null)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                var response = await context.CreateMovie(movie); 
+                if (response != null)
+                {
+                    return Ok(response);
+                }
+                else
+                {
+                    return NotFound(response);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)BadRequest(ex.Message);
+            }
+        }
     }
 }

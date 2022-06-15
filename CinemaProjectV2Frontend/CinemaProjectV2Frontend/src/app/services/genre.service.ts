@@ -14,7 +14,7 @@ const httpOptions = {
 })
 
 export class GenreService {
-  baseUrl = 'https://localhost:5001/api/Genres';
+  baseUrl = 'https://localhost:44324/api/Genres';
   constructor(private http: HttpClient) {} //DI
 
   getAllGenres(): Observable<IGenre[]> {

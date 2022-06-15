@@ -1,54 +1,36 @@
-.addGenreButton{
+.addGenreButton {
   width: 500px;
   margin-left: 35%;
   height: 50px;
 }
 
-#genreName{
-
+#genreName {
   width: 500px;
   height: 50px;
   margin-left: 35%;
   margin-top: 5%;
-
 }
 
-.listsOfGenres{
+.listsOfGenres {
   margin-left: 44%;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  }
-
-  .existingGenres{
+.existingGenres {
   margin-left: 38%;
   margin-top: 5%;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 40px;
+}
+.deleteButton {
+  height: 50px;
+  width: 150px;
 
+  background-color: red;
+}
 
-  }
-  .deleteButton{
-    height: 50px;
-    width: 150px;
-    float: left;
-    background-color: red;
-
-
-  }
-
-  .addEditButton{
-    width: 150px;
-    height: 50px;
-    color: black;
-    
-
-
-
-
-
-  }
-
-
-
-
-
+.addEditButton {
+  width: 150px;
+  height: 50px;
+  color: black;
+}

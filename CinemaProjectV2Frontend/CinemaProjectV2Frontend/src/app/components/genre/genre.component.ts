@@ -10,37 +10,33 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-genre',
   templateUrl: './genre.component.html',
-  styleUrls: ['./genre.component.css']
+  styleUrls: ['./genre.component.css'],
 })
 export class GenreComponent implements OnInit {
-
-  constructor(private genreService : GenreService) { }
+  constructor(private genreService: GenreService) {}
 
   genreList: IGenre[];
   checked = false;
 
-
   ngOnInit(): void {
-   this.getGenres();
+    this.getGenres();
+  }
 
-
-    }
-
-
-
-
-    genreForm = new FormGroup({
-    genreName: new FormControl('')
-  })
+  genreForm = new FormGroup({
+    genreName: new FormControl(''),
+  });
   getGenres(): void {
     this.genreList = [];
-    this.genreService.getAllGenres().subscribe((data) => { this.genreList = data; });
+    this.genreService.getAllGenres().subscribe((data) => {
+      this.genreList = data;
+    });
   }
   isEditEnable: boolean = false;
   updateGenre() {
-  this.isEditEnable = !this.isEditEnable;
+    this.isEditEnable = !this.isEditEnable;
+    this.genreService.updateGenre(this.genreForm.value).subscribe();
+    this.genreList = [...this.genreList, this.genreForm.value];
   }
-
 
   createGenre(): void {
     this.genreForm.value.isAlive = this.checked;
@@ -51,26 +47,11 @@ export class GenreComponent implements OnInit {
     this.getGenres();
   }
 
-  deleteGenre(genre: IGenre)
-  {
-    this.genreService.deleteGenre(genre)
-      .subscribe(response =>
-        {
-        this.genreList = this.genreList.filter(item => item.genreID !== genre.genreID);
-        }
-
-        );
-
-
-
+  deleteGenre(genre: IGenre) {
+    this.genreService.deleteGenre(genre).subscribe((response) => {
+      this.genreList = this.genreList.filter(
+        (item) => item.genreID !== genre.genreID
+      );
+    });
   }
-
-
-
-
-
-
 }
-
-
-

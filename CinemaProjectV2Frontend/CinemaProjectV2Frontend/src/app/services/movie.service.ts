@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class MovieService {
   //Husk at tjekke swaggers url
-  baseUrl = 'https://localhost:5001/api/Movies';
+  baseUrl = 'https://localhost:44324/api/Movies';
   constructor(private http: HttpClient) {} //DI
 
   getAllMovies(): Observable<IMovie[]> {
@@ -23,6 +23,10 @@ export class MovieService {
   }
   getMoviesAndActors(): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetMoviesAndActors`);
+  }
+
+  postAndPutMovie(movie: IMovie): Observable<IMovie> {
+    return this.http.post<IMovie>(`${this.baseUrl}/PostAndPutMovie`, movie);
   }
 
   getMoviesFrontPage(): Observable<IMovie[]> {

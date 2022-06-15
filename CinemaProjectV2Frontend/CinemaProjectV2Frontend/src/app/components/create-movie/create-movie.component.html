@@ -26,13 +26,13 @@
           </svg>
           </a>
 
-<!--
+
           <div class="col-md-5 dropDownMenu">
-          <select name = genre class="form-control" id="dropDownMenu3"  formControlName="genre">
+          <select name = genre class="form-control" id="dropDownMenu3"  formControlName="genreID">
             <option *ngFor="let genre of genreList" [value]="genre.genreID"> {{ genre.genreName }}</option>
             <option value="">Genre</option>
           </select>
-          </div> -->
+          </div>
 
 
 
@@ -49,7 +49,7 @@
         <div class="col-md-5 dropDownMenu">
         <select name = instructor class="form-control" formControlName="instructorID" id = "dropDownMenu3">
           <option *ngFor="let instructor of instructorList"  [value]="instructor.instructorID"> {{ instructor.instructorName }}</option>
-          <option value="">Instruktør</option>
+          <option value="">Vælg instruktør</option>
         </select>
         </div>
 
@@ -64,12 +64,12 @@
         </svg>
       </a>
 
-      <!-- <div class="col-md-5 dropDownMenu">
-        <select name = actor class="form-control" formControlName="actors" id="dropDownMenu3">
+      <div class="col-md-5 dropDownMenu">
+        <select name = actor class="form-control" formControlName="actorID" id="dropDownMenu3">
           <option *ngFor="let actor of actorList"  [value]="actor.actorID"> {{ actor.actorName }}</option>
-          <option value="">Skuespiller</option>
+          <option value="">Vælg skuespiller</option>
         </select>
-        </div> -->
+        </div>
 
 
 
@@ -82,7 +82,7 @@
 
   </select>
 
-  <button class="w-45 btn btn-primary btn-lg addMovieButton" type="submit"(click)="createMovie()">Tilføj</button>
+  <button class="w-45 btn btn-primary btn-lg addMovieButton" type="submit"(click)="postAndPutMovie()">Tilføj</button>
 
 </div>
   </div>
