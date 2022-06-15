@@ -20,7 +20,7 @@ namespace APICinemaProjectV2.Controllers
 
         // GET: api/Movies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+        public async Task<IActionResult> GetMovies()
         {
             try
             {
