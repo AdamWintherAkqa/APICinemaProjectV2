@@ -19,6 +19,7 @@ namespace APICinemaProjectV2.DAL.Repositories
         Task<Movie> UpdateMovie(Movie movie);
         Task<List<Movie>> GetMoviesFrontPage();
         Task<Movie> GetEntireMovie(int id);
+        Task<Movie> PostAndPutMovie(Movie movie);
     }
     public class MovieRepository : IMovieRepository
     {
@@ -113,80 +114,70 @@ namespace APICinemaProjectV2.DAL.Repositories
             return update;
 
         }
-        public async Task<Movie>PostAndPutMovie(Movie movie)
+        public async Task<Movie> PostAndPutMovie(Movie movie)
         {
-             Movie movieToPost = new()
+            Movie movieToPost = new()
             {
-                MovieID = movie.MovieID,
+                MovieAgeLimit = movie.MovieAgeLimit,
+                MovieImageURL = movie.MovieImageURL,
+                MovieIsChosen = movie.MovieIsChosen,
                 MovieName = movie.MovieName,
                 MoviePlayTime = movie.MoviePlayTime,
-                MovieReleaseDate = movie.MovieReleaseDate,
-                MovieAgeLimit = movie.MovieAgeLimit,
-                MovieIsChosen = movie.MovieIsChosen,
-                MovieImageURL = movie.MovieImageURL
-        };
+                MovieReleaseDate = movie.MovieReleaseDate
+            };
 
-        List<Genre> genres = new List<Genre>(); //Seat
-        List<Actor> actors = new List<Actor>(); //CandyShop
-       
-
-            foreach (var genre in movie.Genre)
-            {
-                Genre genreToPost = new Genre()
-                {
-                    GenreID = genre.GenreID,
-                    GenreName = genre.GenreName,
-                };
-                genres.Add(genreToPost);
-            }
+            List<Actor> actors = new List<Actor>();
+            List<Genre> genres = new List<Genre>();
 
             foreach (var actor in movie.Actors)
             {
                 Actor actorToPost = new Actor()
                 {
                     ActorID = actor.ActorID,
-                    ActorName = actor.ActorName,
+                    ActorName = actor.ActorName
                 };
-
                 actors.Add(actorToPost);
             }
 
-//Seat seat = new Seat()
-//{
-//    HallID = order.Seats
-//    SeatNumber = 10,
-//    SeatRowLetter = "A",
-//};
+            foreach (var genre in movie.Genre)
+            {
+                Genre genreToPost = new Genre()
+                {
+                    GenreID = genre.GenreID,
+                    GenreName = genre.GenreName
+                };
+                genres.Add(genreToPost);
+            }
 
+            var postedMovie = context.Movies.Add(movieToPost);
+            await context.SaveChangesAsync();
 
-        var postedOrder = context.Movies.Add(movieToPost);
-        await context.SaveChangesAsync();
+            Movie movieToUpdate = context.Movies
+                .Include(movie => movie.Genre)
+                .Include(movie => movie.Actors)
+                .FirstOrDefault((movieObj) => movieObj.MovieID == movieToPost.MovieID);
 
-        Movie movieToUpdate = context.Movies     
-        .Include(movie => movie.Genre)
-        .Include(movie => movie.Actors)      
-        .FirstOrDefault((movieObj) => movieObj.MovieID == movieToPost.MovieID);
+            if (movieToUpdate != null)
+            {
+                movieToUpdate.Actors = movie.Actors;
+                movieToUpdate.Genre = movie.Genre;
+                movieToUpdate.InstructorID = movie.InstructorID;
 
-        if (movieToUpdate != null)
-        {
-         movieToUpdate.Actors = actors;
-         movieToUpdate.Genre = movie.Genre;  
+                var result = await context.SaveChangesAsync();
 
-            var result = await context.SaveChangesAsync();
-
-                 if (result != 0)
-                 {
-                     return movieToUpdate;
-                 }
-                else
-                 {
-                     return null;
-                 }
+                if (result != 0)
+                {
+                    return movieToUpdate;
                 }
                 else
                 {
                     return null;
-                 }
+                }
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

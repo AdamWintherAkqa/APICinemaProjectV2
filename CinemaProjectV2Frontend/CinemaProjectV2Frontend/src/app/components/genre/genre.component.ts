@@ -6,6 +6,7 @@ import IGenre from 'src/app/interface/IGenre';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-genre',
@@ -13,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./genre.component.css'],
 })
 export class GenreComponent implements OnInit {
-  constructor(private genreService: GenreService) {}
+  constructor(private genreService: GenreService, private dataService: DataService) {}
 
   genreList: IGenre[];
   checked = false;
@@ -67,5 +68,9 @@ export class GenreComponent implements OnInit {
         (item) => item.genreID !== genre.genreID
       );
     });
+  }
+
+  passGenre(genre: IGenre) {
+    this.dataService.choosenGenre = genre;
   }
 }

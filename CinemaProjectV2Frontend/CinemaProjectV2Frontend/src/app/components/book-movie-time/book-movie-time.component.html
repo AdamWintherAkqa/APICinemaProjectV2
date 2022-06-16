@@ -15,11 +15,13 @@
   <div class="cartArea">
     <h3>Indkøbskurv</h3>
     <div *ngFor="let seat of chosenSeats">
-      <button (click)="removeSeatFromChosen(seat)">X</button>
+      <button class="btn btn-secondary" (click)="removeSeatFromChosen(seat)">
+        X
+      </button>
       {{ seat.seatNumber }} {{ seat.seatRowLetter }}
     </div>
     <div *ngIf="chosenSeats.length > 0">
-      <button class="green" (click)="addToCart()">
+      <button class="btn btn-success" (click)="addToCart()">
         Tilføj til indkøbskurv
       </button>
     </div>
