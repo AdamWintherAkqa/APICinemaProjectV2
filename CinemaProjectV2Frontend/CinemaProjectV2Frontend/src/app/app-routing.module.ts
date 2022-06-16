@@ -20,17 +20,23 @@ const routes: Routes = [
   // { path: 'film', component: FilmComponent },
   { path: 'booking', component: BookingComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'create-movie', component: CreateMovieComponent },
+  { path: 'admin/create-movie', component: CreateMovieComponent },
   { path: 'booking/bookmovietime', component: BookMovieTimeComponent },
   { path: 'cart', component: CartComponent },
   { path: 'cart/checkout', component: CheckoutComponent },
   { path: 'candyshop', component: CandyShopComponent },
-  { path: 'createcandyshop', component: CreateCandyShopComponent },
-  { path: 'createcandyshop/editcandyshop', component: EditCandyShopComponent },
+  { path: 'admin/createcandyshop', component: CreateCandyShopComponent },
+  {
+    path: 'admin/createcandyshop/editcandyshop',
+    component: EditCandyShopComponent,
+  },
+  { path: 'admin/create-movie/create-genre', component: GenreComponent },
+  { path: 'admin/create-movie/create-actor', component: ActorComponent },
+  {
+    path: 'admin/create-movie/create-instructor',
+    component: InstructorComponent,
+  },
   { path: '**', redirectTo: '' },
-  { path: 'create-genre', component: GenreComponent},
-  { path: 'create-actor', component: ActorComponent},
-  { path: 'create-instructor', component: InstructorComponent}
 ];
 
 @NgModule({
