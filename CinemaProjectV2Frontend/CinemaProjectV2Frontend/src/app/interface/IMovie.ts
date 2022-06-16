@@ -25,6 +25,6 @@ export default interface IMovie {
   instructor?: IInstructor;
   movieIsChosen: boolean;
   movieImageURL: string;
-  genre: IGenre;
-  actors: IActor;
+  genre: IGenre[];
+  actors: IActor[];
 }

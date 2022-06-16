@@ -96,7 +96,7 @@ export class CreateMovieComponent implements OnInit {
       .subscribe((data) => {
         this.chosenGenre = data;
         console.log(this.chosenGenre);
-        this.postMovie.genre = this.chosenGenre;
+        // this.postMovie.genre = this.chosenGenre;
         console.log('Her er movie', this.postMovie);
       });
     this.actorService
@@ -104,7 +104,7 @@ export class CreateMovieComponent implements OnInit {
       .subscribe((data) => {
         this.chosenActor = data;
         console.log(this.chosenActor);
-        this.postMovie.actors = this.chosenActor;
+        // this.postMovie.actors = this.chosenActor;
         console.log('Her er movie', this.postMovie);
       });
 
@@ -118,12 +118,12 @@ export class CreateMovieComponent implements OnInit {
       movieReleaseDate: this.movieToBePosted.movieReleaseDate,
       instructorID: this.movieToBePosted.instructorID,
 
-      actors: this.chosenActor,
-      genre: this.chosenGenre,
+      actors: ([] = []),
+      genre: ([] = []),
     };
 
-    // this.postMovie.actors = this.chosenActor;
-    // this.postMovie.genre = this.chosenGenre;
+    this.postMovie.actors.push(this.chosenActor);
+    this.postMovie.genre.push(this.chosenGenre);
     console.log('Her er movie', this.postMovie);
 
     this.movieService.postAndPutMovie(this.postMovie).subscribe((data) => {

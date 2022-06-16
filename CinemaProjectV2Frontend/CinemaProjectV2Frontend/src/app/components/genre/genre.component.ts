@@ -17,6 +17,7 @@ export class GenreComponent implements OnInit {
 
   genreList: IGenre[];
   checked = false;
+  updatedGenre: IGenre;
 
   ngOnInit(): void {
     this.getGenres();
@@ -25,17 +26,16 @@ export class GenreComponent implements OnInit {
   genreForm = new FormGroup({
     genreName: new FormControl(''),
   });
+
+  updateForm = new FormGroup({
+    updateGenre: new FormControl(''),
+  });
+
   getGenres(): void {
     this.genreList = [];
     this.genreService.getAllGenres().subscribe((data) => {
       this.genreList = data;
     });
-  }
-  isEditEnable: boolean = false;
-  updateGenre() {
-    this.isEditEnable = !this.isEditEnable;
-    this.genreService.updateGenre(this.genreForm.value).subscribe();
-    this.genreList = [...this.genreList, this.genreForm.value];
   }
 
   createGenre(): void {
@@ -45,6 +45,20 @@ export class GenreComponent implements OnInit {
 
     this.genreList = [...this.genreList, this.genreForm.value];
     this.getGenres();
+  }
+
+  isEditEnable: boolean = false;
+  onEdit() {
+    this.isEditEnable = !this.isEditEnable;
+  }
+
+  updateGenre(genre: IGenre) {
+    console.log('her er genre', genre);
+    this.updatedGenre.genreID = genre.genreID;
+    this.updatedGenre.genreName = this.updateForm.value;
+    this.genreService.updateGenre(this.updatedGenre).subscribe((response) => {
+      console.log(Response);
+    });
   }
 
   deleteGenre(genre: IGenre) {
