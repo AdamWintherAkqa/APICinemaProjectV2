@@ -13,12 +13,13 @@
     >
       Delete
     </button>
-    <button
-      (click)="onEdit()"
+    <a
+      routerLink="edit-genre"
+      (click)="passGenre(genre)"
       class="w-45 btn btn-primary btn-lg addEditButton"
     >
       Rediger
-    </button>
+    </a>
     <div *ngIf="isEditEnable">
       <form [formGroup]="updateForm">
         <input formControlName="updateGenre" type="text" id="updateGenreID" />

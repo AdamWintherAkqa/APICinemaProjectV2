@@ -19,6 +19,8 @@ import { EditCandyShopComponent } from './components/edit-candy-shop/edit-candy-
 import { GenreComponent } from './components/genre/genre.component';
 import { ActorComponent } from './components/actor/actor.component';
 import { InstructorComponent } from './components/create-instructor/create-instructor.component';
+import { EditGenreComponent } from './components/edit-genre/edit-genre.component';
+import { MerchandiseComponent } from './components/merchandise/merchandise.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { InstructorComponent } from './components/create-instructor/create-instr
     EditCandyShopComponent,
     GenreComponent,
     InstructorComponent,
-    ActorComponent
+    ActorComponent,
+    EditGenreComponent,
+    MerchandiseComponent
   ],
 
   imports: [

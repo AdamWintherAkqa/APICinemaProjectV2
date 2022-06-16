@@ -1,0 +1,19 @@
+<main>
+  <form [formGroup]="editGenreForm">
+    <h2>Rediger Genre</h2>
+    <div>
+      <label for="genreName">Genre Navn</label>
+    </div>
+    <div>
+      <input
+        name="genreName"
+        type="text"
+        formControlName="genreName"
+        class="formInput"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="updateGenre()">
+      Gem
+    </button>
+  </form>
+</main>
