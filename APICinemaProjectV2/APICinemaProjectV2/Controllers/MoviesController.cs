@@ -282,7 +282,7 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
-                var response = await context.CreateMovie(movie); 
+                var response = await context.PostAndPutMovie(movie); 
                 if (response != null)
                 {
                     return Ok(response);
