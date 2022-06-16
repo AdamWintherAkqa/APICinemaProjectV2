@@ -1,0 +1,33 @@
+<main>
+  <div *ngIf="cart.movieTimeID != 0">
+    <div class="loginForm">
+      <form [formGroup]="postOrderForm">
+        <div>
+          <label for="email">E-Mail:</label>
+        </div>
+        <div>
+          <input
+            name="email"
+            type="text"
+            formControlName="email"
+            class="formInput"
+          />
+        </div>
+        <div>
+          <label for="password">Adgangskode:</label>
+        </div>
+        <div>
+          <input
+            name="password"
+            type="password"
+            formControlName="password"
+            class="formInput"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="loginUser()">
+          Log ind
+        </button>
+      </form>
+    </div>
+  </div>
+</main>

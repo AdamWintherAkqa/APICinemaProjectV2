@@ -1,0 +1,24 @@
+<main>
+  <div class="ShopList">
+    <div class="candyItem" *ngFor="let candy of candyShopList">
+      <div class="candyListDiv">
+        <div class="candyListImg">
+          <img
+            src="{{ candy.candyShopImageURL }}"
+            alt="{{ candy.candyShopName }}"
+            class="subPicture1"
+            width="100"
+          />
+          <h3>{{ candy.candyShopName }}</h3>
+          <p>{{ candy.candyShopPrice }} kr.</p>
+          <button class="btn btn-primary" (click)="addCandyToCart(candy)">
+            Tilføj til kurv
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cartArea">
+    <div *ngFor=""></div>
+  </div>
+</main>

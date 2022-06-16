@@ -9,16 +9,26 @@ import ICandyShop from '../interface/ICandyShop';
 })
 export class CartserviceService {
   constructor() {}
-  order: IOrder;
+  order: IOrder = {
+    orderID: 0,
+    ageCheck: false,
+    orderDate: new Date(),
+    movieTimeID: 0,
+    seats: [],
+    candyShops: [],
+    //merchandise: [],
+    customerID: 0,
+  };
 
   addMovieTimeToOrder(movieTimeID: number) {
+    console.log(movieTimeID);
     this.order.movieTimeID = movieTimeID;
   }
   addSeatsToOrder(seat: ISeat[]) {
     seat.forEach((seat) => this.order.seats.push(seat));
   }
-  addCandyShopToOrder(candyShop: ICandyShop[]) {
-    candyShop.forEach((candyShop) => this.order.candyShops.push(candyShop));
+  addCandyShopToOrder(candyShop: ICandyShop) {
+    this.order.candyShops.push(candyShop);
   }
   /* addMerchandiseToOrder(merchandise: IMerchandise[]) {
     merchandise.forEach((merchandise) =>
@@ -28,8 +38,30 @@ export class CartserviceService {
   addCustomerToOrder(customerID: number) {
     this.order.customerID = customerID;
   }
+  removeSeatsFromOrder(seat: ISeat) {
+    this.order.seats = this.order.seats.filter((x) => x != seat);
+  }
+  removeCandyShopFromOrder(candyShop: ICandyShop) {
+    this.order.candyShops = this.order.candyShops.filter((x) => x != candyShop);
+  }
+  /* removeMerchandiseFromOrder(merchandise: IMerchandise) {
+    this.order.merchandise = this.order.merchandise.filter(
+      (x) => x != merchandise
+    );
+  } */
 
-  getOrder() {
+  setOrderDate() {
+    this.order.orderDate = new Date();
+  }
+
+  clearCart() {
+    this.order.movieTimeID = 0;
+    this.order.seats = [];
+    this.order.candyShops = [];
+    //this.order.merchandise = [];
+  }
+
+  getCart() {
     return this.order;
   }
 }

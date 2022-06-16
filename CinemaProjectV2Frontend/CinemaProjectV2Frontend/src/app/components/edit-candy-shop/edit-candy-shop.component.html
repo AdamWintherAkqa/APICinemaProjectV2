@@ -1,0 +1,52 @@
+<main>
+  <form [formGroup]="editCandyShopForm">
+    <h2>Tilføj Slik</h2>
+    <div>
+      <label for="candyShopName">Candy Shop Navn</label>
+    </div>
+    <div>
+      <input
+        name="candyShopName"
+        type="text"
+        formControlName="candyShopName"
+        class="formInput"
+      />
+    </div>
+    <div>
+      <label for="candyShopImageURL">Candy Shop Billede URL</label>
+    </div>
+    <div>
+      <input
+        name="candyShopImageURL"
+        type="text"
+        formControlName="candyShopImageURL"
+        class="formInput"
+      />
+    </div>
+    <div>
+      <label for="candyShopPrice">Candy Shop Pris</label>
+    </div>
+    <div>
+      <input
+        name="candyShopPrice"
+        type="text"
+        formControlName="candyShopPrice"
+        class="formInput"
+      />
+    </div>
+    <div>
+      <label for="candyShopType">Candy Shop Type</label>
+    </div>
+    <div>
+      <input
+        name="candyShopType"
+        type="text"
+        formControlName="candyShopType"
+        class="formInput"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="editCandyShop()">
+      Rediger Slik
+    </button>
+  </form>
+</main>

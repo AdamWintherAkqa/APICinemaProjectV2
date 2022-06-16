@@ -20,7 +20,7 @@ namespace APICinemaProjectV2.Controllers
 
         // GET: api/Halls
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Hall>>> GetHalls()
+        public async Task<IActionResult> GetHalls()
         {
             try
             {

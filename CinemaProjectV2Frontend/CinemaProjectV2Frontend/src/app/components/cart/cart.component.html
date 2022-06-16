@@ -1,0 +1,126 @@
+<main>
+  <div class="cartItems">
+    <h1>Indkøbskurv</h1>
+    <div class="cartParent">
+      <div *ngIf="cart.movieTimeID != 0" class="cartList">
+        <div class="movieInfo w70p">
+          <div class="movieImage">
+            <img
+              src="{{ movie.movieImageURL }}"
+              alt="{{ movie.movieName }}"
+              class="subPicture1"
+              width="100"
+            />
+          </div>
+          <div class="movieText">
+            <div class="movieName">
+              <h2>{{ movie.movieName }}</h2>
+            </div>
+            <div class="movieDescription"></div>
+          </div>
+        </div>
+        <div class="seatList w25p">
+          <h2>Sæder i kurv:</h2>
+
+          <div *ngFor="let seat of cart.seats">
+            <div class="seatListDiv">
+              {{ seat.seatNumber }} {{ seat.seatRowLetter }}
+              <button class="btn btn-danger" (click)="removeSeat(seat)">
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="cart.candyShops.length > 0">
+          <h2>Slik i kurv:</h2>
+
+          <div *ngFor="let candy of cart.candyShops">
+            <img src="{{ candy.candyShopImageURL }}" width="100" />
+            <h3>{{ candy.candyShopName }}</h3>
+            <p>{{ candy.candyShopPrice }}</p>
+            <button class="btn btn-danger" (click)="removeCandy(candy)">
+              X
+            </button>
+            <hr />
+          </div>
+        </div>
+      </div>
+      <div class="cartArea">
+        <h2>Opret som bruger:</h2>
+        <div class="cartForm">
+          <form [formGroup]="checkoutForm">
+            <div>
+              <label for="name">Fulde navn</label>
+            </div>
+            <div>
+              <input
+                name="name"
+                type="text"
+                formControlName="customerName"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="email">E-Mail</label>
+            </div>
+            <div>
+              <input
+                name="email"
+                type="text"
+                formControlName="customerEmail"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="gender">Køn (Check for mand)</label>
+            </div>
+            <div>
+              <input
+                name="gender"
+                type="checkbox"
+                formControlName="customerGender"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="password">Adgangskode</label>
+            </div>
+            <div>
+              <input
+                name="password"
+                type="password"
+                formControlName="customerPassword"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="vip">VIP</label>
+            </div>
+            <div>
+              <input
+                name="vip"
+                type="checkbox"
+                formControlName="customerIsVIP"
+                class="formInput"
+              />
+            </div>
+            <div>
+              <label for="terms">Terms of Service:</label>
+            </div>
+            <div>
+              <input type="checkbox" required />
+            </div>
+            <div>
+              <input
+                type="submit"
+                (click)="createCustomer()"
+                value="Opret bruger"
+              />
+            </div>
+          </form>
+        </div>
+        <a routerLink="checkout">Betal:</a>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,20 +1,27 @@
 .seatListDiv {
   display: inline-block;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 25%;
+  text-align: center;
+  width: 150px;
   height: 100%;
   padding: 20px;
   margin: 20px;
   border-radius: 15px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
   cursor: pointer;
 }
 
-.success {
+.seatsList {
+  float: left;
+  width: 70%;
+}
+
+/* .success {
   background-color: green;
 }
 
 .danger {
   background-color: red;
 }
+ */

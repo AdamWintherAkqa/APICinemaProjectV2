@@ -73,6 +73,56 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
+        [HttpGet("GetCustomerByEmail/{email}")]
+        public async Task<ActionResult<Customer>> GetCustomerByEmail(string email)
+        {
+            if (email == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var customer = context.GetCustomerByEmail(email);
+
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+
+                return await customer;
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("GetCustomerByEmailAndPassword/{email}/{password}")]
+        public async Task<ActionResult<Customer>> GetCustomerByEmailAndPassword(string email, string password)
+        {
+            if (email == null || password == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var customer = context.GetCustomerByEmailAndPassword(email, password);
+
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+
+                return await customer;
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)BadRequest(ex.Message);
+            }
+        }
+
         // PUT: api/Customers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -119,6 +169,17 @@ namespace APICinemaProjectV2.Controllers
             }
             try
             {
+                List<Customer> customers = await context.GetAllCustomers();
+
+                foreach (var cust in customers)
+                {
+                    if (customer.CustomerEmail == cust.CustomerEmail)
+                    {
+                        return BadRequest("Duplicate Email");
+                    }
+                }
+
+
                 await context.CreateCustomer(customer);
 
                 return customer;

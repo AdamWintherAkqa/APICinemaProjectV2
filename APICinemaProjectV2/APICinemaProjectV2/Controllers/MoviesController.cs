@@ -20,7 +20,7 @@ namespace APICinemaProjectV2.Controllers
 
         // GET: api/Movies
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+        public async Task<IActionResult> GetMovies()
         {
             try
             {
@@ -49,7 +49,7 @@ namespace APICinemaProjectV2.Controllers
 
         // GET: api/Movies/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> GetMovie(int id)
+        public async Task<IActionResult> GetMovie(int id)
         {
             if (id == 0)
             {
@@ -58,14 +58,14 @@ namespace APICinemaProjectV2.Controllers
 
             try
             {
-                var movie = context.GetMovieByID(id);
+                var movie = await context.GetMovieByID(id);
 
                 if (movie == null)
                 {
                     return NotFound();
                 }
 
-                return await movie;
+                return Ok(movie);
             }
             catch (Exception ex)
             {

@@ -41,6 +41,9 @@ namespace APICinemaProjectV2.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CandyShopImageURL")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CandyShopName")
                         .HasColumnType("nvarchar(max)");
 

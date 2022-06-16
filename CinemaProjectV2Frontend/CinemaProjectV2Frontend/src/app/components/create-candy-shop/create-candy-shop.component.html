@@ -1,0 +1,70 @@
+<main>
+  <h2>Eksisterende slik:</h2>
+  <div *ngFor="let candy of candyShopList">
+    <ul>
+      <button class="btn btn-danger" (click)="deleteCandyShop(candy)">X</button>
+      <img src="{{ candy.candyShopImageURL }}" width="50" />
+      Navn:
+      {{
+        candy.candyShopName
+      }}, Pris:
+      {{
+        candy.candyShopPrice
+      }}, Type:
+      {{
+        candy.candyShopType
+      }}, BilledeURL:
+      <a routerLink="editcandyshop" (click)="passCandyShop(candy)"> Rediger </a>
+    </ul>
+  </div>
+  <form [formGroup]="createCandyShopForm">
+    <h2>Tilføj Slik</h2>
+    <div>
+      <label for="candyShopName">Candy Shop Navn</label>
+    </div>
+    <div>
+      <input
+        name="candyShopName"
+        type="text"
+        formControlName="candyShopName"
+        class="formInput"
+      />
+    </div>
+    <div>
+      <label for="candyShopImageURL">Candy Shop Billede URL</label>
+    </div>
+    <div>
+      <input
+        name="candyShopImageURL"
+        type="text"
+        formControlName="candyShopImageURL"
+        class="formInput"
+      />
+    </div>
+    <div>
+      <label for="candyShopPrice">Candy Shop Pris</label>
+    </div>
+    <div>
+      <input
+        name="candyShopPrice"
+        type="text"
+        formControlName="candyShopPrice"
+        class="formInput"
+      />
+    </div>
+    <div>
+      <label for="candyShopType">Candy Shop Type</label>
+    </div>
+    <div>
+      <input
+        name="candyShopType"
+        type="text"
+        formControlName="candyShopType"
+        class="formInput"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="createCandyShop()">
+      Opret Candy Shop
+    </button>
+  </form>
+</main>

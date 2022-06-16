@@ -3,8 +3,10 @@ import IMovie from 'src/app/interface/IMovie';
 import IMovieTime from 'src/app/interface/IMovieTime';
 import ISeat from 'src/app/interface/ISeat';
 import { SeatsService } from 'src/app/services/seats.service';
+import { OrderService } from 'src/app/services/order.service';
 import { DataService } from 'src/app/services/data.service';
 import { CartserviceService } from 'src/app/services/cartservice.service';
+import IOrder from 'src/app/interface/IOrder';
 
 @Component({
   selector: 'app-book-movie-time',
@@ -15,30 +17,80 @@ export class BookMovieTimeComponent implements OnInit {
   constructor(
     private seatsService: SeatsService,
     private dataService: DataService,
-    private cartService: CartserviceService
+    private cartService: CartserviceService,
+    private orderService: OrderService
   ) {}
   choosenMovieTime: IMovieTime = this.dataService.choosenMovieTime;
   seatsList: ISeat[] = [];
+  reservedSeatsOrder: IOrder[] = [];
+  reservedSeats: ISeat[] = [];
   chosenSeats: ISeat[] = [];
   status: boolean = false;
+  filteredSeats: ISeat[] = [];
+  cart: IOrder;
 
   ngOnInit(): void {
+    this.cart = this.cartService.getCart();
     this.seatsService
       .getSeatsWhereHallID(this.choosenMovieTime.hallID)
       .subscribe((data) => {
         this.seatsList = data;
+        this.orderService
+          .getOrdersWhereMovieTimeID(this.choosenMovieTime.movieTimeID)
+          .subscribe((data) => {
+            this.reservedSeatsOrder = data;
+            this.checkReservedSeats();
+            console.log('reserved seats: ', this.reservedSeats);
+          });
         console.log('seatsList: ', this.seatsList);
       });
   }
 
+  checkReservedSeats() {
+    if (this.reservedSeatsOrder != null) {
+      this.pushReservedSeats();
+      this.filterSeatsList();
+    }
+  }
+
+  filterSeatsList() {
+    console.log('seatsList before: ', this.seatsList);
+    this.reservedSeats.forEach((seat) => {
+      this.seatsList = this.seatsList.filter((x) => x.seatID != seat.seatID);
+      console.log('seatsList after: ', this.seatsList);
+    });
+    this.filteredSeats = this.seatsList;
+    console.log('filtered seats: ', this.filteredSeats);
+  }
+
+  pushReservedSeats() {
+    this.reservedSeatsOrder.forEach((order) => {
+      order.seats.forEach((seat) => {
+        this.reservedSeats.push(seat);
+      });
+    });
+    console.log('reserved seats: ', this.reservedSeats);
+  }
+
   addSeatToChosen(seat: ISeat) {
-    this.chosenSeats.push(seat);
+    if (this.chosenSeats.includes(seat)) {
+      this.chosenSeats = this.chosenSeats.filter((x) => x != seat);
+    } else {
+      this.chosenSeats.push(seat);
+    }
+    //this.status = !this.status;
+    // this.chosenSeats.push(seat);
     console.log('Chosen seats:', this.chosenSeats);
-    this.status = !this.status;
   }
 
   addToCart() {
+    console.log('movietimeID: ', this.choosenMovieTime.movieTimeID);
     this.cartService.addMovieTimeToOrder(this.choosenMovieTime.movieTimeID);
     this.cartService.addSeatsToOrder(this.chosenSeats);
+  }
+
+  removeSeatFromChosen(seat: ISeat) {
+    this.chosenSeats = this.chosenSeats.filter((x) => x != seat);
+    console.log('Chosen seats:', this.chosenSeats);
   }
 }

@@ -42,7 +42,7 @@ namespace APICinemaProject2.DAL.Repositories
         public async Task<List<Seat>> GetSeatsWhereHallID(int id)
         {
             return await context.Seats
-                .Where(seat => seat.HallID == id).ToListAsync();
+                .Where(seat => seat.HallID == id).Include(seat => seat.Orders).ToListAsync();
         }
         public async Task<Seat> CreateSeat(Seat seat)
         {

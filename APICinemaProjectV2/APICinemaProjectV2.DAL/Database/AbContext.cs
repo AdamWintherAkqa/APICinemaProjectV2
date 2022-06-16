@@ -14,12 +14,11 @@ namespace APICinemaProject2.DAL.Database
         //EGC29749\H2SQLSOMMER -- Nicky 1
         //DESKTOP-R8OLBMM - Nicky 2
 
+        //Skal udkommenteres for at repo unit tests skal virke
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
-
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-R8OLBMM;Database=CinemaProject;Trusted_Connection=True;");
-
+            optionsBuilder.UseSqlServer(@"Server=CPH00151\MSSQLSERVER01;Database=CinemaProject;Trusted_Connection=True;");
         }
         public DbSet<Actor> Actors { get; set; }
         public DbSet<CandyShop> CandyShops { get; set; }

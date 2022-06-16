@@ -44,3 +44,39 @@
   font-size: 20px;
   color: white;
 }
+
+.cartArea {
+  float: right;
+  width: 25%;
+}
+
+.green {
+  background-color: green;
+}
+
+.w70p {
+  width: 70%;
+}
+
+.movieInfo {
+  max-width: 90%;
+}
+
+.removeButton {
+  float: left;
+  background-color: red;
+  color: white;
+}
+
+.seatList {
+  float: left;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.seatListDiv {
+  padding: 5px;
+}
