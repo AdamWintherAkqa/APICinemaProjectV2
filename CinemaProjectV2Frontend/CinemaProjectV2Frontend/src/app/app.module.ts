@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormGroup } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CandyShopComponent } from './components/candy-shop/candy-shop.component';
 import { CreateCandyShopComponent } from './components/create-candy-shop/create-candy-shop.component';
 import { EditCandyShopComponent } from './components/edit-candy-shop/edit-candy-shop.component';
+import { GenreComponent } from './components/genre/genre.component';
+import { ActorComponent } from './components/actor/actor.component';
+import { InstructorComponent } from './components/create-instructor/create-instructor.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,9 @@ import { EditCandyShopComponent } from './components/edit-candy-shop/edit-candy-
     CandyShopComponent,
     CreateCandyShopComponent,
     EditCandyShopComponent,
+    GenreComponent,
+    InstructorComponent,
+    ActorComponent
   ],
 
   imports: [

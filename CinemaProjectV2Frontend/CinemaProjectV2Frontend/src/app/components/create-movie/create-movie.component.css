@@ -1,0 +1,71 @@
+.form-label{
+  margin-left: 90%;
+  margin-top: 20px;
+}
+
+.form-control{
+  margin-left: 90%;
+  margin-bottom: 10px;
+}
+
+
+
+
+.mb-3{
+  margin-left: 65%;
+  margin-top: 15px;
+  font-size: 25px;
+}
+
+.dropDownMenu{
+  width: 100%;
+}
+
+.checkbox{
+margin-left: 635px;
+width: 100%;
+margin-top: 12px;
+}
+
+.addMovieButton{
+
+ margin-left: 635px;
+
+}
+
+#movieDescription{
+height: 300px;
+}
+
+.addInstructor{
+
+  position:absolute;
+  margin-left: 30%;
+}
+.AddGenreButton{
+float: left;
+margin-left: 500px;
+position: absolute;
+margin-top: 5px;
+height: 20px;
+width: 30px;
+}
+.AddInstructorButton{
+  float: left;
+  margin-left: 500px;
+  position: absolute;
+  margin-top: 5px;
+  height: 20px;
+  width: 30px;
+  }
+.AddActorButton{
+    float: left;
+    margin-left: 500px;
+    position: absolute;
+    margin-top: 5px;
+    height: 20px;
+    width: 30px;
+    }
+
+
+

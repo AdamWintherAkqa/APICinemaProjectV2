@@ -11,6 +11,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CandyShopComponent } from './components/candy-shop/candy-shop.component';
 import { CreateCandyShopComponent } from './components/create-candy-shop/create-candy-shop.component';
 import { EditCandyShopComponent } from './components/edit-candy-shop/edit-candy-shop.component';
+import { GenreComponent } from './components/genre/genre.component';
+import { ActorComponent } from './components/actor/actor.component';
+import { InstructorComponent } from './components/create-instructor/create-instructor.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -25,6 +28,9 @@ const routes: Routes = [
   { path: 'createcandyshop', component: CreateCandyShopComponent },
   { path: 'createcandyshop/editcandyshop', component: EditCandyShopComponent },
   { path: '**', redirectTo: '' },
+  { path: 'create-genre', component: GenreComponent},
+  { path: 'create-actor', component: ActorComponent},
+  { path: 'create-instructor', component: InstructorComponent}
 ];
 
 @NgModule({
