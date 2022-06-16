@@ -1,0 +1,41 @@
+.addInstructorButton{
+  width: 500px;
+  margin-left: 35%;
+  height: 50px;
+}
+
+#instructorName{
+
+  width: 500px;
+  height: 50px;
+  margin-left: 35%;
+  margin-top: 5%;
+
+}
+
+.listsOfInstructors{
+  margin-left: 44%;
+  font-family:Arial, Helvetica, sans-serif;
+
+  }
+
+  .existingInstructors{
+  margin-left: 38%;
+  margin-top: 5%;
+  font-family:Arial, Helvetica, sans-serif;
+  margin-bottom: 40px;
+
+  }
+  .updateButton{
+    position:absolute;
+    margin-left: 30%;
+  }
+.StorKnap{
+height: 100px;
+width: 200px;
+}
+
+
+
+
+

@@ -1,4 +1,6 @@
 import IActor from './IActor';
+import IGenre from './IGenre';
+import IInstructor from './IInstructor';
 
 /*public int MovieID { get; set; } // PK
 public string MovieName { get; set; }
@@ -17,11 +19,12 @@ export default interface IMovie {
   movieName: string;
   moviePlayTime: number;
   movieReleaseDate: Date;
+  // movieDescription: string;
   movieAgeLimit: number;
   instructorID: number;
-  //Instructor: IInstructor;
+  instructor?: IInstructor;
   movieIsChosen: boolean;
   movieImageURL: string;
-  //Genre: IGenre[];
+  genre: IGenre[];
   actors: IActor[];
 }

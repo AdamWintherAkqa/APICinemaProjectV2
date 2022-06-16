@@ -25,6 +25,10 @@ export class MovieService {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetMoviesAndActors`);
   }
 
+  postAndPutMovie(movie: IMovie): Observable<IMovie> {
+    return this.http.post<IMovie>(`${this.baseUrl}/PostAndPutMovie`, movie);
+  }
+
   getMoviesFrontPage(): Observable<IMovie[]> {
     return this.http.get<IMovie[]>(`${this.baseUrl}/GetMoviesFrontPage`);
   }
@@ -34,6 +38,7 @@ export class MovieService {
   createMovie(movie: IMovie): Observable<IMovie> {
     return this.http.post<IMovie>(this.baseUrl, movie, httpOptions);
   }
+
   updateMovie(movie: IMovie): Observable<IMovie> {
     return this.http.put<IMovie>(
       `${this.baseUrl}/${movie.movieID}`,

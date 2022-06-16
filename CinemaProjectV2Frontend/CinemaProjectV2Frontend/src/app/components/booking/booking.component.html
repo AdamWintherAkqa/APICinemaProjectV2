@@ -12,16 +12,19 @@
         <div class="movieName">
           <h2>{{ movie.movieName }}</h2>
         </div>
-        <div class="movieDescription">{{ movie.instructorID }}</div>
+        <div class="movieDescription"></div>
       </div>
     </div>
     <div class="movieTimes">
-      <h2>Times</h2>
-      <!-- <div *ngFor="let movieTime of movieTimeList">
-        <div *ngIf="movie == movieTime.movie">
-          <p>{{ movieTime.movieTimeDate }}</p>
+      <h3>Times</h3>
+      <div>
+        {{ findMovieTime(movie.movieID) }}
+        <div class="listedMovieTimes" *ngFor="let movieTime of timeList">
+          <a routerLink="bookmovietime" (click)="passMovieTime(movieTime)">
+            {{ movieTime.time }}
+          </a>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </main>

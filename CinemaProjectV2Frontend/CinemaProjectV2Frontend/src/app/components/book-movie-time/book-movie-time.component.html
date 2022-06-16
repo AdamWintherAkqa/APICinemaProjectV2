@@ -1,0 +1,20 @@
+<main>
+  <div *ngIf="choosenMovieTime; else error">
+    <div *ngFor="let seat of seatsList">
+      <div
+        class="seatListDiv"
+        (click)="addSeatToChosen(seat)"
+        [ngClass]="status ? 'success' : 'danger'"
+      >
+        {{ seat.seatNumber }} {{ seat.seatRowLetter }}
+      </div>
+    </div>
+  </div>
+
+  <ng-template #error>
+    <p>
+      Undskyld! Denne side virker ikke hvis siden bliver genindlæst. Venlist
+      vælg din film igen
+    </p>
+  </ng-template>
+</main>

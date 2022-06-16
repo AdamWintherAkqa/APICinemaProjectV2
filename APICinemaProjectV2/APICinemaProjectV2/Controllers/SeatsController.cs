@@ -101,9 +101,37 @@ namespace APICinemaProjectV2.Controllers
             }
         }
 
-        // PUT: api/Seats/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpGet("GetSeatsWhereHallID/{id}")]
+        public async Task<ActionResult<IEnumerable<Seat>>> GetSeatsWhereHallID(int id)
+        {
+            try
+            {
+                List<Seat> result = await context.GetSeatsWhereHallID(id);
+
+                if (result == null)
+                {
+                    return StatusCode(500);
+                }
+
+                if (result.Count == 0)
+                {
+                    return NoContent();
+                }
+
+                else
+                {
+                    return Ok(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (ActionResult)StatusCode(500, ex);
+            }
+        }
+
+            // PUT: api/Seats/5
+            // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+            [HttpPut("{id}")]
         public async Task<IActionResult> PutSeat(int id, Seat seat)
         {
             try
