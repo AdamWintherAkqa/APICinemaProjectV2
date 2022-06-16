@@ -26,12 +26,14 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieService.getMoviesFrontPage().subscribe((data) => {
+      //På startup laver den en getMoviesFrontPage (title, spilletid, actors, id osv)
       this.movieList = data;
       console.log(this.movieTimeList);
       //console.log(this.movieList);
     });
 
     this.movieTimeService.getEntireMovieTimes().subscribe((data) => {
+      //Getter alle Movietimes på startup.
       this.movieTimeList = data;
       // console.log(this.movieTimeList);
     });
@@ -44,6 +46,7 @@ export class BookingComponent implements OnInit {
   }
 
   findMovieTime(movieID: number) {
+    //Filtrer MovieTimes for at vise den specifikke movietime på den specifikke movie.
     console.log(this.movieTimeList);
     this.timeList = this.movieTimeList.filter(
       (x) => x.movie.movieID == movieID
@@ -53,7 +56,7 @@ export class BookingComponent implements OnInit {
 
   passMovieTime(movieTime: IMovieTime) {
     this.dataService.choosenMovieTime = movieTime;
-    console.log('choosen movietime: ', this.dataService.choosenMovieTime);
+    console.log('choosen movietime: ', this.dataService.choosenMovieTime); // Lægger ID over i en variabel som ligger i en service som hedder DataService (ChoosenMovieTime)
   }
 
   log(val: any) {

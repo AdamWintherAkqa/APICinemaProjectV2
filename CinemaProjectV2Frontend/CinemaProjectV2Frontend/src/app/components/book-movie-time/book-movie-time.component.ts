@@ -30,16 +30,16 @@ export class BookMovieTimeComponent implements OnInit {
   cart: IOrder;
 
   ngOnInit(): void {
-    this.cart = this.cartService.getCart();
-    this.seatsService
-      .getSeatsWhereHallID(this.choosenMovieTime.hallID)
+    this.cart = this.cartService.getCart(); //Får cart som objekt
+    this.seatsService //Kalder seatservice
+      .getSeatsWhereHallID(this.choosenMovieTime.hallID) //Kalder controller GetSetsWhereHallID
       .subscribe((data) => {
-        this.seatsList = data;
+        this.seatsList = data; //Putter det over i en liste.
         this.orderService
-          .getOrdersWhereMovieTimeID(this.choosenMovieTime.movieTimeID)
+          .getOrdersWhereMovieTimeID(this.choosenMovieTime.movieTimeID) //Ser hvilke sæder der er bestilt.
           .subscribe((data) => {
-            this.reservedSeatsOrder = data;
-            this.checkReservedSeats();
+            this.reservedSeatsOrder = data; //Putter de reserverede sæder over i en liste.
+            this.checkReservedSeats(); //kalder metoden checkReservedSeats.
             console.log('reserved seats: ', this.reservedSeats);
           });
         console.log('seatsList: ', this.seatsList);
@@ -48,6 +48,7 @@ export class BookMovieTimeComponent implements OnInit {
 
   checkReservedSeats() {
     if (this.reservedSeatsOrder != null) {
+      //Hvis der er orders med reservede sæder kører den de næste to metoder:
       this.pushReservedSeats();
       this.filterSeatsList();
     }
@@ -56,16 +57,19 @@ export class BookMovieTimeComponent implements OnInit {
   filterSeatsList() {
     console.log('seatsList before: ', this.seatsList);
     this.reservedSeats.forEach((seat) => {
-      this.seatsList = this.seatsList.filter((x) => x.seatID != seat.seatID);
+      //For hvert sæde der er reserveret --
+      this.seatsList = this.seatsList.filter((x) => x.seatID != seat.seatID); //Filtrer på de reserverede sæder via seatID så man ikke kan se dem.
       console.log('seatsList after: ', this.seatsList);
     });
-    this.filteredSeats = this.seatsList;
+    this.filteredSeats = this.seatsList; //Bruges ikke.
     console.log('filtered seats: ', this.filteredSeats);
   }
 
   pushReservedSeats() {
     this.reservedSeatsOrder.forEach((order) => {
+      //For hvert sæde der er bestilt--
       order.seats.forEach((seat) => {
+        //Putter det over i en liste af sæder så sæder og reserverede sæder kan sammenlignes.
         this.reservedSeats.push(seat);
       });
     });
@@ -74,9 +78,10 @@ export class BookMovieTimeComponent implements OnInit {
 
   addSeatToChosen(seat: ISeat) {
     if (this.chosenSeats.includes(seat)) {
+      //Hvis det valgte sæde er inkluderet, bliver den fjernet fra chosenseat.
       this.chosenSeats = this.chosenSeats.filter((x) => x != seat);
     } else {
-      this.chosenSeats.push(seat);
+      this.chosenSeats.push(seat); //Ellers bliver den pushet til chosenseat.
     }
     //this.status = !this.status;
     // this.chosenSeats.push(seat);
@@ -85,12 +90,12 @@ export class BookMovieTimeComponent implements OnInit {
 
   addToCart() {
     console.log('movietimeID: ', this.choosenMovieTime.movieTimeID);
-    this.cartService.addMovieTimeToOrder(this.choosenMovieTime.movieTimeID);
-    this.cartService.addSeatsToOrder(this.chosenSeats);
+    this.cartService.addMovieTimeToOrder(this.choosenMovieTime.movieTimeID); //Kalder cartServices og en metode -- som er den movieTime der klikkes på.
+    this.cartService.addSeatsToOrder(this.chosenSeats); //Kalder cartService og tilføjer de seats der er valgt.
   }
 
   removeSeatFromChosen(seat: ISeat) {
-    this.chosenSeats = this.chosenSeats.filter((x) => x != seat);
+    this.chosenSeats = this.chosenSeats.filter((x) => x != seat); //Filterer det seat der klikkes på...
     console.log('Chosen seats:', this.chosenSeats);
   }
 }

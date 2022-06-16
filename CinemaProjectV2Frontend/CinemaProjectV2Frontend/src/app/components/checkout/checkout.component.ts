@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
   cart: IOrder;
 
   ngOnInit(): void {
-    this.cart = this.cartService.getCart();
+    this.cart = this.cartService.getCart(); //Får kurven
   }
 
   postOrderForm = new FormGroup({
@@ -29,16 +29,17 @@ export class CheckoutComponent implements OnInit {
   });
 
   loginUser() {
-    const email = this.postOrderForm.value.email;
+    const email = this.postOrderForm.value.email; //Tager formen og lægger over i 2 nye variabler
     const password = this.postOrderForm.value.password;
 
     this.customerService
-      .getCustomerByEmailAndPassword(email, password)
+      .getCustomerByEmailAndPassword(email, password) //kalder en httpget controller som forventer både e-mail + password.
       .subscribe((data) => {
         console.log('data: ', data);
         console.log('cart: ', this.cart);
-        this.cartService.addCustomerToOrder(data.customerID);
+        this.cartService.addCustomerToOrder(data.customerID); //kalder addCustomerToOrder fra CartService
         this.orderService.postAndPutOrder(this.cart).subscribe((data) => {
+          //Herefter post og putter order. Ordren oprettes tom uden FK, og derefter PUT med FKs.
           console.log('data: ', data);
         });
       });

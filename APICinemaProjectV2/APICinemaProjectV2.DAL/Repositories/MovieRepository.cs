@@ -21,9 +21,9 @@ namespace APICinemaProjectV2.DAL.Repositories
         Task<Movie> GetEntireMovie(int id);
         Task<Movie> PostAndPutMovie(Movie movie);
     }
-    public class MovieRepository : IMovieRepository
+    public class MovieRepository : IMovieRepository 
     {
-        private readonly AbContext context;
+        private readonly AbContext context; //Får alle DB Set.
         public MovieRepository(AbContext _context)
         {
             context = _context;
@@ -116,7 +116,7 @@ namespace APICinemaProjectV2.DAL.Repositories
         }
         public async Task<Movie> PostAndPutMovie(Movie movie)
         {
-            Movie movieToPost = new()
+            Movie movieToPost = new() //Laver et objekt af Movie uden FKs.
             {
                 MovieAgeLimit = movie.MovieAgeLimit,
                 MovieImageURL = movie.MovieImageURL,
@@ -126,10 +126,13 @@ namespace APICinemaProjectV2.DAL.Repositories
                 MovieReleaseDate = movie.MovieReleaseDate
             };
 
-            List<Actor> actors = new List<Actor>();
+            List<Actor> actors = new List<Actor>(); //Laver en liste af actors og genres som er de to mange-til-mange relations i denne.
             List<Genre> genres = new List<Genre>();
 
-            foreach (var actor in movie.Actors)
+            foreach (var actor in movie.Actors) //For hvor actor/genre der er på movie objektet,
+                                                //laver den en ny actor eller genre hvor den får værdierne ind.
+                                                //Og det tilføjes til den tomme liste over.
+                    
             {
                 Actor actorToPost = new Actor()
                 {
@@ -149,25 +152,26 @@ namespace APICinemaProjectV2.DAL.Repositories
                 genres.Add(genreToPost);
             }
 
-            var postedMovie = context.Movies.Add(movieToPost);
+            var postedMovie = context.Movies.Add(movieToPost); //Så postes movien, og gemmes.
             await context.SaveChangesAsync();
 
-            Movie movieToUpdate = context.Movies
+            Movie movieToUpdate = context.Movies //Så laves et nyt objekt som hedder movieToUpdate (Som er en GetByID),
+                                                 //som tager den den movie som lige er postet, og lægger dens info i det nye objekt.
                 .Include(movie => movie.Genre)
                 .Include(movie => movie.Actors)
                 .FirstOrDefault((movieObj) => movieObj.MovieID == movieToPost.MovieID);
 
-            if (movieToUpdate != null)
+            if (movieToUpdate != null) //Hvis vi kan finde den på ID'et, så køres nedenstående:
             {
                 movieToUpdate.Actors = movie.Actors;
                 movieToUpdate.Genre = movie.Genre;
-                movieToUpdate.InstructorID = movie.InstructorID;
+                movieToUpdate.InstructorID = movie.InstructorID; 
 
                 var result = await context.SaveChangesAsync();
 
                 if (result != 0)
                 {
-                    return movieToUpdate;
+                    return movieToUpdate; //Genre og actors, og instructorID puttes over i movieToUpdate og gemmes.
                 }
                 else
                 {

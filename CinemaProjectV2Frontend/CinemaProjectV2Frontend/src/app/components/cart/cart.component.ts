@@ -33,18 +33,19 @@ export class CartComponent implements OnInit {
   postCustomer: ICustomer;
 
   ngOnInit(): void {
-    this.cart = this.cartService.getCart();
+    this.cart = this.cartService.getCart(); //Kører getCart metoden ved startup.
     if (this.cart.movieTimeID != 0) {
+      //Hvis der er et movieTimeID i kurven:
       console.log('cart: ', this.cart);
 
       this.movieTimeService
-        .getMovieTimeByID(this.cart.movieTimeID)
+        .getMovieTimeByID(this.cart.movieTimeID) //får movieTime via ID for at kunne vise ting...
         .subscribe((data) => {
           this.movieTime = data;
           console.log('movietime: ', this.movieTime);
 
           this.movieService
-            .getMovieByID(this.movieTime.movie.movieID)
+            .getMovieByID(this.movieTime.movie.movieID) //får movie via ID for at kunne vise f.eks. billede...
             .subscribe((data) => {
               this.movie = data;
               console.log('movie: ', this.movie);
@@ -61,24 +62,25 @@ export class CartComponent implements OnInit {
     customerIsVIP: new FormControl(''),
   });
 
-  //not working
   createCustomer() {
+    //Opret bruger
     if (this.checkoutForm == null) {
+      //hvis checkoutForm er null...
       return console.log('checkoutForm is null');
     }
-    this.postCustomer = this.checkoutForm.value;
+    this.postCustomer = this.checkoutForm.value; //ellers lægger den value af checkoutForm over i postCustomer objektet.
     console.log('ICustomer: ', this.postCustomer);
     console.log('checkoutform: ', this.checkoutForm.value);
-    this.customerService.createCustomer(this.postCustomer).subscribe();
+    this.customerService.createCustomer(this.postCustomer).subscribe(); //bruger createCustomer fra customerService til at post Customer.
   }
 
   removeSeat(seat: ISeat) {
-    this.cartService.removeSeatsFromOrder(seat);
+    this.cartService.removeSeatsFromOrder(seat); //remove Seat fra kurven
     this.cart = this.cartService.getCart();
   }
 
   removeCandy(candy: ICandyShop) {
-    this.cartService.removeCandyShopFromOrder(candy);
-    this.cart = this.cartService.getCart();
+    this.cartService.removeCandyShopFromOrder(candy); //fjerner slik fra kurven.
+    this.cart = this.cartService.getCart(); //
   }
 }
